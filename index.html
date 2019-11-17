@@ -138,16 +138,6 @@
     <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
-
-  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
@@ -175,6 +165,81 @@
             
 
   <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/17/hello/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖上的触动">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/17/hello/" class="post-title-link" itemprop="url">git项目版本控制流程规范梳理</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-11-17 22:22:48 / 修改时间：22:24:43" itemprop="dateCreated datePublished" datetime="2019-11-17T22:22:48+08:00">2019-11-17</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3><p><img src="https://upload-images.jianshu.io/upload_images/7429691-caa1a148645bc944.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="git版本控制"></p>
+<h3 id="常见的分支"><a href="#常见的分支" class="headerlink" title="常见的分支"></a>常见的分支</h3><ul>
+<li><strong>master：</strong>上线分支，每一个版本需要打上一个tag标签。每一个版本更新的内容可多可细，tag1.2.3，第一位数字1是系统更新的大版本，数字2是更新的大功能点，数字3是可以是优化、可以是修复、可以是小功能点。</li>
+<li><strong>develop：</strong>开发分支，是当前项目的可进行测试的最新代码，每一次开发人员开发的新功能、bug、优化都需要合并同步更新到develop分支；此分支也是测试同学测试功能的分支。</li>
+<li><strong>功能A（B/C）：</strong>功能分支，开发人员在develop拉出来进行具体功能点开发的分支。</li>
+<li><strong>bug_fix：</strong>修复分支，线上版本出来紧急bug，拉出来的进行修复bug的分支。修复完后需要同步更新代码到develop分支。</li>
+</ul>
+<h3 id="环境介绍"><a href="#环境介绍" class="headerlink" title="环境介绍"></a>环境介绍</h3><p>一般一个项目部署的环境至少有本地环境、dev开发环境、fat环境、线上环境，只是最最基本的几个环境。</p>
+<ul>
+<li><strong>本地环境：</strong>不用介绍了吧这个，你的电脑虚拟机环境。【可以理解为<strong>本地的</strong>git版本】</li>
+<li><strong>dev环境：</strong>开发自测、联调的环境【可以理解为开发对<strong>功能A（B/C）</strong>自测的环境】</li>
+<li><strong>fat环境：</strong>测试用例测试和验证的环境【可以理解为<strong>develop分支</strong>部署，专门做上线前，测试验证、保证产品这里的测试环境】</li>
+<li><strong>线上环境：</strong>给用户使用的正式环境【可以理解为<strong>master分支</strong>部署的环境】<br>当然，公司越大、项目越大、业务链路越复杂越长的用于开发、调试、使用的环境也就更多。可能会多一个<strong>sit环境（集成测试环境）、uat环境（预发布环境）</strong></li>
+</ul>
+<h3 id="开发流程"><a href="#开发流程" class="headerlink" title="开发流程"></a>开发流程</h3><p>我们就从新建一个项目开始和整个开发过程需要学习和熟练的版本控制内容。</p>
+<hr>
+<p>未完待续，或者您可以下方留言常见问题。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
         
   
   
@@ -290,9 +355,13 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
