@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="指尖上的触动" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="整体流程微信官方文档 详细说明现在用户初次进入小程序中先需要用户进行授权操作，其实就是“登录”，然后拿到“用户信息”的操作。上面wx.login()只是拿到了登录code，并没有获取用户信息。一般小程序登录接口会给code和用户加密敏感信息相关字段。  小程序调用的接口：登录 用户授权 后台登录参数     参数 类型 说明     appId string    code string">
+<meta name="keywords" content="微信第三方平台">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第三方平台代替小程序实现登录功能流程梳理和实现">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;17&#x2F;%E7%AC%AC%E4%B8%89%E6%96%B9%E5%B9%B3%E5%8F%B0%E4%BB%A3%E6%9B%BF%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E6%A2%B3%E7%90%86%E5%92%8C%E5%AE%9E%E7%8E%B0&#x2F;index.html">
+<meta property="og:site_name" content="指尖上的触动">
+<meta property="og:description" content="整体流程微信官方文档 详细说明现在用户初次进入小程序中先需要用户进行授权操作，其实就是“登录”，然后拿到“用户信息”的操作。上面wx.login()只是拿到了登录code，并没有获取用户信息。一般小程序登录接口会给code和用户加密敏感信息相关字段。  小程序调用的接口：登录 用户授权 后台登录参数     参数 类型 说明     appId string    code string">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-70d1c79d596ae7a4.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-06c4cc6a442dc1f8.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:updated_time" content="2019-11-17T15:39:34.801Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-70d1c79d596ae7a4.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+
+<link rel="canonical" href="http://yoursite.com/2019/11/17/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%B9%B3%E5%8F%B0%E4%BB%A3%E6%9B%BF%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E6%A2%B3%E7%90%86%E5%92%8C%E5%AE%9E%E7%8E%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>第三方平台代替小程序实现登录功能流程梳理和实现 | 指尖上的触动</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">指尖上的触动</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/17/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%B9%B3%E5%8F%B0%E4%BB%A3%E6%9B%BF%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B%E6%A2%B3%E7%90%86%E5%92%8C%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shahao.jpg">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖上的触动">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          第三方平台代替小程序实现登录功能流程梳理和实现
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-11-17 23:39:16 / 修改时间：23:39:34" itemprop="dateCreated datePublished" datetime="2019-11-17T23:39:16+08:00">2019-11-17</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="https://upload-images.jianshu.io/upload_images/7429691-70d1c79d596ae7a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="整体流程"><a href="#整体流程" class="headerlink" title="整体流程"></a>整体流程</h3><p><a href="[https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html)">微信官方文档</a><br><img src="https://upload-images.jianshu.io/upload_images/7429691-06c4cc6a442dc1f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="微信小程序登录流程时序图"></p>
+<h3 id="详细说明"><a href="#详细说明" class="headerlink" title="详细说明"></a>详细说明</h3><p>现在用户初次进入小程序中先需要用户进行授权操作，其实就是“登录”，然后拿到“用户信息”的操作。上面wx.login()只是拿到了登录code，并没有获取用户信息。一般小程序登录接口会给code和用户加密敏感信息相关字段。</p>
+<ul>
+<li>小程序调用的接口：<a href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/login/wx.login.html" target="_blank" rel="noopener">登录</a> <a href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/user-info/wx.getUserInfo.html" target="_blank" rel="noopener">用户授权</a></li>
+<li>后台登录参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>appId</td>
+<td>string</td>
+</tr>
+<tr>
+<td></td>
+<td>code</td>
+<td>string</td>
+</tr>
+<tr>
+<td></td>
+<td>rawData</td>
+<td>string</td>
+</tr>
+<tr>
+<td></td>
+<td>signature</td>
+<td>string</td>
+</tr>
+<tr>
+<td></td>
+<td>encryptedData</td>
+<td>string</td>
+</tr>
+<tr>
+<td></td>
+<td>iv</td>
+<td>string</td>
+</tr>
+<tr>
+<td>接收到参数后，从时序图可以知道。要拿code调用微信接口获取session_key和openid这些加密信息，然后对其进行解密，解密就用官方的<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/signature.html" target="_blank" rel="noopener">解密sdk</a>就好，最好保存小程序粉丝信息，返回自定义登录token给前端，下次前端请求接口的时候需要在请求头把自定义的tokne给过来验证。</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li><a href="https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/Mini_Programs/WeChat_login.html" target="_blank" rel="noopener">小程序登录</a>调用地址<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET https://api.weixin.qq.com/sns/component/jscode2session?appid=APPID&amp;js_code=JSCODE&amp;grant_type=authorization_code&amp;component_appid=COMPONENT_APPID&amp;component_access_token=COMPONENT_ACCESS_TOKEN</span><br></pre></td></tr></table></figure></li>
+<li>参数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&apos;appid&apos;                  =&gt; appid,  //小程序appid</span><br><span class="line">&apos;js_code&apos;                =&gt; code,   //登录code</span><br><span class="line">&apos;grant_type&apos;             =&gt; &apos;authorization_code&apos;,  //固定值</span><br><span class="line">&apos;component_appid&apos;        =&gt; WX_APP_ID,   //第三方平台 appid</span><br><span class="line">&apos;component_access_token&apos; =&gt; $comAccToke  //第三方平台接口凭证</span><br></pre></td></tr></table></figure>
+
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><blockquote>
+<p><strong>$this-&gt;request()-&gt;getParams()</strong> 是封装好的获取参数的方法，可自行替代<br><strong>getComAccessToken()</strong> 是封装好的获取第三方接口调用凭证的方法，可自行替代<br><strong>httpsCurl()</strong> 是封装好的请求微信的方法，可自行替代<br><strong>WX_APP_ID</strong> 是全局参数第三方平台的app_id</p>
+</blockquote>
+<p>PS:这里的代码仅仅只是把整个业务流程写在一起，方便阅读，实际场景中代码当然不会这样子写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">     * Created by 沙蒿.</span><br><span class="line">     * @desc 小程序用户授权登录</span><br><span class="line">     */</span><br><span class="line">    public function wxLogin()</span><br><span class="line">    &#123;</span><br><span class="line">        //接收参数</span><br><span class="line">        $request                 = $this-&gt;request()-&gt;getParams();</span><br><span class="line">        $filter                  = [];</span><br><span class="line">        $filter[&apos;appid&apos;]         = $request[&apos;appid&apos;];</span><br><span class="line">        $filter[&apos;code&apos;]          = $request[&apos;code&apos;];</span><br><span class="line">        $filter[&apos;userInfo&apos;]      = $request[&apos;userInfo&apos;];</span><br><span class="line">        $filter[&apos;rawData&apos;]       = $request[&apos;rawData&apos;];</span><br><span class="line">        $filter[&apos;signature&apos;]     = $request[&apos;signature&apos;];</span><br><span class="line">        $filter[&apos;encryptedData&apos;] = $request[&apos;encryptedData&apos;];</span><br><span class="line">        $filter[&apos;iv&apos;]            = $request[&apos;iv&apos;];</span><br><span class="line">        //校验参数</span><br><span class="line">        $check = $this-&gt;checkAppLogin($filter);</span><br><span class="line">        //获取第三方接口调用凭证（令牌）</span><br><span class="line">        $comAccToken = $this-&gt;getComAccessToken();</span><br><span class="line">        //调用微信服务器接口，获，openId + sessionKey + （unionId）</span><br><span class="line">        $url       = &apos;https://api.weixin.qq.com/sns/component/jscode2session&apos;;</span><br><span class="line">        $loginInfo = CommonService::getInstance()-&gt;httpsCurl($url, &apos;get&apos;, &apos;json&apos;, [</span><br><span class="line">            &apos;appid&apos;                  =&gt; $filter[&apos;appid&apos;],</span><br><span class="line">            &apos;js_code&apos;                =&gt; $filter[&apos;code&apos;],</span><br><span class="line">            &apos;grant_type&apos;             =&gt; &apos;authorization_code&apos;,</span><br><span class="line">            &apos;component_appid&apos;        =&gt; WX_APP_ID,</span><br><span class="line">            &apos;component_access_token&apos; =&gt; $comAccToken</span><br><span class="line">        ]);</span><br><span class="line">        //sha1散列算法加密，验证signature</span><br><span class="line">        $signature = sha1($filter[&apos;rawData&apos;] . $loginInfo[&apos;session_key&apos;]);</span><br><span class="line">        //加密数据解密算法，解密获取用户敏感信息</span><br><span class="line">        include_once ROOT_PATH . &apos;wxBizDataCrypt.php&apos;;</span><br><span class="line">        $decrypt = new \WXBizDataCrypt($filter[&apos;appid&apos;], $loginInfo[&apos;session_key&apos;]);</span><br><span class="line">        $errCode = $decrypt-&gt;decryptData($filter[&apos;encryptedData&apos;], $filter[&apos;iv&apos;], $userInfo);</span><br><span class="line">        //保存用户粉丝到用户服务，并调用帐号服务获取token</span><br><span class="line">        return $this-&gt;saveMiniAppFans($userInfo, $filter[&apos;appid&apos;], $loginInfo[&apos;session_key&apos;]);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>不求赞赏，点个喜欢就好.</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%BE%AE%E4%BF%A1%E7%AC%AC%E4%B8%89%E6%96%B9%E5%B9%B3%E5%8F%B0/" rel="tag"># 微信第三方平台</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/11/17/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%B9%B3%E5%8F%B0%E4%BB%A3%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E5%85%AC%E4%BC%97%E5%8F%B7%EF%BC%89%E4%B8%9A%E5%8A%A1%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/" rel="next" title="第三方平台代小程序（公众号）业务常见错误">
+                  <i class="fa fa-chevron-left"></i> 第三方平台代小程序（公众号）业务常见错误
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/11/17/%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E5%85%AC%E4%BC%97%E5%8F%B7%EF%BC%89%E6%8E%88%E6%9D%83%E7%BB%99%E7%AC%AC%E4%B8%89%E6%96%B9%E5%B9%B3%E5%8F%B0%E6%B5%81%E7%A8%8B%E6%A2%B3%E7%90%86%E5%92%8C%E5%AE%9E%E7%8E%B0/" rel="prev" title="小程序（公众号）授权给第三方平台流程梳理和实现">
+                  小程序（公众号）授权给第三方平台流程梳理和实现 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#整体流程"><span class="nav-number">1.</span> <span class="nav-text">整体流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#详细说明"><span class="nav-number">2.</span> <span class="nav-text">详细说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="沙蒿"
+      src="/images/shahao.jpg">
+  <p class="site-author-name" itemprop="name">沙蒿</p>
+  <div class="site-description" itemprop="description">大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">沙蒿</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
