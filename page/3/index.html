@@ -179,114 +179,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/18/php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0%EF%BC%88%E4%B8%80%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/shahao.jpg">
-      <meta itemprop="name" content="沙蒿">
-      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="指尖记忆">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/05/18/php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0%EF%BC%88%E4%B8%80%EF%BC%89/" class="post-title-link" itemprop="url">php面试基础知识--数组函数（一）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-05-18 16:23:25" itemprop="dateCreated datePublished" datetime="2019-05-18T16:23:25+08:00">2019-05-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-18 16:24:08" itemprop="dateModified" datetime="2019-11-18T16:24:08+08:00">2019-11-18</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li><strong>array_merge() : array</strong></li>
-</ul>
-<p>将一个或多个数组的单元合并起来，一个数组中的值附加在前一个数组的后面。返回作为结果的数组。</p>
-<p>如果输入的数组中有相同的字符串键名，则该键名后面的值将覆盖前一个值。然而，如果数组包含数字键名，后面的值将不会覆盖原来的值，而是附加到后面。</p>
-<p>如果只给了一个数组并且该数组是数字索引的，则键名会以连续方式重新索引。</p>
-<p><strong>注意：</strong>其中一个数组为null，返回的值也为null（曾经被自己坑过）</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $array1 = <span class="keyword">array</span>(<span class="string">"color"</span> =&gt; <span class="string">"red"</span>, <span class="number">2</span>, <span class="number">4</span>);</span><br><span class="line">  $array2 = <span class="keyword">array</span>(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"color"</span> =&gt; <span class="string">"green"</span>, <span class="string">"shape"</span> =&gt; <span class="string">"trapezoid"</span>, <span class="number">4</span>);</span><br><span class="line">  $array3 = <span class="keyword">null</span>;</span><br><span class="line">  $result = array_merge($array1, $array2);</span><br><span class="line">  print_r($result);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>array_push() : int</strong></li>
-</ul>
-<p>array_push() 将 array 当成一个栈，并将传入的变量压入 array 的末尾。array 的长度将根据入栈变量的数目增加。和如下效果相同：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $array[] = $var;</span><br></pre></td></tr></table></figure>
-<p><strong>注意：</strong><br>1、这个函数建议大家少用吧，还不如直接用 $array[] = ，因为这样没有调用函数的额外负担；<br>2、另外，如果第一个参数不是数组，array_push() 将发出一条警告（自己也被坑过）<br>3、记得函数返回的是元素的个数（int），而不是数组</p>
-<ul>
-<li><strong>array_pop() : mixed</strong></li>
-</ul>
-<p>弹出并返回 array 数组的最后一个单元，并将数组 array 的长度减一</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $array = [</span><br><span class="line">        <span class="string">'a'</span> =&gt;  <span class="string">'1'</span>,</span><br><span class="line">        <span class="string">'b'</span> =&gt;  <span class="string">'2'</span>,</span><br><span class="line">        <span class="string">'c'</span> =&gt;  <span class="string">'3'</span></span><br><span class="line">    ];</span><br><span class="line">    $count = array_push($array, <span class="keyword">array</span>(<span class="string">'123'</span>));  </span><br><span class="line">    <span class="keyword">echo</span> $count;  <span class="comment">// 返回值为4</span></span><br><span class="line">    var_dump($array);  <span class="comment">//array('a' =&gt;  '1','b' =&gt;  '2','c' =&gt;  '3', 0 =&gt; array('123'))</span></span><br><span class="line">    $pop_array = array_pop($array);  <span class="comment">//array(1) &#123;[0]=&gt;string(3) "123"&#125;</span></span><br><span class="line">    var_dump($pop_array);</span><br><span class="line">    var_dump($array);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><strong>array_search() :mixed</strong></p>
-<p>在数组中搜索给定的值，如果成功则返回首个相应的键名。俗称：“大海捞针”。<br>底层的代码其实就是循环遍历，实现的时间复杂度O(n²)，这个时间复杂度大家是懂的（恐怖）。以下是部分代码：（我也不知道为什么要粘贴上去，可能显得牛逼吧）</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> inline void php_search_array(INTERNAL_FUNCTION_PARAMETERS, int behavior) <span class="comment">/* &#123;&#123;&#123; */</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (strict) &#123;</span><br><span class="line">        ZEND_HASH_FOREACH_KEY_VAL(Z_ARRVAL_P(<span class="keyword">array</span>), num_idx, str_idx, entry) &#123;</span><br><span class="line">            ……</span><br><span class="line">        &#125; ZEND_HASH_FOREACH_END();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (Z_TYPE_P(value) == IS_LONG) &#123;</span><br><span class="line">            ZEND_HASH_FOREACH_KEY_VAL(Z_ARRVAL_P(<span class="keyword">array</span>), num_idx, str_idx, entry) &#123;</span><br><span class="line">                ……</span><br><span class="line">            &#125; ZEND_HASH_FOREACH_END();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (Z_TYPE_P(value) == IS_STRING) &#123;</span><br><span class="line">            ZEND_HASH_FOREACH_KEY_VAL(Z_ARRVAL_P(<span class="keyword">array</span>), num_idx, str_idx, entry) &#123;</span><br><span class="line">                ……</span><br><span class="line">            &#125; ZEND_HASH_FOREACH_END();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            ZEND_HASH_FOREACH_KEY_VAL(Z_ARRVAL_P(<span class="keyword">array</span>), num_idx, str_idx, entry) &#123;</span><br><span class="line">                ……</span><br><span class="line">            &#125; ZEND_HASH_FOREACH_END();</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    RETURN_FALSE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里是简单的示例</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $array = <span class="keyword">array</span>(<span class="number">0</span> =&gt; <span class="string">'blue'</span>, <span class="number">1</span> =&gt; <span class="string">'red'</span>, <span class="number">2</span> =&gt; <span class="string">'green'</span>, <span class="number">3</span> =&gt; <span class="string">'red'</span>);</span><br><span class="line"></span><br><span class="line">  $key = array_search(<span class="string">'green'</span>, $array); <span class="comment">// $key = 2;</span></span><br><span class="line">  $key = array_search(<span class="string">'red'</span>, $array);   <span class="comment">// $key = 1;</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<p><strong>注意：</strong>很多新人滥用了这个函数，其实就想大海捞针一样，循环遍历。该函数在某些场景下效率是很低的。这里有一篇文章有详细的介绍与数据证明，建议大家看看:<a href="[https://blog.csdn.net/weixin_42900065/article/details/81639163](https://blog.csdn.net/weixin_42900065/article/details/81639163)">慎用php的array_search函数–作者：安木1991)
-</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/17/php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%AD%A3%E5%88%99%E9%AA%8C%E8%AF%81%E8%A1%A8%E5%8D%95%E5%AD%97%E6%AE%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -492,6 +384,109 @@
 <li>将驼峰转成下划线</li>
 </ul>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="keyword">public</span> hump_to_under($string)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">//要先判断下是否字符串</span></span><br><span class="line">    $array = str_split($string);</span><br><span class="line">    <span class="keyword">foreach</span> ($array <span class="keyword">as</span> $key =&gt; &amp;$value) &#123;</span><br><span class="line">        <span class="keyword">if</span> ($value == <span class="string">'_'</span>) &#123;  <span class="comment">//已是下划线，跳过</span></span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ($key != <span class="number">0</span> &amp;&amp; strtoupper($value) === $value) &#123;</span><br><span class="line">            $value = <span class="string">'_'</span> . strtolower($value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    $re_str = implode(<span class="string">''</span>, $array);</span><br><span class="line">    <span class="keyword">echo</span> $re_str;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/15/php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%97%B6%E9%97%B4%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shahao.jpg">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖记忆">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/15/php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%97%B6%E9%97%B4%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">php面试基础知识--时间函数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-15 16:27:08" itemprop="dateCreated datePublished" datetime="2019-05-15T16:27:08+08:00">2019-05-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-18 16:32:27" itemprop="dateModified" datetime="2019-11-18T16:32:27+08:00">2019-11-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><p><strong>date() : string</strong></p>
+<p>格式化一个本地时间／日期</p>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $timestamp = time();  <span class="comment">//时间戳</span></span><br><span class="line">  date(<span class="string">'Y-m-d H:i:s'</span>, $timestamp );  <span class="comment">//返回当前时间，yyyy-mm-dd H:i:s格式</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>time()  : int</strong></li>
+</ul>
+<p>返回当前的 Unix 时间戳,（格林威治时间 1970 年 1 月 1 日 00:00:00）到当前时间的秒数</p>
+<ul>
+<li><strong>strtotime() : int</strong></li>
+</ul>
+<p>将任何字符串的日期时间描述解析为 Unix 时间戳（string to time）</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="keyword">echo</span> strtotime(<span class="string">"now"</span>), <span class="string">"\n"</span>;  <span class="comment">//当前时间</span></span><br><span class="line">  <span class="keyword">echo</span> strtotime(<span class="string">"10 September 2000"</span>), <span class="string">"\n"</span>;  </span><br><span class="line">  <span class="keyword">echo</span> strtotime(<span class="string">"+1 day"</span>), <span class="string">"\n"</span>;  <span class="comment">//明天</span></span><br><span class="line">  <span class="keyword">echo</span> strtotime(<span class="string">"+1 week"</span>), <span class="string">"\n"</span>;  <span class="comment">//下星期</span></span><br><span class="line">  <span class="keyword">echo</span> strtotime(<span class="string">"+1 week 2 days 4 hours 2 seconds"</span>), <span class="string">"\n"</span>;</span><br><span class="line">  <span class="keyword">echo</span> strtotime(<span class="string">"next Thursday"</span>), <span class="string">"\n"</span>;  <span class="comment">//下周三</span></span><br><span class="line">  <span class="keyword">echo</span> strtotime(<span class="string">"last Monday"</span>), <span class="string">"\n"</span>;    <span class="comment">//上周一</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>microtime() : mixed</strong></li>
+</ul>
+<p>返回当前 Unix 时间戳和微秒数，PHP没有直接返回毫秒的函数，要想获取当前时间毫秒，这里用微秒格式化一下生产微秒。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="keyword">return</span> sprintf(<span class="string">'%.0f'</span>, microtime(<span class="keyword">true</span>) * <span class="number">1000</span>);  <span class="comment">//true，microtime() 将返回一个浮点数</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>常见时间格式转换</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="comment">//$time 时间戳</span></span><br><span class="line">  <span class="keyword">public</span> checkTime($time)</span><br><span class="line">  &#123;</span><br><span class="line">        $return_str = <span class="string">''</span>;</span><br><span class="line">        $diff = $time - time();</span><br><span class="line">        <span class="keyword">switch</span> ($diff) &#123;</span><br><span class="line">            <span class="keyword">case</span> $diff &lt; <span class="number">60</span>:</span><br><span class="line">                $return_str = $diff.<span class="string">'秒前'</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> $diff &gt;= <span class="number">60</span> &amp;&amp; $diff &lt; <span class="number">60</span> * <span class="number">60</span>:</span><br><span class="line">                $diff_i = round($diff/<span class="number">60</span>).<span class="string">'分'</span>;</span><br><span class="line">                $diff_s = ($diff - ($diff_i * <span class="number">60</span>)) &gt; <span class="number">0</span> ? ($diff - ($diff_i * <span class="number">60</span>)) .<span class="string">'秒'</span> : <span class="string">''</span>;</span><br><span class="line">                $return_str = $diff_i.$diff_s.<span class="string">'前'</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> $diff &gt;= <span class="number">60</span> * <span class="number">60</span> &amp;&amp; $diff &lt;= <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span>:</span><br><span class="line">                $return_str = round($diff/(<span class="number">60</span> * <span class="number">60</span>)).<span class="string">'小时前'</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> $diff &lt;= <span class="number">30</span> * <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span>:</span><br><span class="line">                $return_str = round($diff/(<span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span>)).<span class="string">'天前'</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                $return_str = date(<span class="string">'Y'</span>.<span class="string">'年'</span>.<span class="string">'m'</span>.<span class="string">'月'</span>.<span class="string">'d'</span>.<span class="string">'日'</span>, $time);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> $return_str;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -817,6 +812,133 @@
   
   
 
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/21/%E7%BC%96%E7%A8%8B%E6%80%9D%E7%BB%B4%EF%BC%8C%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E5%87%A0%E4%B8%AA%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shahao.jpg">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖记忆">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/21/%E7%BC%96%E7%A8%8B%E6%80%9D%E7%BB%B4%EF%BC%8C%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E5%87%A0%E4%B8%AA%E7%82%B9/" class="post-title-link" itemprop="url">编程思维，你需要知道的几个点</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-21 16:38:34" itemprop="dateCreated datePublished" datetime="2019-03-21T16:38:34+08:00">2019-03-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-18 16:39:22" itemprop="dateModified" datetime="2019-11-18T16:39:22+08:00">2019-11-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer" />
+
+
+<p>近段时间的实习工作，让我跟另一个实习小伙伴有了一定的交流，毕竟技能水平相当，关注的技术要点基本一致，所以比较容易得到交流和学习。之前在一家外包公司工作的我，相对来说项目经验比小伙伴多一些，发现一些他在项目开发过程并没有那么注意并存在无知区域的东西，在这里我梳理了一些编程须知，主要是一些经验的分享（入门级的，大佬勿喷哈）</p>
+<h2 id="IDE工具的准备"><a href="#IDE工具的准备" class="headerlink" title="IDE工具的准备"></a>IDE工具的准备</h2><p><strong>“好的工具是成功的一半”</strong>，每一次开始一个项目的时候，我都会根据项目的情况选择相应的工具，这里的工具不单单指的是编辑器，更主要的是一种调试环境，便于debug。有句话说的好“工欲善其事必先利其器”说的就是这个道理，好的工具准备往往是成功的前提，这点别不信啊，有些人怕麻烦就不在本地在部署一边环境，而直接拿自己N久前部署在线上服务器的环境（然而这个环境并不适合），这个时候我就建议大家使用vagrant部署开发环境了，详细可看我之前的教程[vagrant部署]。(<a href="https://www.jianshu.com/p/492bdee4106a" target="_blank" rel="noopener">https://www.jianshu.com/p/492bdee4106a</a>)</p>
+<h3 id="编辑器推荐"><a href="#编辑器推荐" class="headerlink" title="编辑器推荐"></a>编辑器推荐</h3><p>个人推荐jetbrains系列的编辑工具，好用自己体会。这个系列的IDE都完美的正常支持git版本操作，图形化的操作对于对命令行恐惧的朋友们可以试试我的<a href="https://www.jianshu.com/p/aefd6c0cf18c" target="_blank" rel="noopener">git图形化教程</a><br><img src="https://upload-images.jianshu.io/upload_images/7429691-2fdf75e0c0fa545a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="postman调试"><a href="#postman调试" class="headerlink" title="postman调试"></a>postman调试</h3><p>我想不用我过多介绍吧，一个后端的开发者，这个工具是必备的，左侧是我保存的一些api接口的目录地址，需要用的时候直接点击调试，真是方便快捷。<br><img src="https://upload-images.jianshu.io/upload_images/7429691-4a2ad301a1065ee0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h2 id="编码规范"><a href="#编码规范" class="headerlink" title="编码规范"></a>编码规范</h2><p>每一项编程语言都有他自己的编码规范，哪里适合加空格，哪里适合空行，建议下划线还是驼峰，一般会有一些能愿动词需要大家了解一下：</p>
+<ul>
+<li>必须 (MUST)：绝对，严格遵循，请照做，无条件遵守；</li>
+<li>一定不可 (MUST NOT)：禁令，严令禁止；</li>
+<li>应该 (SHOULD) ：强烈建议这样做，但是不强求；</li>
+<li>不该 (SHOULD NOT)：强烈不建议这样做，但是不强求；</li>
+<li>可以 (MAY) 和 可选 (OPTIONAL) ：选择性高一点，在这个文档内，此词语使用较少；</li>
+</ul>
+<p>如果是PHP开发者，一般是遵守这一套标准规范的<a href="https://learnku.com/docs/psr" target="_blank" rel="noopener">PHP PSR 标准规范</a></p>
+<h2 id="学会debug，很重要"><a href="#学会debug，很重要" class="headerlink" title="学会debug，很重要"></a>学会debug，很重要</h2><p>不管你学习任何一门语言，都需要一项基本功——debug，有句话说的好“开发五分钟，调试2小时”，会不会 debug，有没有 debug 的意识，懂不懂 debug 的技巧，是有没有入门编程的重要标志。就像小学读英语的时候，在英文单词旁备注“中文读音”是每个人都做过的事情，如果你一直不学会单词的读法，你可能就只会读你备注的那些词语了。类似这一点需要我们在编码的过程中不断的积累经验和总结，网络教程和文档是不会强调并教你如何调试的。</p>
+<h3 id="学会看报错信息"><a href="#学会看报错信息" class="headerlink" title="学会看报错信息"></a>学会看报错信息</h3><p>绝大多数问题不是直接在代码层面就出现的，而是运行时才发生。这时候正常都会导致程序中断并输出报错信息。一般从报错信息里就可以看出报错的位置和原因。<br>很多初学者怕看报错信息，这不行。即使英语不好，也尝试着去看，套路就那么些，看几次你就大概熟悉了，但对你调试的帮助非常大。</p>
+<p>不过有时报错显示的位置是有问题的，这种情况通常的原因都是前面某一行的括号或者引号有问题，而导致后面的代码错乱。所以如果报错指出的位置看不出问题，试着往前看一看。</p>
+<p>在代码中使用 try…except 可以避免程序因异常中断。但在开发时不要使用异常处理，否则阻止了报错信息的发出，影响调试。</p>
+<p>报错信息还有个用处就是直接复制到搜索引擎里进行搜索，而这方面 Google 的结果比百度要好，英文网站要比中文网站好。（怎样用 Google 这个话题不便在此公开讨论。）</p>
+<h3 id="断点调试，log-查看日志文件报错信息"><a href="#断点调试，log-查看日志文件报错信息" class="headerlink" title="断点调试，log 查看日志文件报错信息"></a>断点调试，log 查看日志文件报错信息</h3><p>在程序中输出并分析 log（日志）是一种很基本但却很灵活很有效的调试方式。使用 print 就是 log 的最常用方法。</p>
+<p>log 的作用主要是：</p>
+<ul>
+<li><p>确定程序的运行路径。一个函数有没有被调用，一个 if 块有没有被执行，一个 while 循环执行了几次，到了哪一步中断了，都可以通过 print 出相关信息来查看。</p>
+</li>
+<li><p>查看变量的状态。程序自身的报错会告诉你发生了什么错误，但你还需要找出为什么会发生错误。通过 print 输出出错语句涉及到的相关变量的值和类型，可以帮助分析出错原因。</p>
+</li>
+<li><p>找出出错位置。往往错误的原因并不在报错的位置，所以多输出一些标记，多 print 不同位置的变量值，查看变量在运行过程中值的变化情况，可以观察是在哪里发生了问题。</p>
+</li>
+</ul>
+<h3 id="通过-log-调试的经验技巧："><a href="#通过-log-调试的经验技巧：" class="headerlink" title="通过 log 调试的经验技巧："></a>通过 log 调试的经验技巧：</h3><ul>
+<li>多输出一些辅助信息，方便自己查看，不然一堆数据看花眼。比如我一般输出时会标注上变量名，再输出变量类型，以及变量的值。比如：</li>
+</ul>
+<ul>
+<li><p>在出错行之前输出。报错行涉及的一些变量，他们的数值和类型，全都输出出来，看看和预期是否一致。</p>
+</li>
+<li><p>一行做一件事。如果你出错的一行里连续调用了多个函数或运算，请分开写，分开输出。</p>
+</li>
+<li><p>对于字符串，直接 print 会被转义和解码，影响对变量实际值的观察。可以用 print(repr(text)) 或 print([text]) 的方式查看。</p>
+</li>
+<li><p>对于编码问题，用好 type 方法和 chardet 库辅助判断。这点之前编码相关的文章里有说明，公众号里回复 pycharm 可查看。</p>
+</li>
+<li><p>为了方便记录和回溯问题日志，通常也会将 log 输出到文件。也有专门的 logging 模块做这事。</p>
+</li>
+</ul>
+<p>（以上内容，来自<a href="https://blog.csdn.net/qq_40523737/article/details/82846735" target="_blank" rel="noopener">csdn博客园</a>）</p>
+<h2 id="熟练某一框架"><a href="#熟练某一框架" class="headerlink" title="熟练某一框架"></a>熟练某一框架</h2><p>前期在于使用，重在框架结构，后理解框架的设计模式和理念<br>当你熟练掌握一门语言后就可以举一反三啦：随便给你一个框架，看一会开发文档，就可以上手敲码啦；更上一级别自然就是直接组织搭建属于自己的框架啦。（确实不难）</p>
+<h2 id="善于总结"><a href="#善于总结" class="headerlink" title="善于总结"></a>善于总结</h2><p>嗯，像我们团队的小伙伴一样，勿忘初心好好学习，老师在n年前就叫我们了：好记性不如烂笔头，多看多写多练习，emmm，文字写完了，我该上班了！！！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
   </div>
 
   
@@ -867,7 +989,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -913,12 +1035,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">40k</span>
+    <span title="站点总字数">42k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">36 分钟</span>
+    <span title="站点阅读时长">38 分钟</span>
 </div>
 
         
