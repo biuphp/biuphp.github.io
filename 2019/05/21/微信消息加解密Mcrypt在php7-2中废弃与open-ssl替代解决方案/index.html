@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="指尖记忆" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="之前在接入微信公众号相关的接口，对微信消息加解密操作时，下载了官网上的php demo下来。没想到的是，官网的php代码居然使用着php7废弃的函数Mcrypt，这就导致了使用了php7.2及以上的版本程序上报错。 然后就使用了open_ssl替代解决方案。以下是更新后的pkcs7Encoder.php文件代码 1234567891011121314151617181920212223242">
+<meta name="keywords" content="微信">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信消息加解密Mcrypt在php7.2中废弃与open_ssl替代解决方案">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;05&#x2F;21&#x2F;%E5%BE%AE%E4%BF%A1%E6%B6%88%E6%81%AF%E5%8A%A0%E8%A7%A3%E5%AF%86Mcrypt%E5%9C%A8php7-2%E4%B8%AD%E5%BA%9F%E5%BC%83%E4%B8%8Eopen-ssl%E6%9B%BF%E4%BB%A3%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88&#x2F;index.html">
+<meta property="og:site_name" content="指尖记忆">
+<meta property="og:description" content="之前在接入微信公众号相关的接口，对微信消息加解密操作时，下载了官网上的php demo下来。没想到的是，官网的php代码居然使用着php7废弃的函数Mcrypt，这就导致了使用了php7.2及以上的版本程序上报错。 然后就使用了open_ssl替代解决方案。以下是更新后的pkcs7Encoder.php文件代码 1234567891011121314151617181920212223242">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-f525e810b01d6592.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-cfa8ce1935cd2472.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-2a1323bda9cb8dfb.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-d74eb54dedcb6fdd.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:updated_time" content="2019-11-18T08:00:44.312Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-f525e810b01d6592.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+
+<link rel="canonical" href="http://yoursite.com/2019/05/21/%E5%BE%AE%E4%BF%A1%E6%B6%88%E6%81%AF%E5%8A%A0%E8%A7%A3%E5%AF%86Mcrypt%E5%9C%A8php7-2%E4%B8%AD%E5%BA%9F%E5%BC%83%E4%B8%8Eopen-ssl%E6%9B%BF%E4%BB%A3%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>微信消息加解密Mcrypt在php7.2中废弃与open_ssl替代解决方案 | 指尖记忆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">指尖记忆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/21/%E5%BE%AE%E4%BF%A1%E6%B6%88%E6%81%AF%E5%8A%A0%E8%A7%A3%E5%AF%86Mcrypt%E5%9C%A8php7-2%E4%B8%AD%E5%BA%9F%E5%BC%83%E4%B8%8Eopen-ssl%E6%9B%BF%E4%BB%A3%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shahao.jpg">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖记忆">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          微信消息加解密Mcrypt在php7.2中废弃与open_ssl替代解决方案
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-21 15:59:25" itemprop="dateCreated datePublished" datetime="2019-05-21T15:59:25+08:00">2019-05-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-18 16:00:44" itemprop="dateModified" datetime="2019-11-18T16:00:44+08:00">2019-11-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <meta name="referrer" content="no-referrer" />
+
+
+<p>之前在接入微信公众号相关的接口，对微信消息加解密操作时，下载了官网上的php demo下来。<br><img src="https://upload-images.jianshu.io/upload_images/7429691-f525e810b01d6592.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br>没想到的是，官网的php代码居然使用着php7废弃的函数<strong>Mcrypt</strong>，这就导致了使用了php7.2及以上的版本程序上报错。<br><img src="https://upload-images.jianshu.io/upload_images/7429691-cfa8ce1935cd2472.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>然后就使用了open_ssl替代解决方案。以下是更新后的<strong>pkcs7Encoder.php</strong>文件代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">include_once</span> <span class="string">"errorCode.php"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * PKCS7Encoder class</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 提供基于PKCS7算法的加解密接口.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PKCS7Encoder</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> $block_size = <span class="number">32</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 对需要加密的明文进行填充补位</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> $text 需要进行填充补位操作的明文</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 补齐明文字符串</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">encode</span><span class="params">($text)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		$block_size = PKCS7Encoder::$block_size;</span><br><span class="line">		$text_length = strlen($text);</span><br><span class="line">		<span class="comment">//计算需要填充的位数</span></span><br><span class="line">		$amount_to_pad = PKCS7Encoder::$block_size - ($text_length % PKCS7Encoder::$block_size);</span><br><span class="line">		<span class="keyword">if</span> ($amount_to_pad == <span class="number">0</span>) &#123;</span><br><span class="line">			$amount_to_pad = PKCS7Encoder::block_size;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//获得补位所用的字符</span></span><br><span class="line">		$pad_chr = chr($amount_to_pad);</span><br><span class="line">		$tmp = <span class="string">""</span>;</span><br><span class="line">		<span class="keyword">for</span> ($index = <span class="number">0</span>; $index &lt; $amount_to_pad; $index++) &#123;</span><br><span class="line">			$tmp .= $pad_chr;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> $text . $tmp;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 对解密后的明文进行补位删除</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> decrypted 解密后的明文</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 删除填充补位后的明文</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">decode</span><span class="params">($text)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line"></span><br><span class="line">		$pad = ord(substr($text, <span class="number">-1</span>));</span><br><span class="line">		<span class="keyword">if</span> ($pad &lt; <span class="number">1</span> || $pad &gt; <span class="number">32</span>) &#123;</span><br><span class="line">			$pad = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> substr($text, <span class="number">0</span>, (strlen($text) - $pad));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Prpcrypt class</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 提供接收和推送给公众平台消息的加解密接口.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Prpcrypt</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> $key;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($k)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">$this</span>-&gt;key = base64_decode($k . <span class="string">"="</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 对明文进行加密</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> string $text 需要加密的明文</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> string 加密后的密文</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">encrypt</span><span class="params">($text, $appid)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//获得16位随机字符串，填充到明文之前</span></span><br><span class="line">            $random = <span class="keyword">$this</span>-&gt;getRandomStr();</span><br><span class="line">            $text = $random . pack(<span class="string">"N"</span>, strlen($text)) . $text . $appid;</span><br><span class="line"></span><br><span class="line">            $iv = substr(<span class="keyword">$this</span>-&gt;key, <span class="number">0</span>, <span class="number">16</span>);</span><br><span class="line">            <span class="comment">//使用自定义的填充方式对明文进行补位填充</span></span><br><span class="line">            $pkc_encoder = <span class="keyword">new</span> PKCS7Encoder;</span><br><span class="line">            $text = $pkc_encoder-&gt;encode($text);</span><br><span class="line">            $encrypted = openssl_encrypt($text, <span class="string">'AES-256-CBC'</span>, <span class="keyword">$this</span>-&gt;key, OPENSSL_RAW_DATA, $iv);</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">array</span>(ErrorCode::$OK, base64_encode($encrypted));</span><br><span class="line">		&#125; <span class="keyword">catch</span> (<span class="keyword">Exception</span> $e) &#123;</span><br><span class="line">			<span class="comment">//print $e;</span></span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">array</span>(ErrorCode::$EncryptAESError, <span class="keyword">null</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 对密文进行解密</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> string $encrypted 需要解密的密文</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> string 解密得到的明文</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">decrypt</span><span class="params">($encrypted, $appid)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">            $iv = substr(<span class="keyword">$this</span>-&gt;key, <span class="number">0</span>, <span class="number">16</span>);</span><br><span class="line">			<span class="comment">//使用BASE64对需要解密的字符串进行解码</span></span><br><span class="line">            $decrypted = openssl_decrypt(base64_decode($encrypted), <span class="string">'AES-256-CBC'</span>, <span class="keyword">$this</span>-&gt;key, OPENSSL_RAW_DATA, $iv);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (<span class="keyword">Exception</span> $e) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">array</span>(ErrorCode::$DecryptAESError, <span class="keyword">null</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//去除补位字符</span></span><br><span class="line">			$pkc_encoder = <span class="keyword">new</span> PKCS7Encoder;</span><br><span class="line">			$result = $pkc_encoder-&gt;decode($decrypted);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//去除16位随机字符串,网络字节序和AppId</span></span><br><span class="line">			<span class="keyword">if</span> (strlen($result) &lt; <span class="number">16</span>)</span><br><span class="line">				<span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">			$content = substr($result, <span class="number">16</span>, strlen($result));</span><br><span class="line">			$len_list = unpack(<span class="string">"N"</span>, substr($content, <span class="number">0</span>, <span class="number">4</span>));</span><br><span class="line">			$xml_len = $len_list[<span class="number">1</span>];</span><br><span class="line">			$xml_content = substr($content, <span class="number">4</span>, $xml_len);</span><br><span class="line">			$from_appid = substr($content, $xml_len + <span class="number">4</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (<span class="keyword">Exception</span> $e) &#123;</span><br><span class="line">			<span class="comment">//print $e;</span></span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">array</span>(ErrorCode::$IllegalBuffer, <span class="keyword">null</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> ($from_appid != $appid)</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">array</span>(ErrorCode::$ValidateAppidError, <span class="keyword">null</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">array</span>(<span class="number">0</span>, $xml_content);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 随机生成16位字符串</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> string 生成的字符串</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">getRandomStr</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line"></span><br><span class="line">		$str = <span class="string">""</span>;</span><br><span class="line">		$str_pol = <span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz"</span>;</span><br><span class="line">		$max = strlen($str_pol) - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; <span class="number">16</span>; $i++) &#123;</span><br><span class="line">			$str .= $str_pol[mt_rand(<span class="number">0</span>, $max)];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> $str;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>方法步骤</strong></p>
+<p>1、居然是php的加密扩展，自然是先安装openssl扩展，不过一般都有安装（命令php -m可查看）<br><img src="https://upload-images.jianshu.io/upload_images/7429691-2a1323bda9cb8dfb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>2、查看php官网开发文档<a href="https://www.php.net/manual/zh/function.openssl-encrypt.php" target="_blank" rel="noopener">openssl</a>，看看各个参数的含义与使用方法。当然上面是已经写好的且验证通过的代码，可拿来即用。<br><img src="https://upload-images.jianshu.io/upload_images/7429691-d74eb54dedcb6fdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>不求赞赏，点个喜欢就好.</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag"># 微信</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/07/07/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%EF%BC%8C%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E5%8D%8F%E4%BD%9C%E5%BC%80%E5%8F%91%E5%92%8C%E8%81%94%E8%B0%83%E6%95%88%E7%8E%87/" rel="prev" title="三层架构，如何提高协作开发和联调效率">
+                  三层架构，如何提高协作开发和联调效率 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="沙蒿"
+      src="/images/shahao.jpg">
+  <p class="site-author-name" itemprop="name">沙蒿</p>
+  <div class="site-description" itemprop="description">大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">沙蒿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">21k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">19 分钟</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
