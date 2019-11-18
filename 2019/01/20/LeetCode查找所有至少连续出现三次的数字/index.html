@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="指尖脚尖记忆间" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="周末不清闲的我，请了一天假来写毕业论文的开题报告，左改右改，删了又修，什么研究意义课题背景，对于我而已是那就是一件“如何把牛吹逼”的事情，好歹这逼吹得还好（呕心沥血）赢得了老师的认可，虽然我发现了一些小瑕疵，但老师还是给了我“内容充实、准确，态度认真”的认可。好吧，今天的内容还是关于sql查询语句，没错，还是那一道简单又不简单的sql。">
+<meta name="keywords" content="LeetCode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode查找所有至少连续出现三次的数字">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;01&#x2F;20&#x2F;LeetCode%E6%9F%A5%E6%89%BE%E6%89%80%E6%9C%89%E8%87%B3%E5%B0%91%E8%BF%9E%E7%BB%AD%E5%87%BA%E7%8E%B0%E4%B8%89%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97&#x2F;index.html">
+<meta property="og:site_name" content="指尖脚尖记忆间">
+<meta property="og:description" content="周末不清闲的我，请了一天假来写毕业论文的开题报告，左改右改，删了又修，什么研究意义课题背景，对于我而已是那就是一件“如何把牛吹逼”的事情，好歹这逼吹得还好（呕心沥血）赢得了老师的认可，虽然我发现了一些小瑕疵，但老师还是给了我“内容充实、准确，态度认真”的认可。好吧，今天的内容还是关于sql查询语句，没错，还是那一道简单又不简单的sql。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-18T10:56:23.738Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2019/01/20/LeetCode%E6%9F%A5%E6%89%BE%E6%89%80%E6%9C%89%E8%87%B3%E5%B0%91%E8%BF%9E%E7%BB%AD%E5%87%BA%E7%8E%B0%E4%B8%89%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>LeetCode查找所有至少连续出现三次的数字 | 指尖脚尖记忆间</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">指尖脚尖记忆间</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/20/LeetCode%E6%9F%A5%E6%89%BE%E6%89%80%E6%9C%89%E8%87%B3%E5%B0%91%E8%BF%9E%E7%BB%AD%E5%87%BA%E7%8E%B0%E4%B8%89%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shahao.jpg">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖脚尖记忆间">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          LeetCode查找所有至少连续出现三次的数字
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-20 18:55:39" itemprop="dateCreated datePublished" datetime="2019-01-20T18:55:39+08:00">2019-01-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-18 18:56:23" itemprop="dateModified" datetime="2019-11-18T18:56:23+08:00">2019-11-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>779</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>周末不清闲的我，请了一天假来写毕业论文的开题报告，左改右改，删了又修，什么研究意义课题背景，对于我而已是那就是一件“如何把牛吹逼”的事情，好歹这逼吹得还好（呕心沥血）赢得了老师的认可，虽然我发现了一些小瑕疵，但老师还是给了我“内容充实、准确，态度认真”的认可。好吧，今天的内容还是关于sql查询语句，没错，还是那一道简单又不简单的sql。</p><a id="more"></a>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><blockquote>
+<p>编写一个 SQL 查询，查找所有至少连续出现三次的数字。</p>
+</blockquote>
+<h3 id="数据库表"><a href="#数据库表" class="headerlink" title="数据库表"></a>数据库表</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+----+-----+</span><br><span class="line">| Id | Num |</span><br><span class="line">+----+-----+</span><br><span class="line">| 1  |  1  |</span><br><span class="line">| 2  |  1  |</span><br><span class="line">| 3  |  1  |</span><br><span class="line">| 4  |  2  |</span><br><span class="line">| 5  |  1  |</span><br><span class="line">| 6  |  2  |</span><br><span class="line">| 7  |  2  |</span><br><span class="line">+----+-----+</span><br></pre></td></tr></table></figure>
+
+<p>例如，给定上面的 Logs 表， 1 是唯一连续出现至少三次的数字。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">+-----------------+</span><br><span class="line">| ConsecutiveNums |</span><br><span class="line">+-----------------+</span><br><span class="line">| 1               |</span><br><span class="line">+-----------------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><h4 id="用户自定义变量"><a href="#用户自定义变量" class="headerlink" title="用户自定义变量"></a>用户自定义变量</h4><p><strong>局部变量</strong></p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="自关联，自连接"><a href="#自关联，自连接" class="headerlink" title="自关联，自连接"></a>自关联，自连接</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select distinct l1.num ConsecutiveNums </span><br><span class="line">from Logs l1 join Logs l2 on l1.id=l2.id-1 join Logs l3 on l1.id=l3.id-2 </span><br><span class="line">where l1.num=l2.num and l2.num=l3.num</span><br></pre></td></tr></table></figure>
+
+<h3 id="利用用户变量"><a href="#利用用户变量" class="headerlink" title="利用用户变量"></a>利用用户变量</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">select distinct Num as ConsecutiveNums</span><br><span class="line">from (</span><br><span class="line">  select Num, </span><br><span class="line"><span class="code">    case </span></span><br><span class="line"><span class="code">      when @prev = Num then @count := @count + 1</span></span><br><span class="line"><span class="code">      when (@prev := Num) is not null then @count := 1</span></span><br><span class="line"><span class="code">    end as CNT</span></span><br><span class="line">  from Logs, (select @prev := null,@count := null) as t</span><br><span class="line">) as temp</span><br><span class="line">where temp.CNT &gt;= 3</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>不求赞赏，点个喜欢就好.</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/01/19/LeetCode%E4%B8%80%E9%81%93%E7%AE%80%E5%8D%95%E5%8F%88%E4%B8%8D%E7%AE%80%E5%8D%95%E7%9A%84sql%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5/" rel="next" title="LeetCode一道简单又不简单的sql查询语句">
+                  <i class="fa fa-chevron-left"></i> LeetCode一道简单又不简单的sql查询语句
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/03/10/%E5%88%AB%E5%AE%B3%E6%80%95%EF%BC%8C%E5%BE%88%E7%AE%80%E5%8D%95%E7%9A%84git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" rel="prev" title="别害怕，很简单的git版本控制">
+                  别害怕，很简单的git版本控制 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库表"><span class="nav-number">1.1.</span> <span class="nav-text">数据库表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#知识点"><span class="nav-number">2.</span> <span class="nav-text">知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用户自定义变量"><span class="nav-number">2.0.1.</span> <span class="nav-text">用户自定义变量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法"><span class="nav-number">3.</span> <span class="nav-text">解法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自关联，自连接"><span class="nav-number">3.1.</span> <span class="nav-text">自关联，自连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用用户变量"><span class="nav-number">3.2.</span> <span class="nav-text">利用用户变量</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="沙蒿"
+      src="/images/shahao.jpg">
+  <p class="site-author-name" itemprop="name">沙蒿</p>
+  <div class="site-description" itemprop="description">大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">沙蒿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">50k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">45 分钟</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

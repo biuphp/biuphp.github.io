@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="指尖脚尖记忆间" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="序言很多小伙伴刚参与团队项目开发的时候一定会遇到一个项目管理的问题——git版本控制老大： “项目在git上，你拉下来。然后新建一个分支开发就好了。” 相信很多刚入行的小伙伴听到这句话就一脸懵逼，“git是什么？拉下来？新建分支又是什么鬼”，机智的小伙伴一定不会忘记进行这样一个操作——谷歌。这时候小伙伴才恍然大悟，git原来是一个项目管理工具，团队开发共同维护代码的仓库，也方便开发人员进行版本控制">
+<meta name="keywords" content="版本控制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="别害怕，很简单的git版本控制">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;03&#x2F;10&#x2F;%E5%88%AB%E5%AE%B3%E6%80%95%EF%BC%8C%E5%BE%88%E7%AE%80%E5%8D%95%E7%9A%84git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6&#x2F;index.html">
+<meta property="og:site_name" content="指尖脚尖记忆间">
+<meta property="og:description" content="序言很多小伙伴刚参与团队项目开发的时候一定会遇到一个项目管理的问题——git版本控制老大： “项目在git上，你拉下来。然后新建一个分支开发就好了。” 相信很多刚入行的小伙伴听到这句话就一脸懵逼，“git是什么？拉下来？新建分支又是什么鬼”，机智的小伙伴一定不会忘记进行这样一个操作——谷歌。这时候小伙伴才恍然大悟，git原来是一个项目管理工具，团队开发共同维护代码的仓库，也方便开发人员进行版本控制">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-904a30d283957f7d.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-a3e2379a683191fb.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-557ef5acc450e215.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-ebffb034d3bf6181.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-149759990eebd335.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-20186572fee5107e.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-21cea2bac1ff7514.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-202725e0e8c9a097.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-76699db09b103a2d.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-da4553332aa326c0.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-e7131d6ee25a38ce.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-67fc139220aed0c2.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-c5d321efbd59ec69.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-7cc26d0a859859c5.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-ed1466b0e2557803.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-1958b4d05945487b.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-76495a425c63e454.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-c7db5744fbb7156c.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-2c9b4d1ce1e7f79b.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-9bd710540f767413.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-e6d4776d8ab70c25.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-114d4b953192cf38.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-8e190247269ddb56.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-a3f61295ac2927a0.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-60fa9415ab555e68.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:updated_time" content="2019-11-18T10:54:39.306Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-904a30d283957f7d.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+
+<link rel="canonical" href="http://yoursite.com/2019/03/10/%E5%88%AB%E5%AE%B3%E6%80%95%EF%BC%8C%E5%BE%88%E7%AE%80%E5%8D%95%E7%9A%84git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>别害怕，很简单的git版本控制 | 指尖脚尖记忆间</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">指尖脚尖记忆间</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/10/%E5%88%AB%E5%AE%B3%E6%80%95%EF%BC%8C%E5%BE%88%E7%AE%80%E5%8D%95%E7%9A%84git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shahao.jpg">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖脚尖记忆间">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          别害怕，很简单的git版本控制
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-10 18:52:55" itemprop="dateCreated datePublished" datetime="2019-03-10T18:52:55+08:00">2019-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-18 18:54:39" itemprop="dateModified" datetime="2019-11-18T18:54:39+08:00">2019-11-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <meta name="referrer" content="no-referrer"><h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>很多小伙伴刚参与团队项目开发的时候一定会遇到一个项目管理的问题——git版本控制</p><p><strong>老大：</strong></p><ul>
+<li>“项目在git上，你拉下来。然后新建一个分支开发就好了。”</li>
+</ul><p>相信很多刚入行的小伙伴听到这句话就一脸懵逼，“git是什么？拉下来？新建分支又是什么鬼”，机智的小伙伴一定不会忘记进行这样一个操作——谷歌。<br>这时候小伙伴才恍然大悟，git原来是一个项目管理工具，团队开发共同维护代码的仓库，也方便开发人员进行版本控制。但是看到又那么多命令要学习，又看不懂报错信息，还有代码冲突，合并代码等操作，小伙伴一定会感到非常的恐惧和困惑。</p><a id="more"></a>
+
+
+
+
+
+
+<p><strong>小伙伴：</strong></p>
+<ul>
+<li>“我怎么上传代码呀？git add ?;git commit?”</li>
+<li>“为什么我按照教程输入命令了还报错？”</li>
+<li>“这是个什么鬼错误信息，百度一下解决方案？还是不行。”</li>
+<li>“怎么提示我没有权限提交代码呀？”</li>
+<li>….</li>
+</ul>
+<p>好吧，今天的内容就分享一下，我在项目开发过程中如何使用phpstorm IDE图形化操作来进行版本控制（个人一开始是用的命令行,但是为了方便直观的操作和解决问题，我习惯于图形化操作哈），然后会把我遇到的坑跟大家标记出来，ε=(´ο｀*)))唉，都是经验之谈啊！</p>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><p>首先，你先下载个phpstorm的工具，安装好git，拥有一个项目的代码的上传下载权限（假设developer身份，不是项目拥有者）</p>
+<h3 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h3><p>你的项目经理新建了一个项目，并拉你为developer<br><img src="https://upload-images.jianshu.io/upload_images/7429691-904a30d283957f7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<ul>
+<li>项目经理：“xx项目已经创建，你新建个分支可以提交代码”</li>
+</ul>
+<p>这时候你要勇敢的告诉你的大佬</p>
+<ul>
+<li>“项目（master分支）是空的，麻烦初始化下master，我这边才有权限将新建的分支提交上去”（第一个坑）</li>
+</ul>
+<h3 id="项目初始化中"><a href="#项目初始化中" class="headerlink" title="项目初始化中"></a>项目初始化中</h3><p>这部分就用了命令行来进行，跟后面的IDE操作来个对比。<br><img src="https://upload-images.jianshu.io/upload_images/7429691-a3e2379a683191fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-557ef5acc450e215.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="新建分支开发"><a href="#新建分支开发" class="headerlink" title="新建分支开发"></a>新建分支开发</h3><p>好啦，小伙伴这时候你就可以把初始化项目拉下来，新建分支，编辑代码，添加，提交，上传。</p>
+<ul>
+<li>小伙伴：“可是我现在还不知道怎么做，能不能说详细一点呢，或者你操作一遍？”</li>
+</ul>
+<p>好吧，谁叫你们是新手呢？那我就带着你们操作，你可要看清楚啊，不明白的可以做下笔记，反复练习。</p>
+<ul>
+<li>“首先，在你本地目录，把项目代码克隆下来，就想刚刚那样”</li>
+<li>“git clone <a href="https://gitlab.com/dgutbenny/test201903010.g”" target="_blank" rel="noopener">https://gitlab.com/dgutbenny/test201903010.g”</a></li>
+<li>“用phpstorm打开项目，如图”</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-ebffb034d3bf6181.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><strong>新建分支</strong><br><img src="https://upload-images.jianshu.io/upload_images/7429691-149759990eebd335.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="https://upload-images.jianshu.io/upload_images/7429691-20186572fee5107e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="https://upload-images.jianshu.io/upload_images/7429691-21cea2bac1ff7514.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<ul>
+<li>“有提示，Branch dev was created”</li>
+</ul>
+<p><strong>你在疯狂敲代码中。。。</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-202725e0e8c9a097.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<ul>
+<li>“如果红框是红色的，表示还未添加（add），这时候你可以右键选择git，选择add，添加完成变成绿色未提交（commit）状态”（第二个坑）</li>
+</ul>
+<h3 id="提交上传代码"><a href="#提交上传代码" class="headerlink" title="提交上传代码"></a>提交上传代码</h3><p><img src="https://upload-images.jianshu.io/upload_images/7429691-76699db09b103a2d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-da4553332aa326c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<ul>
+<li>“<strong>红框</strong>，你可选择你要提交的代码文件（比如本地你改了某个文件，但你还不想上传到git仓库上去给别人看到，你可不勾选）”</li>
+<li>“<strong>篮框</strong>，此次提交代码的注释（千万一定要加注释，并且写清楚你提交的内容是什么，千万不要是test，fix，优化这类模糊词语）”（第三个坑）</li>
+<li>“<strong>绿框</strong>，你可以在这里review每一个文件的代码（这是一步比较重要的步骤，很多人都特别自信自己写的代码，忽略找一个review的操作是错误的）”</li>
+<li>“<strong>黄框</strong>，可以对你提交的代码格式进行一些处理（可以百度下具体的意思，当然，你英语不错的话另外）”<br><img src="https://upload-images.jianshu.io/upload_images/7429691-e7131d6ee25a38ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-67fc139220aed0c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="捕获线上分支"><a href="#捕获线上分支" class="headerlink" title="捕获线上分支"></a>捕获线上分支</h3><p>这时候，你已经写代码并上传了代码，</p>
+<ul>
+<li>小伙伴很开心样子：“大佬，我代码写好了，在dev分支，你看下代码，没问题就提测”</li>
+<li>大佬：“好的”</li>
+</ul>
+<p>现在是在大佬本地上的IDE<br><img src="https://upload-images.jianshu.io/upload_images/7429691-c5d321efbd59ec69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<ul>
+<li>“提示，Fetched successfully”，然后查看分支</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-7cc26d0a859859c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-ed1466b0e2557803.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="解决冲突问题"><a href="#解决冲突问题" class="headerlink" title="解决冲突问题"></a>解决冲突问题</h3><p>“为了解决冲突，首先咱们先制造点冲突才有可能来解决冲突是ლ(′◉❥◉｀ლ)嘛”，我先在本地是另外一个目录，克隆下项目代码，修改了代码hello benny，然后进行上线续的代码添加、提交、上传操作。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-1958b4d05945487b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>哈哈，小伙伴并不知道大佬改了代码，自己检查了一会代码后，发现有个小地方还是要改的，改完代码后进行提交（没有重新拉取‘pull’线上新代码）。（第四个坑）</p>
+<p>命令行显示错误<br><img src="https://upload-images.jianshu.io/upload_images/7429691-76495a425c63e454.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>phpstorm显示冲突代码<br><img src="https://upload-images.jianshu.io/upload_images/7429691-c7db5744fbb7156c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>可进行如下操作：git pull，解决冲突<br><img src="https://upload-images.jianshu.io/upload_images/7429691-2c9b4d1ce1e7f79b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-9bd710540f767413.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<ul>
+<li>“左边是本地代码，中间是解决冲突后的结果代码，右边是线上代码（他人代码）”（我们取本地的代码为最新代码，Apply，然后提交代码）</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-e6d4776d8ab70c25.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-114d4b953192cf38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-8e190247269ddb56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="合并代码"><a href="#合并代码" class="headerlink" title="合并代码"></a>合并代码</h3><p>项目开发的时候，我们是一直在dev分支上进行的，现在要把dev分支上的内容合并到master分支准备代码上线。<br><strong>步骤如下：</strong></p>
+<ul>
+<li>切换到master分支</li>
+<li>拉取master最新代码（dev分支上的代码也要最新的）（第五个坑）</li>
+<li>执行命令合并（git merge dev）</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-a3f61295ac2927a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-60fa9415ab555e68.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>是不是很神奇，是不是学到了点东西？开题的几个疑问你都解决了吗？没有可以回过头翻翻重复看几遍哦。总的来说，实践才是最好的学习方式，没事下班了多多总结自己在项目开发中的经验也是一种美。另外，有任何疑问可以私底下交流哦。</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>不求赞赏，点个喜欢就好.</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" rel="tag"># 版本控制</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/01/20/LeetCode%E6%9F%A5%E6%89%BE%E6%89%80%E6%9C%89%E8%87%B3%E5%B0%91%E8%BF%9E%E7%BB%AD%E5%87%BA%E7%8E%B0%E4%B8%89%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/" rel="next" title="LeetCode查找所有至少连续出现三次的数字">
+                  <i class="fa fa-chevron-left"></i> LeetCode查找所有至少连续出现三次的数字
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/03/17/%E6%8A%AB%E6%98%9F%E6%88%B4%E6%9C%88%EF%BC%8C%E6%88%91%E4%B8%A4%E7%82%B9%E4%B8%80%E7%BA%BF%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98%E7%94%9F%E6%B4%BB%E3%80%82/" rel="prev" title="披星戴月，我两点一线的程序员生活。">
+                  披星戴月，我两点一线的程序员生活。 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#序言"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">2.</span> <span class="nav-text">教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前期准备"><span class="nav-number">2.1.</span> <span class="nav-text">前期准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建项目"><span class="nav-number">2.2.</span> <span class="nav-text">新建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目初始化中"><span class="nav-number">2.3.</span> <span class="nav-text">项目初始化中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建分支开发"><span class="nav-number">2.4.</span> <span class="nav-text">新建分支开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交上传代码"><span class="nav-number">2.5.</span> <span class="nav-text">提交上传代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#捕获线上分支"><span class="nav-number">2.6.</span> <span class="nav-text">捕获线上分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决冲突问题"><span class="nav-number">2.7.</span> <span class="nav-text">解决冲突问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并代码"><span class="nav-number">2.8.</span> <span class="nav-text">合并代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="沙蒿"
+      src="/images/shahao.jpg">
+  <p class="site-author-name" itemprop="name">沙蒿</p>
+  <div class="site-description" itemprop="description">大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">沙蒿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">50k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">45 分钟</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
