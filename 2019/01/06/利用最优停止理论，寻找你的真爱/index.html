@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="指尖脚尖记忆间" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="前言某天我在西瓜视频看了李永乐老师的《如何才能找到真命天子？》，感触颇多，心想能不能用编程把这个数学公式给敲出来，好啦，说干就干。建议各位同学朋友有空多看看李永乐老师的教学视频，纯干货，老师讲得好还很有趣。开始故事要从苏格拉底他老人家开始说起：  一天，苏格拉底带领几个弟子来到一块长满麦穗的田地边，对弟子们说：“你们去麦地里摘一个最大的麦穗，只许进，不许退。”  第一个弟子走几步看见一支又大又漂亮">
+<meta name="keywords" content="程序员">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用最优停止理论，寻找你的真爱">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;01&#x2F;06&#x2F;%E5%88%A9%E7%94%A8%E6%9C%80%E4%BC%98%E5%81%9C%E6%AD%A2%E7%90%86%E8%AE%BA%EF%BC%8C%E5%AF%BB%E6%89%BE%E4%BD%A0%E7%9A%84%E7%9C%9F%E7%88%B1&#x2F;index.html">
+<meta property="og:site_name" content="指尖脚尖记忆间">
+<meta property="og:description" content="前言某天我在西瓜视频看了李永乐老师的《如何才能找到真命天子？》，感触颇多，心想能不能用编程把这个数学公式给敲出来，好啦，说干就干。建议各位同学朋友有空多看看李永乐老师的教学视频，纯干货，老师讲得好还很有趣。开始故事要从苏格拉底他老人家开始说起：  一天，苏格拉底带领几个弟子来到一块长满麦穗的田地边，对弟子们说：“你们去麦地里摘一个最大的麦穗，只许进，不许退。”  第一个弟子走几步看见一支又大又漂亮">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-5522fe612a42f9ce.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:updated_time" content="2019-11-18T11:23:30.126Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-5522fe612a42f9ce.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+
+<link rel="canonical" href="http://yoursite.com/2019/01/06/%E5%88%A9%E7%94%A8%E6%9C%80%E4%BC%98%E5%81%9C%E6%AD%A2%E7%90%86%E8%AE%BA%EF%BC%8C%E5%AF%BB%E6%89%BE%E4%BD%A0%E7%9A%84%E7%9C%9F%E7%88%B1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>利用最优停止理论，寻找你的真爱 | 指尖脚尖记忆间</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">指尖脚尖记忆间</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/06/%E5%88%A9%E7%94%A8%E6%9C%80%E4%BC%98%E5%81%9C%E6%AD%A2%E7%90%86%E8%AE%BA%EF%BC%8C%E5%AF%BB%E6%89%BE%E4%BD%A0%E7%9A%84%E7%9C%9F%E7%88%B1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shahao.jpg">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖脚尖记忆间">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          利用最优停止理论，寻找你的真爱
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-06 19:21:53" itemprop="dateCreated datePublished" datetime="2019-01-06T19:21:53+08:00">2019-01-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-18 19:23:30" itemprop="dateModified" datetime="2019-11-18T19:23:30+08:00">2019-11-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <meta name="referrer" content="no-referrer"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>某天我在西瓜视频看了李永乐老师的《如何才能找到真命天子？》，感触颇多，心想能不能用编程把这个数学公式给敲出来，好啦，说干就干。建议各位同学朋友有空多看看李永乐老师的教学视频，纯干货，老师讲得好还很有趣。</p><h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>故事要从苏格拉底他老人家开始说起：<br>  一天，苏格拉底带领几个弟子来到一块长满麦穗的田地边，对弟子们说：“你们去麦地里摘一个最大的麦穗，只许进，不许退。”<br>  第一个弟子走几步看见一支又大又漂亮的麦穗，高兴地摘下了。但是他继续前进时，发现前面有许多比他摘的那支大，只得遗憾地走完了全程。第二个弟子吸取了教训．每当他要摘时，总是提醒自己，后面还有更好的。当他快到终点时才发现，机会全错过了。第三个弟子吸取了前两位教训．当他走到三分之一时，即分出大、中、小三类，再走三分之一时验证是否正确，等到最后三分之一时，他选择了属于大类中的一支美丽的麦穗。虽说，这不一定是最大最美的那一支，但他满意地走完了全程。”<br>  苏格拉底观点：“麦地里肯定有最大的麦穗，但你未必能碰到它。即使碰到了，也未必能作出准确的判断。只有你在经历过一半以后选择你认为最好的，以后也许会遇到比你选择的更好的，但你会一生无悔”</p><a id="more"></a>
+
+
+
+
+<h2 id="我的看法"><a href="#我的看法" class="headerlink" title="我的看法"></a>我的看法</h2><p>  是啊，类似捡麦穗，人的一生都希望可以寻找到一个真正爱你的人，尽管你知道他不会是完美的，但你一定希望他在你心里就是完美的那一个。也许，你的一生会遇到很多爱你的人，但最终你们别没有走到一起；也许你的一生一心一意只爱一个人，而那个人却一直没出现；有句话说得好，人的一生会遇到三种女人，第一种是你爱的人却不爱你的人，第二种是爱你的人你却不爱的人，第三种是你不爱她不爱却可以相伴一生的人，那么问题来了，你现在喜欢的是那种人呢？为什么前任要跟我分手呢？什么时候才是我选择真爱的时候呢？别急，看下面哈。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="php"><span class="meta">&lt;?php</span></span></span></span><br><span class="line"><span class="xml">/**</span></span><br><span class="line"><span class="xml"> * Created by PhpStorm.</span></span><br><span class="line"><span class="xml"> * User: benny</span></span><br><span class="line"><span class="xml"> * Date: 18-12-7</span></span><br><span class="line"><span class="xml"> * Time: 下午2:58</span></span><br><span class="line"><span class="xml"> */</span></span><br><span class="line"><span class="xml">$first_time = microtime(true);</span></span><br><span class="line"><span class="xml">//var_dump(find_love(8,1))."<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span>";</span><br><span class="line"></span><br><span class="line">$result = [];</span><br><span class="line">for ($i=1;$i <span class="xml"><span class="tag">&lt;<span class="name">=</span> <span class="attr">8</span>;$<span class="attr">i</span>++)&#123;</span></span></span><br><span class="line"><span class="xml">    $percent = array();</span></span><br><span class="line"><span class="xml">    //生成排列组合可能性数组</span></span><br><span class="line"><span class="xml">    //例如：恋爱3次，有6种可能， "[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]"</span></span><br><span class="line"><span class="xml">    $all_array = arrangement(range(1,$i),$i);</span></span><br><span class="line"><span class="xml">   // var_dump(json_encode($all_array));</span></span><br><span class="line"><span class="xml">    echo "<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span>";</span><br><span class="line"><span class="code">    for ($j=0;$j&lt;$i;$j++)&#123;</span></span><br><span class="line"><span class="code">        $percent[] = find_love($i,$j,$all_array);</span></span><br><span class="line"><span class="code">    &#125;</span></span><br><span class="line"><span class="code">    $smaple = array_search(max($percent),$percent);</span></span><br><span class="line"><span class="code">    echo '当你恋爱次数为：'.$i.' 时，你应该选择的样本数为：'.$smaple.' , 你得到真爱的概率是：'.max($percent)."&lt;br/&gt;";</span></span><br><span class="line"></span><br><span class="line"><span class="code">    switch ($i) &#123;</span></span><br><span class="line"><span class="code">        case 1:</span></span><br><span class="line"><span class="code">            echo "当你选择一生只挚爱一个人的时候，那毋容置疑你选择的她，那是你一生中最‘完美的人’，可能在他人眼里他有很多的瑕疵，但在你心里永远的值得依靠的另一半。&lt;br/&gt;";</span></span><br><span class="line"><span class="code">            break;</span></span><br><span class="line"><span class="code">        case 2:</span></span><br><span class="line"><span class="code">            echo "你的一生会被两个人所疼爱，不管你选择的前者还后者，你得到真爱的概率只有50%，就如鱼和熊掌不可兼得，得与失之间选择，选择前者你可能会对未知的那个他报有期望，选择后者的你可能会念念不忘与前任的朝朝夕夕。&lt;br/&gt;";</span></span><br><span class="line"><span class="code">            break;</span></span><br><span class="line"><span class="code">        case 3:</span></span><br><span class="line"><span class="code">            echo "如果你选择相爱3次，你应该把第一个遇到的那个人当做样本，不管他好不好，你最后都不要跟他在一起，这可能就是为什么我有些人会失恋的原因吧，因为你落入到他人的样本区间啦。&lt;br/&gt;";</span></span><br><span class="line"><span class="code">            break;</span></span><br><span class="line"><span class="code">        case 4:</span></span><br><span class="line"><span class="code">            echo "人的一生是短暂的，你能相爱四次，证明你也是有一定魅力的，也相当自信，选择相爱四次的你是最机智的，总和考虑，这个选择可以让你最大概率的得到真爱，选择第一个作为自己的样本得到真爱的概率是46%。&lt;br/&gt;";</span></span><br><span class="line"><span class="code">            break;    </span></span><br><span class="line"><span class="code">        default:</span></span><br><span class="line"><span class="code">           echo "不解释，你都是老司机啦，希望你找到真爱。&lt;br/&gt;";</span></span><br><span class="line"><span class="code">            break;</span></span><br><span class="line"><span class="code">    &#125;</span></span><br><span class="line"><span class="code">    // $result[]= $item =[</span></span><br><span class="line"><span class="code">    //     'love_nums' =&gt;  $i,</span></span><br><span class="line"><span class="code">    //     'sample_nums' =&gt; $smaple,</span></span><br><span class="line"><span class="code">    //     'percent'   =&gt;  max($percent),</span></span><br><span class="line"><span class="code">    // ];</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">//var<span class="emphasis">_dump(json_</span>encode($result));</span><br><span class="line">$last_time = microtime(true);</span><br><span class="line"></span><br><span class="line">echo '运行时间：'.round($last<span class="emphasis">_time-$first_</span>time,8).'秒';</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"><span class="code">    $love_nums 恋爱次数</span></span><br><span class="line"><span class="code">    $sample_nums 样本个数</span></span><br><span class="line"><span class="code">    $all_array 所有恋爱可能性排列情况</span></span><br><span class="line">*/</span><br><span class="line">function find<span class="emphasis">_love($love_</span>nums = 0,$sample<span class="emphasis">_nums = 0,$all_</span>array = array())&#123;</span><br><span class="line"><span class="code">    $sum = count($all_array);</span></span><br><span class="line"><span class="code">    </span></span><br><span class="line"><span class="code">    $count = 0;</span></span><br><span class="line"><span class="code">    </span></span><br><span class="line"><span class="code">    foreach ($all_array as $item)&#123;</span></span><br><span class="line"></span><br><span class="line"><span class="code">        if ($sample_nums == 0 &amp;&amp; $item[0] == $love_nums) &#123;</span></span><br><span class="line"><span class="code">           $count++;</span></span><br><span class="line"><span class="code">        &#125;</span></span><br><span class="line"><span class="code">        else&#123;</span></span><br><span class="line"><span class="code">            $sample_array = array_slice($item,0,$sample_nums);</span></span><br><span class="line"><span class="code">            $love_array = array_slice($item,$sample_nums);</span></span><br><span class="line"><span class="code">            foreach ($love_array as $key =&gt; $value) &#123;</span></span><br><span class="line"><span class="code">                if ($value &gt; max($sample_array) &amp;&amp; $value == $love_nums) &#123;</span></span><br><span class="line"><span class="code">                    $count++;</span></span><br><span class="line"><span class="code">                    break;</span></span><br><span class="line"><span class="code">                &#125;elseif($value &gt; max($sample_array) &amp;&amp; $value != $love_nums)&#123;</span></span><br><span class="line"><span class="code">                    break;</span></span><br><span class="line"><span class="code">                &#125;</span></span><br><span class="line"><span class="code">            &#125;</span></span><br><span class="line"><span class="code">           </span></span><br><span class="line"><span class="code">        &#125;</span></span><br><span class="line"><span class="code">        </span></span><br><span class="line"><span class="code">        </span></span><br><span class="line"></span><br><span class="line"><span class="code">    &#125;</span></span><br><span class="line"><span class="code">    return sprintf('%.2f',$count/$sum);</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 阶乘</span><br><span class="line">function factorial($n) &#123;</span><br><span class="line"><span class="code">    return array_product(range(1, $n));</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 排列数,公式=n!/(n-m)!</span><br><span class="line">function arrange_num($n, $m) &#123;</span><br><span class="line"><span class="code">    return factorial($n)/factorial($n-$m);</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 组合数,公式=（n!/(n-m)!）/m!</span><br><span class="line">function combination_num($n, $m) &#123;</span><br><span class="line"><span class="code">    return arrange($n, $m)/factorial($m);</span></span><br><span class="line">&#125;</span><br><span class="line">// 排列</span><br><span class="line">function arrangement($st_array, $m) &#123;</span><br><span class="line"><span class="code">    $re_array = array();</span></span><br><span class="line"></span><br><span class="line"><span class="code">    $n = count($st_array);</span></span><br><span class="line"><span class="code">    if ($m &lt;= 0 || $m &gt; $n) &#123;</span></span><br><span class="line"><span class="code">        return $re_array;</span></span><br><span class="line"><span class="code">    &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="code">    for ($i=0; $i&lt;$n; $i++) &#123;</span></span><br><span class="line"><span class="code">        $item_array = $st_array;</span></span><br><span class="line"><span class="code">        $t = array_splice($item_array, $i, 1);</span></span><br><span class="line"><span class="code">        if ($m == 1) &#123;</span></span><br><span class="line"><span class="code">            $re_array[] = $t;</span></span><br><span class="line"><span class="code">        &#125; else &#123;</span></span><br><span class="line"><span class="code">            $c = arrangement($item_array, $m-1);</span></span><br><span class="line"><span class="code">            foreach ($c as $v) &#123;</span></span><br><span class="line"><span class="code">                $re_array[] = array_merge($t, $v);</span></span><br><span class="line"><span class="code">            &#125;</span></span><br><span class="line"><span class="code">        &#125;</span></span><br><span class="line"><span class="code">    &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="code">    return $re_array;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 组合</span><br><span class="line">function combination($st_array, $m) &#123;</span><br><span class="line"><span class="code">    $re_array = array();</span></span><br><span class="line"></span><br><span class="line"><span class="code">    $n = count($st_array);</span></span><br><span class="line"><span class="code">    if ($m &lt;= 0 || $m &gt; $n) &#123;</span></span><br><span class="line"><span class="code">        return $re_array;</span></span><br><span class="line"><span class="code">    &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="code">    for ($i=0; $i&lt;$n; $i++) &#123;</span></span><br><span class="line"><span class="code">        $t = array($st_array[$i]);</span></span><br><span class="line"><span class="code">        if ($m == 1) &#123;</span></span><br><span class="line"><span class="code">            $re_array[] = $t;</span></span><br><span class="line"><span class="code">        &#125; else &#123;</span></span><br><span class="line"><span class="code">            $item_array = array_slice($st_array, $i+1);</span></span><br><span class="line"><span class="code">            $c = combination($item_array, $m-1);</span></span><br><span class="line"><span class="code">            foreach ($c as $v) &#123;</span></span><br><span class="line"><span class="code">                $re_array[] = array_merge($t, $v);</span></span><br><span class="line"><span class="code">            &#125;</span></span><br><span class="line"><span class="code">        &#125;</span></span><br><span class="line"><span class="code">    &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="code">    return $re_array;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="https://upload-images.jianshu.io/upload_images/7429691-5522fe612a42f9ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li><p>当你选择一生只挚爱一个人的时候，那毋容置疑你选择的她，那是你一生中最‘完美的人’，可能在他人眼里他有很多的瑕疵，但在你心里永远的值得依靠的另一半。</p>
+</li>
+<li><p>你的一生会被两个人所疼爱，不管你选择的前者还后者，你得到真爱的概率只有50%，就如鱼和熊掌不可兼得，得与失之间选择，选择前者你可能会对未知的那个他报有期望，选择后者的你可能会念念不忘与前任的朝朝夕夕。</p>
+</li>
+</ul>
+<ul>
+<li><p>如果你选择相爱3次，你应该把第一个遇到的那个人当做样本，不管他好不好，你最后都不要跟他在一起，这可能就是为什么我有些人会失恋的原因吧，因为你落入到他人的样本区间啦。</p>
+</li>
+<li><p>人的一生是短暂的，你能相爱四次，证明你也是有一定魅力的，也相当自信，选择相爱四次的你是最机智的，总和考虑，这个选择可以让你最大概率的得到真爱，选择第一个作为自己的样本得到真爱的概率是46%。</p>
+</li>
+<li><p>这里主要用到的数学知识是排列组合，以上是封装好的排列组合函数外加根据业务需求写出的”寻找爱情”的业务逻辑，主要代码都已加上注释，阅读代码即可读懂，</p>
+</li>
+</ul>
+<h2 id="话题"><a href="#话题" class="headerlink" title="话题"></a>话题</h2><p>看完故事、代码和结论，你应该知道下一个她是不是你的真爱了吧？可下方留言哦。</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>不求赞赏，点个喜欢就好.</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/" rel="tag"># 程序员</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2018/12/30/2018%EF%BC%9A%E8%AF%B7%E5%96%84%E5%BE%85%E8%BF%99%E4%B8%AA%E5%AD%A9%E5%AD%90%EF%BC%8C%E6%8B%9C%E6%89%98%E5%95%A6%EF%BC%81/" rel="next" title="2018：请善待这个孩子，拜托啦！">
+                  <i class="fa fa-chevron-left"></i> 2018：请善待这个孩子，拜托啦！
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/01/07/%E8%B4%B7%E6%AC%BE%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95%E4%B9%8B%E8%BF%98%E6%AC%BE%E5%85%AC%E5%BC%8F%E5%87%BD%E6%95%B0%E5%AE%9E%E7%8E%B0/" rel="prev" title="贷款相关算法之还款公式函数实现">
+                  贷款相关算法之还款公式函数实现 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始"><span class="nav-number">2.</span> <span class="nav-text">开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我的看法"><span class="nav-number">3.</span> <span class="nav-text">我的看法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">4.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#效果图"><span class="nav-number">5.</span> <span class="nav-text">效果图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#话题"><span class="nav-number">7.</span> <span class="nav-text">话题</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="沙蒿"
+      src="/images/shahao.jpg">
+  <p class="site-author-name" itemprop="name">沙蒿</p>
+  <div class="site-description" itemprop="description">大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+
+
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">沙蒿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">61k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">55 分钟</span>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
