@@ -46,13 +46,13 @@
   };
 </script>
 
-  <meta name="description" content="array_merge() : array  将一个或多个数组的单元合并起来，一个数组中的值附加在前一个数组的后面。返回作为结果的数组。 如果输入的数组中有相同的字符串键名，则该键名后面的值将覆盖前一个值。然而，如果数组包含数字键名，后面的值将不会覆盖原来的值，而是附加到后面。 如果只给了一个数组并且该数组是数字索引的，则键名会以连续方式重新索引。 注意：其中一个数组为null，返回的值也为nu">
+  <meta name="description" content="array_merge() : array 将一个或多个数组的单元合并起来，一个数组中的值附加在前一个数组的后面。返回作为结果的数组。如果输入的数组中有相同的字符串键名，则该键名后面的值将覆盖前一个值。然而，如果数组包含数字键名，后面的值将不会覆盖原来的值，而是附加到后面。如果只给了一个数组并且该数组是数字索引的，则键名会以连续方式重新索引。">
 <meta name="keywords" content="php面试基础知识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="php面试基础知识--数组函数（一）">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;05&#x2F;18&#x2F;php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0%EF%BC%88%E4%B8%80%EF%BC%89&#x2F;index.html">
 <meta property="og:site_name" content="指尖记忆">
-<meta property="og:description" content="array_merge() : array  将一个或多个数组的单元合并起来，一个数组中的值附加在前一个数组的后面。返回作为结果的数组。 如果输入的数组中有相同的字符串键名，则该键名后面的值将覆盖前一个值。然而，如果数组包含数字键名，后面的值将不会覆盖原来的值，而是附加到后面。 如果只给了一个数组并且该数组是数字索引的，则键名会以连续方式重新索引。 注意：其中一个数组为null，返回的值也为nu">
+<meta property="og:description" content="array_merge() : array 将一个或多个数组的单元合并起来，一个数组中的值附加在前一个数组的后面。返回作为结果的数组。如果输入的数组中有相同的字符串键名，则该键名后面的值将覆盖前一个值。然而，如果数组包含数字键名，后面的值将不会覆盖原来的值，而是附加到后面。如果只给了一个数组并且该数组是数字索引的，则键名会以连续方式重新索引。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-11-18T08:24:08.854Z">
 <meta name="twitter:card" content="summary">
@@ -240,10 +240,10 @@
       
         <ul>
 <li><strong>array_merge() : array</strong></li>
-</ul>
-<p>将一个或多个数组的单元合并起来，一个数组中的值附加在前一个数组的后面。返回作为结果的数组。</p>
-<p>如果输入的数组中有相同的字符串键名，则该键名后面的值将覆盖前一个值。然而，如果数组包含数字键名，后面的值将不会覆盖原来的值，而是附加到后面。</p>
-<p>如果只给了一个数组并且该数组是数字索引的，则键名会以连续方式重新索引。</p>
+</ul><p>将一个或多个数组的单元合并起来，一个数组中的值附加在前一个数组的后面。返回作为结果的数组。</p><p>如果输入的数组中有相同的字符串键名，则该键名后面的值将覆盖前一个值。然而，如果数组包含数字键名，后面的值将不会覆盖原来的值，而是附加到后面。</p><p>如果只给了一个数组并且该数组是数字索引的，则键名会以连续方式重新索引。</p><a id="more"></a>
+
+
+
 <p><strong>注意：</strong>其中一个数组为null，返回的值也为null（曾经被自己坑过）</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $array1 = <span class="keyword">array</span>(<span class="string">"color"</span> =&gt; <span class="string">"red"</span>, <span class="number">2</span>, <span class="number">4</span>);</span><br><span class="line">  $array2 = <span class="keyword">array</span>(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"color"</span> =&gt; <span class="string">"green"</span>, <span class="string">"shape"</span> =&gt; <span class="string">"trapezoid"</span>, <span class="number">4</span>);</span><br><span class="line">  $array3 = <span class="keyword">null</span>;</span><br><span class="line">  $result = array_merge($array1, $array2);</span><br><span class="line">  print_r($result);</span><br></pre></td></tr></table></figure>
 

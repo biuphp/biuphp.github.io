@@ -46,13 +46,13 @@
   };
 </script>
 
-  <meta name="description" content="整体流程 在第三方平台应用上点击授权    进入授权页面    弹出微信授权页面，下方会显示第三方应用的基本信息    帐号管理员扫码，选择要授权的账号，进行授权（可自定义权限）    是否授权成功，回调页面显示  技术实现第三方平台方获取预授权码（pre_auth_code）接入在第三方平台应用上点击授权的时候会获取授权的预授权码（pre_auth_code），有效期为10分钟。  调用接">
+  <meta name="description" content="整体流程 在第三方平台应用上点击授权  进入授权页面  弹出微信授权页面，下方会显示第三方应用的基本信息  帐号管理员扫码，选择要授权的账号，进行授权（可自定义权限）  是否授权成功，回调页面显示 技术实现第三方平台方获取预授权码（pre_auth_code）接入在第三方平台应用上点击授权的时候会获取授权的预授权码（pre_auth_code），有效期为10分钟。">
 <meta name="keywords" content="微信第三方平台">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小程序（公众号）授权给第三方平台流程梳理和实现">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;06&#x2F;%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E5%85%AC%E4%BC%97%E5%8F%B7%EF%BC%89%E6%8E%88%E6%9D%83%E7%BB%99%E7%AC%AC%E4%B8%89%E6%96%B9%E5%B9%B3%E5%8F%B0%E6%B5%81%E7%A8%8B%E6%A2%B3%E7%90%86%E5%92%8C%E5%AE%9E%E7%8E%B0&#x2F;index.html">
 <meta property="og:site_name" content="指尖记忆">
-<meta property="og:description" content="整体流程 在第三方平台应用上点击授权    进入授权页面    弹出微信授权页面，下方会显示第三方应用的基本信息    帐号管理员扫码，选择要授权的账号，进行授权（可自定义权限）    是否授权成功，回调页面显示  技术实现第三方平台方获取预授权码（pre_auth_code）接入在第三方平台应用上点击授权的时候会获取授权的预授权码（pre_auth_code），有效期为10分钟。  调用接">
+<meta property="og:description" content="整体流程 在第三方平台应用上点击授权  进入授权页面  弹出微信授权页面，下方会显示第三方应用的基本信息  帐号管理员扫码，选择要授权的账号，进行授权（可自定义权限）  是否授权成功，回调页面显示 技术实现第三方平台方获取预授权码（pre_auth_code）接入在第三方平台应用上点击授权的时候会获取授权的预授权码（pre_auth_code），有效期为10分钟。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-253978f27f3ebf96.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
 <meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-1f822a5a2c7d5609.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
@@ -245,29 +245,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <meta name="referrer" content="no-referrer" />
-
-<p><img src="https://upload-images.jianshu.io/upload_images/7429691-253978f27f3ebf96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h3 id="整体流程"><a href="#整体流程" class="headerlink" title="整体流程"></a>整体流程</h3><ul>
+        <meta name="referrer" content="no-referrer"><p><img src="https://upload-images.jianshu.io/upload_images/7429691-253978f27f3ebf96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p><h3 id="整体流程"><a href="#整体流程" class="headerlink" title="整体流程"></a>整体流程</h3><ul>
 <li>在第三方平台应用上点击授权</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/7429691-1f822a5a2c7d5609.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<ul>
+</ul><p><img src="https://upload-images.jianshu.io/upload_images/7429691-1f822a5a2c7d5609.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p><ul>
 <li>进入授权页面</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/7429691-44af97e1cc29aa64.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<ul>
+</ul><p><img src="https://upload-images.jianshu.io/upload_images/7429691-44af97e1cc29aa64.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p><ul>
 <li>弹出微信授权页面，下方会显示第三方应用的基本信息</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/7429691-0762d88b8864caeb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<ul>
+</ul><p><img src="https://upload-images.jianshu.io/upload_images/7429691-0762d88b8864caeb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p><ul>
 <li><strong>帐号管理员</strong>扫码，选择要授权的账号，进行授权（可自定义权限）</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/7429691-5fe7791c5d8e8a1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<ul>
+</ul><p><img src="https://upload-images.jianshu.io/upload_images/7429691-5fe7791c5d8e8a1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p><ul>
 <li>是否授权成功，回调页面显示</li>
-</ul>
-<h3 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h3><h5 id="第三方平台方获取预授权码（pre-auth-code）"><a href="#第三方平台方获取预授权码（pre-auth-code）" class="headerlink" title="第三方平台方获取预授权码（pre_auth_code）"></a>第三方平台方获取预授权码（pre_auth_code）</h5><p>接入在第三方平台应用上点击授权的时候会获取授权的预授权码（pre_auth_code），有效期为10分钟。</p>
+</ul><h3 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h3><h5 id="第三方平台方获取预授权码（pre-auth-code）"><a href="#第三方平台方获取预授权码（pre-auth-code）" class="headerlink" title="第三方平台方获取预授权码（pre_auth_code）"></a>第三方平台方获取预授权码（pre_auth_code）</h5><p>接入在第三方平台应用上点击授权的时候会获取授权的预授权码（pre_auth_code），有效期为10分钟。</p><a id="more"></a>
+
+
+
+
+
+
+
+
+
+
+
+
 <ul>
 <li>调用接口地址</li>
 </ul>

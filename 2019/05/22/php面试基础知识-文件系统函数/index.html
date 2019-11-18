@@ -46,13 +46,13 @@
   };
 </script>
 
-  <meta name="description" content="fopen( string $filename , string $mode) : resource  打开文件或者 URL，将 filename 指定的名字资源绑定到一个流上。如果$filename指定的是本地的文件，就会在该文件上打开一个流，要确保该文件php有访问的权限。（权限问题，本地行，服务器不行系列）成功时返回文件指针资源，如果打开失败，本函数返回 FALSE。如果打开失败，会产生一">
+  <meta name="description" content="fopen( string $filename , string $mode) : resource 打开文件或者 URL，将 filename 指定的名字资源绑定到一个流上。如果$filename指定的是本地的文件，就会在该文件上打开一个流，要确保该文件php有访问的权限。（权限问题，本地行，服务器不行系列）成功时返回文件指针资源，如果打开失败，本函数返回 FALSE。如果打开失败，会产生一个">
 <meta name="keywords" content="php面试基础知识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="php面试基础知识--文件系统函数">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;05&#x2F;22&#x2F;php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%87%BD%E6%95%B0&#x2F;index.html">
 <meta property="og:site_name" content="指尖记忆">
-<meta property="og:description" content="fopen( string $filename , string $mode) : resource  打开文件或者 URL，将 filename 指定的名字资源绑定到一个流上。如果$filename指定的是本地的文件，就会在该文件上打开一个流，要确保该文件php有访问的权限。（权限问题，本地行，服务器不行系列）成功时返回文件指针资源，如果打开失败，本函数返回 FALSE。如果打开失败，会产生一">
+<meta property="og:description" content="fopen( string $filename , string $mode) : resource 打开文件或者 URL，将 filename 指定的名字资源绑定到一个流上。如果$filename指定的是本地的文件，就会在该文件上打开一个流，要确保该文件php有访问的权限。（权限问题，本地行，服务器不行系列）成功时返回文件指针资源，如果打开失败，本函数返回 FALSE。如果打开失败，会产生一个">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-11-18T08:07:17.800Z">
 <meta name="twitter:card" content="summary">
@@ -240,8 +240,8 @@
       
         <ul>
 <li><strong>fopen( string $filename , string $mode) : resource</strong></li>
-</ul>
-<p>打开文件或者 URL，将 filename 指定的名字资源绑定到一个流上。<br>如果$filename指定的是本地的文件，就会在该文件上打开一个流，要确保该文件php有访问的权限。（权限问题，本地行，服务器不行系列）成功时返回文件指针资源，如果打开失败，本函数返回 FALSE。如果打开失败，会产生一个 <strong><code>E_WARNING</code></strong> 错误。可以通过 <a href="https://www.php.net/manual/zh/language.operators.errorcontrol.php" target="_blank" rel="noopener">@</a> 来屏蔽错误</p>
+</ul><p>打开文件或者 URL，将 filename 指定的名字资源绑定到一个流上。<br>如果$filename指定的是本地的文件，就会在该文件上打开一个流，要确保该文件php有访问的权限。（权限问题，本地行，服务器不行系列）成功时返回文件指针资源，如果打开失败，本函数返回 FALSE。如果打开失败，会产生一个 <strong><code>E_WARNING</code></strong> 错误。可以通过 <a href="https://www.php.net/manual/zh/language.operators.errorcontrol.php" target="_blank" rel="noopener">@</a> 来屏蔽错误</p><a id="more"></a>
+
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $handle = fopen(<span class="string">"c:\\folder\\resource.txt"</span>, <span class="string">"wb"</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ul>

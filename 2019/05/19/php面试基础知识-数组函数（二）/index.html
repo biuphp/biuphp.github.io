@@ -46,13 +46,13 @@
   };
 </script>
 
-  <meta name="description" content="array_keys() : array 返回数组中的数字或者字符串的部分或全部键名；第二个参数为输入键值则只返回该值的键名，例：   123456789&amp;lt;?php    $array = [        &amp;apos;a&amp;apos; =&amp;gt;  &amp;apos;1&amp;apos;,        &amp;apos;b&amp;apos; =&amp;gt;  &amp;apos;2&amp;apos;,        &amp;apos;c&amp;apos; =&amp;gt;  &amp;apos;3&amp;apos;    ];    var_dump(array_keys($a">
+  <meta name="description" content="array_keys() : array 返回数组中的数字或者字符串的部分或全部键名；第二个参数为输入键值则只返回该值的键名，例：  123456789&amp;lt;?php    $array = [        &amp;apos;a&amp;apos; =&amp;gt;  &amp;apos;1&amp;apos;,        &amp;apos;b&amp;apos; =&amp;gt;  &amp;apos;2&amp;apos;,        &amp;apos;c&amp;apos; =&amp;gt;  &amp;apos;3&amp;apos;    ];    var_dump(array_keys($ar">
 <meta name="keywords" content="php面试基础知识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="php面试基础知识--数组函数（二）">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;05&#x2F;19&#x2F;php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0%EF%BC%88%E4%BA%8C%EF%BC%89&#x2F;index.html">
 <meta property="og:site_name" content="指尖记忆">
-<meta property="og:description" content="array_keys() : array 返回数组中的数字或者字符串的部分或全部键名；第二个参数为输入键值则只返回该值的键名，例：   123456789&amp;lt;?php    $array = [        &amp;apos;a&amp;apos; =&amp;gt;  &amp;apos;1&amp;apos;,        &amp;apos;b&amp;apos; =&amp;gt;  &amp;apos;2&amp;apos;,        &amp;apos;c&amp;apos; =&amp;gt;  &amp;apos;3&amp;apos;    ];    var_dump(array_keys($a">
+<meta property="og:description" content="array_keys() : array 返回数组中的数字或者字符串的部分或全部键名；第二个参数为输入键值则只返回该值的键名，例：  123456789&amp;lt;?php    $array = [        &amp;apos;a&amp;apos; =&amp;gt;  &amp;apos;1&amp;apos;,        &amp;apos;b&amp;apos; =&amp;gt;  &amp;apos;2&amp;apos;,        &amp;apos;c&amp;apos; =&amp;gt;  &amp;apos;3&amp;apos;    ];    var_dump(array_keys($ar">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-11-18T08:22:58.943Z">
 <meta name="twitter:card" content="summary">
@@ -242,8 +242,8 @@
 <li><p><strong>array_keys() : array</strong></p>
 <p>返回数组中的数字或者字符串的部分或全部键名；第二个参数为输入<strong>键值</strong>则只返回该值的<strong>键名</strong>，例：</p>
 </li>
-</ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $array = [</span><br><span class="line">        <span class="string">'a'</span> =&gt;  <span class="string">'1'</span>,</span><br><span class="line">        <span class="string">'b'</span> =&gt;  <span class="string">'2'</span>,</span><br><span class="line">        <span class="string">'c'</span> =&gt;  <span class="string">'3'</span></span><br><span class="line">    ];</span><br><span class="line">    var_dump(array_keys($array));  <span class="comment">//array('a', 'b', 'c');</span></span><br><span class="line">    var_dump(array_keys($array, <span class="string">'a'</span>));  <span class="comment">//null</span></span><br><span class="line">    var_dump(array_keys($array, <span class="string">'1'</span>));  <span class="comment">//array('a');</span></span><br></pre></td></tr></table></figure>
+</ul><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $array = [</span><br><span class="line">        <span class="string">'a'</span> =&gt;  <span class="string">'1'</span>,</span><br><span class="line">        <span class="string">'b'</span> =&gt;  <span class="string">'2'</span>,</span><br><span class="line">        <span class="string">'c'</span> =&gt;  <span class="string">'3'</span></span><br><span class="line">    ];</span><br><span class="line">    var_dump(array_keys($array));  <span class="comment">//array('a', 'b', 'c');</span></span><br><span class="line">    var_dump(array_keys($array, <span class="string">'a'</span>));  <span class="comment">//null</span></span><br><span class="line">    var_dump(array_keys($array, <span class="string">'1'</span>));  <span class="comment">//array('a');</span></span><br></pre></td></tr></table></figure><a id="more"></a>
+
 
 <ul>
 <li><strong>array_values() : array</strong></li>

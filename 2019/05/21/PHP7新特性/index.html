@@ -46,13 +46,13 @@
   };
 </script>
 
-  <meta name="description" content="可为空（Nullable）类型  123456789&amp;lt;?php  function testReturn() : ? string  &amp;#123;      return &amp;apos;elePHPant&amp;apos;; &#x2F;&#x2F;  elePHPant  &amp;#125;  function test(?string $name)  &amp;#123;      var_dump($name);  &#x2F;&#x2F;  null  &amp;#12">
+  <meta name="description" content="可为空（Nullable）类型 123456789&amp;lt;?php  function testReturn() : ? string  &amp;#123;      return &amp;apos;elePHPant&amp;apos;; &#x2F;&#x2F;  elePHPant  &amp;#125;  function test(?string $name)  &amp;#123;      var_dump($name);  &#x2F;&#x2F;  null  &amp;#125">
 <meta name="keywords" content="php面试基础知识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP7新特性">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;05&#x2F;21&#x2F;PHP7%E6%96%B0%E7%89%B9%E6%80%A7&#x2F;index.html">
 <meta property="og:site_name" content="指尖记忆">
-<meta property="og:description" content="可为空（Nullable）类型  123456789&amp;lt;?php  function testReturn() : ? string  &amp;#123;      return &amp;apos;elePHPant&amp;apos;; &#x2F;&#x2F;  elePHPant  &amp;#125;  function test(?string $name)  &amp;#123;      var_dump($name);  &#x2F;&#x2F;  null  &amp;#12">
+<meta property="og:description" content="可为空（Nullable）类型 123456789&amp;lt;?php  function testReturn() : ? string  &amp;#123;      return &amp;apos;elePHPant&amp;apos;; &#x2F;&#x2F;  elePHPant  &amp;#125;  function test(?string $name)  &amp;#123;      var_dump($name);  &#x2F;&#x2F;  null  &amp;#125">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-11-18T08:19:59.698Z">
 <meta name="twitter:card" content="summary">
@@ -240,8 +240,8 @@
       
         <ul>
 <li><strong>可为空（Nullable）类型</strong></li>
-</ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">testReturn</span><span class="params">()</span> : ? <span class="title">string</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">'elePHPant'</span>; <span class="comment">//  elePHPant</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">(?string $name)</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">      var_dump($name);  <span class="comment">//  null</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</ul><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">testReturn</span><span class="params">()</span> : ? <span class="title">string</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">'elePHPant'</span>; <span class="comment">//  elePHPant</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">(?string $name)</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">      var_dump($name);  <span class="comment">//  null</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><a id="more"></a>
+
 
 <p>就如testeturn()函数一样，要么返回给定类型，要么返回null，其他则报错。</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Uncaught Error: Too few arguments to <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span>, 0 <span class="title">passed</span> <span class="title">in</span>...</span></span><br></pre></td></tr></table></figure>
