@@ -46,18 +46,18 @@
   };
 </script>
 
-  <meta name="description" content="周末，我有一个同事（实习生）拍毕业照了，应部门大佬的邀请一块到佛山科技技术学院走走玩玩，然而我还是太年轻了，程序员之间的聊天打开方式还是离不开技术。做为一个php实习生，在谈话中，我被大佬问倒过好几个问题，有算法的，有语言底层实现的。在这个“上级”对“下级”的这场搏击中，我还是太菜了。大佬还是大佬，在交谈中，我总结大佬所传授的为以下几点：  “你们（实习生）要想走得远，有四个基础点，你必须要理解并">
-<meta name="keywords" content="程序员">
+  <meta name="description" content="date() : string 格式化一个本地时间／日期   123&amp;lt;?php  $timestamp = time();  &#x2F;&#x2F;时间戳  date(&amp;apos;Y-m-d H:i:s&amp;apos;, $timestamp );  &#x2F;&#x2F;返回当前时间，yyyy-mm-dd H:i:s格式   time()  : int  返回当前的 Unix 时间戳,（格林威治时间 1970 年 1 月 1 日 00:00:00">
+<meta name="keywords" content="php面试基础知识">
 <meta property="og:type" content="article">
-<meta property="og:title" content="程序员工作5年， 给小萌新的建议">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;05&#x2F;20&#x2F;%E7%A8%8B%E5%BA%8F%E5%91%98%E5%B7%A5%E4%BD%9C5%E5%B9%B4%EF%BC%8C-%E7%BB%99%E5%B0%8F%E8%90%8C%E6%96%B0%E7%9A%84%E5%BB%BA%E8%AE%AE&#x2F;index.html">
+<meta property="og:title" content="php面试基础知识--时间函数">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;18&#x2F;php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%97%B6%E9%97%B4%E5%87%BD%E6%95%B0&#x2F;index.html">
 <meta property="og:site_name" content="指尖记忆">
-<meta property="og:description" content="周末，我有一个同事（实习生）拍毕业照了，应部门大佬的邀请一块到佛山科技技术学院走走玩玩，然而我还是太年轻了，程序员之间的聊天打开方式还是离不开技术。做为一个php实习生，在谈话中，我被大佬问倒过好几个问题，有算法的，有语言底层实现的。在这个“上级”对“下级”的这场搏击中，我还是太菜了。大佬还是大佬，在交谈中，我总结大佬所传授的为以下几点：  “你们（实习生）要想走得远，有四个基础点，你必须要理解并">
+<meta property="og:description" content="date() : string 格式化一个本地时间／日期   123&amp;lt;?php  $timestamp = time();  &#x2F;&#x2F;时间戳  date(&amp;apos;Y-m-d H:i:s&amp;apos;, $timestamp );  &#x2F;&#x2F;返回当前时间，yyyy-mm-dd H:i:s格式   time()  : int  返回当前的 Unix 时间戳,（格林威治时间 1970 年 1 月 1 日 00:00:00">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-18T08:21:01.197Z">
+<meta property="og:updated_time" content="2019-11-18T08:27:23.752Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2019/05/20/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%B7%A5%E4%BD%9C5%E5%B9%B4%EF%BC%8C-%E7%BB%99%E5%B0%8F%E8%90%8C%E6%96%B0%E7%9A%84%E5%BB%BA%E8%AE%AE/">
+<link rel="canonical" href="http://yoursite.com/2019/11/18/php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%97%B6%E9%97%B4%E5%87%BD%E6%95%B0/">
 
 
 <script id="page-configurations">
@@ -71,7 +71,7 @@
   };
 </script>
 
-  <title>程序员工作5年， 给小萌新的建议 | 指尖记忆</title>
+  <title>php面试基础知识--时间函数 | 指尖记忆</title>
   
 
 
@@ -180,7 +180,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/20/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%B7%A5%E4%BD%9C5%E5%B9%B4%EF%BC%8C-%E7%BB%99%E5%B0%8F%E8%90%8C%E6%96%B0%E7%9A%84%E5%BB%BA%E8%AE%AE/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/18/php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%97%B6%E9%97%B4%E5%87%BD%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/shahao.jpg">
@@ -193,7 +193,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          程序员工作5年， 给小萌新的建议
+          php面试基础知识--时间函数
         </h2>
 
         <div class="post-meta">
@@ -202,16 +202,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-05-20 16:20:17" itemprop="dateCreated datePublished" datetime="2019-05-20T16:20:17+08:00">2019-05-20</time>
+              <time title="创建时间：2019-11-18 16:27:08 / 修改时间：16:27:23" itemprop="dateCreated datePublished" datetime="2019-11-18T16:27:08+08:00">2019-11-18</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-18 16:21:01" itemprop="dateModified" datetime="2019-11-18T16:21:01+08:00">2019-11-18</time>
-              </span>
 
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -219,7 +213,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>969</span>
+              <span>1.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -238,17 +232,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>周末，我有一个同事（实习生）拍毕业照了，应部门大佬的邀请一块到佛山科技技术学院走走玩玩，然而我还是太年轻了，程序员之间的聊天打开方式还是离不开技术。做为一个php实习生，在谈话中，我被大佬问倒过好几个问题，有算法的，有语言底层实现的。在这个“上级”对“下级”的这场搏击中，我还是太菜了。大佬还是大佬，在交谈中，我总结大佬所传授的为以下几点：</p>
-<ul>
-<li><strong>“你们（实习生）要想走得远，有四个基础点，你必须要理解并用于实践中：操作系统、计算机网络、数据结构与算法、掌握一门编程语言”</strong></li>
+        <ul>
+<li><p><strong>date() : string</strong></p>
+<p>格式化一个本地时间／日期</p>
+</li>
 </ul>
-<p>在谈话中，大佬并没有详细的指出四点的详细内容，重要性你我都知。在大学学习中，这些都是我们的基础和核心课程，也是我们当代大学会教的东西。新的技术学校教不了，老的学了也过时，只有这些基础核心课程，才是我们在学习必须理解并自己应用实践的。也许，看到这篇文字的你还是一个大学生，觉得这些课程枯燥乏味还没法做出一个应用，学了就只是为了应付考试及格，那你就真的大错特错了；也许，你是一个在职的程序员，觉得在实际业务逻辑开发中这些东西也没那么重要，那当你遇到内存泄漏溢出你是要咋办呢？在我的理解中，它们就像是高楼大厦下的地基，基础打好了，楼也就稳了，科技在不断进步，以后不管是遇到什么样的大风大浪大地震，总有解决的办法。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $timestamp = time();  <span class="comment">//时间戳</span></span><br><span class="line">  date(<span class="string">'Y-m-d H:i:s'</span>, $timestamp );  <span class="comment">//返回当前时间，yyyy-mm-dd H:i:s格式</span></span><br></pre></td></tr></table></figure>
+
 <ul>
-<li><strong>“php语言这条路很广，但天花板很低”</strong></li>
+<li><strong>time()  : int</strong></li>
 </ul>
-<p>有那么一句调侃的话是这样说的“php是世界上最好的语言”，起初我还以为php这门语言真的很“好”（简单易学快上手），后来我才发现这其实是phper的一种自嘲。大佬说：“php语言很弱，它的容错机制决定一个好的程序员和一个坏的程序员开发出来代码效果的差不多的（java也是），这也是为什么java和php在市场上的需求和就业高与其他开发语言（node.js等）”，虽然php7出了很多新的特性，php版本更新还算频繁，加上现在比较热门的高性能的php swoole扩展，也有几个用swoole扩展封装的框架（easyswoole等），总的来说，这门语言是在不断的成长和变好的，开发网站业务是最适合效率最高最满足现在企业需求的。尽管如此，它还是会有很多缺陷与不足，具体的这个还是留个坑给自己以后再填吧。</p>
-<p>在最后出一道题考考大家，可以把答案在下方留言哦</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//问题</span></span><br><span class="line">x = <span class="number">1</span>;</span><br><span class="line">z = x++;</span><br><span class="line">y = ++x;</span><br><span class="line"><span class="comment">//答案</span></span><br><span class="line">x = ?;</span><br><span class="line">y = ?;</span><br><span class="line">z = ?;</span><br></pre></td></tr></table></figure>
+<p>返回当前的 Unix 时间戳,（格林威治时间 1970 年 1 月 1 日 00:00:00）到当前时间的秒数</p>
+<ul>
+<li><strong>strtotime() : int</strong></li>
+</ul>
+<p>将任何字符串的日期时间描述解析为 Unix 时间戳（string to time）</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="keyword">echo</span> strtotime(<span class="string">"now"</span>), <span class="string">"\n"</span>;  <span class="comment">//当前时间</span></span><br><span class="line">  <span class="keyword">echo</span> strtotime(<span class="string">"10 September 2000"</span>), <span class="string">"\n"</span>;  </span><br><span class="line">  <span class="keyword">echo</span> strtotime(<span class="string">"+1 day"</span>), <span class="string">"\n"</span>;  <span class="comment">//明天</span></span><br><span class="line">  <span class="keyword">echo</span> strtotime(<span class="string">"+1 week"</span>), <span class="string">"\n"</span>;  <span class="comment">//下星期</span></span><br><span class="line">  <span class="keyword">echo</span> strtotime(<span class="string">"+1 week 2 days 4 hours 2 seconds"</span>), <span class="string">"\n"</span>;</span><br><span class="line">  <span class="keyword">echo</span> strtotime(<span class="string">"next Thursday"</span>), <span class="string">"\n"</span>;  <span class="comment">//下周三</span></span><br><span class="line">  <span class="keyword">echo</span> strtotime(<span class="string">"last Monday"</span>), <span class="string">"\n"</span>;    <span class="comment">//上周一</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>microtime() : mixed</strong></li>
+</ul>
+<p>返回当前 Unix 时间戳和微秒数，PHP没有直接返回毫秒的函数，要想获取当前时间毫秒，这里用微秒格式化一下生产微秒。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="keyword">return</span> sprintf(<span class="string">'%.0f'</span>, microtime(<span class="keyword">true</span>) * <span class="number">1000</span>);  <span class="comment">//true，microtime() 将返回一个浮点数</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>常见时间格式转换</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="comment">//$time 时间戳</span></span><br><span class="line">  <span class="keyword">public</span> checkTime($time)</span><br><span class="line">  &#123;</span><br><span class="line">        $return_str = <span class="string">''</span>;</span><br><span class="line">        $diff = $time - time();</span><br><span class="line">        <span class="keyword">switch</span> ($diff) &#123;</span><br><span class="line">            <span class="keyword">case</span> $diff &lt; <span class="number">60</span>:</span><br><span class="line">                $return_str = $diff.<span class="string">'秒前'</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> $diff &gt;= <span class="number">60</span> &amp;&amp; $diff &lt; <span class="number">60</span> * <span class="number">60</span>:</span><br><span class="line">                $diff_i = round($diff/<span class="number">60</span>).<span class="string">'分'</span>;</span><br><span class="line">                $diff_s = ($diff - ($diff_i * <span class="number">60</span>)) &gt; <span class="number">0</span> ? ($diff - ($diff_i * <span class="number">60</span>)) .<span class="string">'秒'</span> : <span class="string">''</span>;</span><br><span class="line">                $return_str = $diff_i.$diff_s.<span class="string">'前'</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> $diff &gt;= <span class="number">60</span> * <span class="number">60</span> &amp;&amp; $diff &lt;= <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span>:</span><br><span class="line">                $return_str = round($diff/(<span class="number">60</span> * <span class="number">60</span>)).<span class="string">'小时前'</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> $diff &lt;= <span class="number">30</span> * <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span>:</span><br><span class="line">                $return_str = round($diff/(<span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span>)).<span class="string">'天前'</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                $return_str = date(<span class="string">'Y'</span>.<span class="string">'年'</span>.<span class="string">'m'</span>.<span class="string">'月'</span>.<span class="string">'d'</span>.<span class="string">'日'</span>, $time);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> $return_str;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -267,24 +276,21 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/" rel="tag"># 程序员</a>
+              <a href="/tags/php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag"># php面试基础知识</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2019/05/19/php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="next" title="php面试基础知识--数组函数（二）">
-                  <i class="fa fa-chevron-left"></i> php面试基础知识--数组函数（二）
+                <a href="/2019/11/10/%E4%BA%92%E8%81%94%E7%BD%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="next" title="互联网项目开发流程规范">
+                  <i class="fa fa-chevron-left"></i> 互联网项目开发流程规范
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/05/21/%E5%BE%AE%E4%BF%A1%E6%B6%88%E6%81%AF%E5%8A%A0%E8%A7%A3%E5%AF%86Mcrypt%E5%9C%A8php7-2%E4%B8%AD%E5%BA%9F%E5%BC%83%E4%B8%8Eopen-ssl%E6%9B%BF%E4%BB%A3%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" rel="prev" title="微信消息加解密Mcrypt在php7.2中废弃与open_ssl替代解决方案">
-                  微信消息加解密Mcrypt在php7.2中废弃与open_ssl替代解决方案 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
