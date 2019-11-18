@@ -56,7 +56,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-70d1c79d596ae7a4.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
 <meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-06c4cc6a442dc1f8.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
-<meta property="og:updated_time" content="2019-11-17T15:39:34.801Z">
+<meta property="og:updated_time" content="2019-11-18T02:01:15.439Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;7429691-70d1c79d596ae7a4.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
 
@@ -205,10 +205,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-11-17 23:39:16 / 修改时间：23:39:34" itemprop="dateCreated datePublished" datetime="2019-11-17T23:39:16+08:00">2019-11-17</time>
+              <time title="创建时间：2019-11-17 23:39:16" itemprop="dateCreated datePublished" datetime="2019-11-17T23:39:16+08:00">2019-11-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-18 10:01:15" itemprop="dateModified" datetime="2019-11-18T10:01:15+08:00">2019-11-18</time>
+              </span>
 
           
 
@@ -273,7 +279,11 @@
 </tr>
 </tbody></table>
 <ul>
-<li><a href="https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/Mini_Programs/WeChat_login.html" target="_blank" rel="noopener">小程序登录</a>调用地址<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET https://api.weixin.qq.com/sns/component/jscode2session?appid=APPID&amp;js_code=JSCODE&amp;grant_type=authorization_code&amp;component_appid=COMPONENT_APPID&amp;component_access_token=COMPONENT_ACCESS_TOKEN</span><br></pre></td></tr></table></figure></li>
+<li><a href="https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/Mini_Programs/WeChat_login.html" target="_blank" rel="noopener">小程序登录</a>调用地址</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET https://api.weixin.qq.com/sns/component/jscode2session?appid=APPID&amp;js_code=JSCODE&amp;grant_type=authorization_code&amp;component_appid=COMPONENT_APPID&amp;component_access_token=COMPONENT_ACCESS_TOKEN</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li>参数</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&apos;appid&apos;                  =&gt; appid,  //小程序appid</span><br><span class="line">&apos;js_code&apos;                =&gt; code,   //登录code</span><br><span class="line">&apos;grant_type&apos;             =&gt; &apos;authorization_code&apos;,  //固定值</span><br><span class="line">&apos;component_appid&apos;        =&gt; WX_APP_ID,   //第三方平台 appid</span><br><span class="line">&apos;component_access_token&apos; =&gt; $comAccToke  //第三方平台接口凭证</span><br></pre></td></tr></table></figure>
