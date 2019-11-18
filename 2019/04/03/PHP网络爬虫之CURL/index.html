@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="指尖记忆" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="CURL简介php的curl可以实现模拟http的各种请求，这也是php做网络爬虫的基础，也多用于接口api的调用。PHP 支持 Daniel Stenberg 创建的 libcurl 库，能够连接通讯各种服务器、使用各种协议。libcurl 目前支持的协议有 http、https、ftp、gopher、telnet、dict、file、ldap。 libcurl 同时支持 HTTPS 证书、HT">
+<meta name="keywords" content="CURL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP网络爬虫之CURL">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;04&#x2F;03&#x2F;PHP%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B9%8BCURL&#x2F;index.html">
+<meta property="og:site_name" content="指尖记忆">
+<meta property="og:description" content="CURL简介php的curl可以实现模拟http的各种请求，这也是php做网络爬虫的基础，也多用于接口api的调用。PHP 支持 Daniel Stenberg 创建的 libcurl 库，能够连接通讯各种服务器、使用各种协议。libcurl 目前支持的协议有 http、https、ftp、gopher、telnet、dict、file、ldap。 libcurl 同时支持 HTTPS 证书、HT">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-18T08:29:29.827Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2019/04/03/PHP%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B9%8BCURL/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>PHP网络爬虫之CURL | 指尖记忆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">指尖记忆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/03/PHP%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B9%8BCURL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shahao.jpg">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖记忆">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          PHP网络爬虫之CURL
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-03 16:28:40" itemprop="dateCreated datePublished" datetime="2019-04-03T16:28:40+08:00">2019-04-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-18 16:29:29" itemprop="dateModified" datetime="2019-11-18T16:29:29+08:00">2019-11-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="CURL简介"><a href="#CURL简介" class="headerlink" title="CURL简介"></a>CURL简介</h2><p>php的curl可以实现模拟http的各种请求，这也是php做网络爬虫的基础，也多用于接口api的调用。<br>PHP 支持 Daniel Stenberg 创建的 libcurl 库，能够连接通讯各种服务器、使用各种协议。libcurl 目前支持的协议有 http、https、ftp、gopher、telnet、dict、file、ldap。 libcurl 同时支持 HTTPS 证书、HTTP POST、HTTP PUT、 FTP 上传(也能通过 PHP 的 FTP 扩展完成)、HTTP 基于表单的上传、代理、cookies、用户名+密码的认证。</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ul>
+<li><strong>初始化</strong></li>
+</ul>
+<p>curl_init()</p>
+<ul>
+<li><strong>设置属性</strong></li>
+</ul>
+<p>curl_setopt().有一长串CURL 参数可供设置，它们能指定URL请求的各个细节。</p>
+<p><strong>三个重要的选项</strong></p>
+<blockquote>
+<p><strong>CURLOPT_URL</strong> ：指定请求的URL；<br><strong>CURLOPT_RETURNTRANSFER</strong>： 设置为1表示稍后执行的curl_exec函数的返回是URL的返回字符串，而不是把返回字符串定向到标准输出并返回TRUE；<br><strong>CURLLOPT_HEADER</strong>：设置为0表示不返回HTTP头部信息</p>
+</blockquote>
+<blockquote>
+<p>详细查看<br>php官网 <a href="https://www.php.net/manual/zh/function.curl-setopt.php" target="_blank" rel="noopener">https://www.php.net/manual/zh/function.curl-setopt.php</a></p>
+</blockquote>
+<ul>
+<li><strong>执行并获取结果</strong></li>
+</ul>
+<p>curl_exec()</p>
+<ul>
+<li>释放句柄</li>
+</ul>
+<p>curl_close()</p>
+<ul>
+<li><p><strong>curl_errno</strong><br>返回最后一次错误码,php已经定义了诸多错误枚举编码</p>
+</li>
+<li><p><strong>curl_errror</strong><br>返回一个保护当前会话最近一次错误的字符串</p>
+</li>
+<li><p><strong>curl_getinfo</strong><br>使用curl_getinfo()函数获取CURL请求输出的相关信息</p>
+</li>
+</ul>
+<blockquote>
+<p>url:网络地址。<br>content_type:内容编码。<br>http_code:HTTP状态码。<br>header_size:header的大小。<br>request_size:请求的大小。<br>filetime:文件创建的时间。<br>ssl_verify_result:SSL验证结果。<br>redirect_count:跳转计数。<br>total_time:总耗时。<br>namelookup_time:DNS查询耗时。<br>connect_time:等待连接耗时。<br>pretransfer_time:传输前准备耗时。<br>size_uplpad:上传数据的大小。<br>size_download:下载数据的大小。<br>speed_download:下载速度。<br>speed_upload:上传速度。<br>download_content_length:下载内容的长度。<br>upload_content_length:上传内容的长度。<br>starttransfer_time:开始传输的时间表。<br>redirect_time:重定向耗时。</p>
+</blockquote>
+<p><strong>例如</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$info = curl_getinfo($sh);</span><br><span class="line">echo &apos; 获取 &apos;.$info[&apos;url&apos;].&apos;耗时&apos;.$info[&apos;total_time&apos;].&apos;秒&apos;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="封装的请求"><a href="#封装的请求" class="headerlink" title="封装的请求"></a>封装的请求</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"><span class="bullet"> * </span>Created by 沙蒿.</span><br><span class="line"><span class="bullet"> * </span>@desc    curl请求封装</span><br><span class="line"><span class="bullet"> * </span>@param string $url   请求地址：https</span><br><span class="line"><span class="bullet"> * </span>@param string $type  请求方式：get/post</span><br><span class="line"><span class="bullet"> * </span>@param string $res   返回格式：json</span><br><span class="line"><span class="bullet"> * </span>@param array $arr   请求参数</span><br><span class="line"><span class="bullet"> * </span>@return mixed|string</span><br><span class="line"> */</span><br><span class="line">public function httpsCurl($url = '', $type = 'get', $res = 'json', $arr = [])</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">    $curl = curl_init();</span></span><br><span class="line"><span class="code">    if ($type == 'post') &#123;</span></span><br><span class="line"><span class="code">        curl_setopt($curl, CURLOPT_URL, $url);</span></span><br><span class="line"><span class="code">        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);</span></span><br><span class="line"><span class="code">        $postArr = urldecode(json_encode($arr));</span></span><br><span class="line"><span class="code">        curl_setopt($curl, CURLOPT_POST, 1);</span></span><br><span class="line"><span class="code">        curl_setopt($curl, CURLOPT_POSTFIELDS, $postArr);</span></span><br><span class="line"><span class="code">    &#125; else &#123;</span></span><br><span class="line"><span class="code">        $getArr = '';</span></span><br><span class="line"><span class="code">        foreach ($arr as $key =&gt; $value) &#123;</span></span><br><span class="line"><span class="code">            $getArr .= "$key=".urlencode($value)."&amp;";</span></span><br><span class="line"><span class="code">        &#125;</span></span><br><span class="line"><span class="code">        $url = substr($url.'?'.$getArr, 0, -1);</span></span><br><span class="line"><span class="code">        curl_setopt($curl, CURLOPT_URL, $url);</span></span><br><span class="line"><span class="code">        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);</span></span><br><span class="line"><span class="code">    &#125;</span></span><br><span class="line"><span class="code">    $output = curl_exec($curl);</span></span><br><span class="line"><span class="code">    curl_close($curl);</span></span><br><span class="line"><span class="code">    if ($res == 'json') &#123;</span></span><br><span class="line"><span class="code">        if (curl_errno($curl)) &#123;</span></span><br><span class="line"><span class="code">            return curl_error($curl);</span></span><br><span class="line"><span class="code">        &#125; else &#123;</span></span><br><span class="line"><span class="code">            return json_decode($output, true);</span></span><br><span class="line"><span class="code">        &#125;</span></span><br><span class="line"><span class="code">    &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>不求赞赏，点个喜欢就好.</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CURL/" rel="tag"># CURL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/03/28/%E6%8B%92%E7%BB%9D%E4%BA%BA%E5%B7%A5%E6%96%B0%E5%A2%9E%E5%8D%95%E6%9D%A1%E6%95%B0%E6%8D%AE%EF%BC%8CPHP%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE/" rel="next" title="拒绝人工新增单条数据，PHP实现读取文件导入数据">
+                  <i class="fa fa-chevron-left"></i> 拒绝人工新增单条数据，PHP实现读取文件导入数据
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/05/14/php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="prev" title="php面试基础知识--判断数据类型">
+                  php面试基础知识--判断数据类型 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CURL简介"><span class="nav-number">1.</span> <span class="nav-text">CURL简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封装的请求"><span class="nav-number">3.</span> <span class="nav-text">封装的请求</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="沙蒿"
+      src="/images/shahao.jpg">
+  <p class="site-author-name" itemprop="name">沙蒿</p>
+  <div class="site-description" itemprop="description">大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">沙蒿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">40k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">36 分钟</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

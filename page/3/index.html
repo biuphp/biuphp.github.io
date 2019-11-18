@@ -506,6 +506,317 @@
   
   
 
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/14/php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shahao.jpg">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖记忆">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/14/php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">php面试基础知识--判断数据类型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-14 16:28:02" itemprop="dateCreated datePublished" datetime="2019-05-14T16:28:02+08:00">2019-05-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-18 16:29:45" itemprop="dateModified" datetime="2019-11-18T16:29:45+08:00">2019-11-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>607</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><strong>is_array() : bool</strong></li>
+</ul>
+<p>检测变量是否是数组</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $arr = [<span class="string">'a'</span>=&gt;<span class="string">'hello'</span>,<span class="string">'b'</span>=&gt;<span class="string">'world'</span>];</span><br><span class="line">  <span class="keyword">if</span> (!is_array($arr)) &#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>is_float() : bool</strong></li>
+</ul>
+<p>检测变量是否是浮点型，但是文档上说“若想测试一个变量是否是数字或数字字符串（如表单输入，它们通常为字符串），必须使用 is_numeric()“，所以is_float()基本上不用</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  is_float(<span class="string">"5.0"</span> + <span class="number">0</span>);  <span class="comment">// true</span></span><br><span class="line">  is_float(<span class="string">"5.0"</span>);  <span class="comment">// false</span></span><br><span class="line">  is_float(<span class="number">5</span> + <span class="number">0</span>);  <span class="comment">// false</span></span><br><span class="line">  is_float(<span class="number">5.0</span> + <span class="number">0</span>);  <span class="comment">// false</span></span><br><span class="line">  is_float(<span class="string">'a'</span> + <span class="number">0</span>);  <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">  get_numeric(<span class="string">'3'</span>); <span class="comment">// int(3) </span></span><br><span class="line">  get_numeric(<span class="string">'1.2'</span>); <span class="comment">// float(1.2) </span></span><br><span class="line">  get_numeric(<span class="string">'3.0'</span>); <span class="comment">// float(3)</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>is_string() : bool</strong></li>
+</ul>
+<p>检测变量是否是字符串</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $string = <span class="string">'1234'</span>;</span><br><span class="line">  <span class="keyword">if</span> (!is_string($string)) &#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/03/PHP%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B9%8BCURL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shahao.jpg">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖记忆">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/03/PHP%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E4%B9%8BCURL/" class="post-title-link" itemprop="url">PHP网络爬虫之CURL</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-03 16:28:40" itemprop="dateCreated datePublished" datetime="2019-04-03T16:28:40+08:00">2019-04-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-18 16:29:29" itemprop="dateModified" datetime="2019-11-18T16:29:29+08:00">2019-11-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="CURL简介"><a href="#CURL简介" class="headerlink" title="CURL简介"></a>CURL简介</h2><p>php的curl可以实现模拟http的各种请求，这也是php做网络爬虫的基础，也多用于接口api的调用。<br>PHP 支持 Daniel Stenberg 创建的 libcurl 库，能够连接通讯各种服务器、使用各种协议。libcurl 目前支持的协议有 http、https、ftp、gopher、telnet、dict、file、ldap。 libcurl 同时支持 HTTPS 证书、HTTP POST、HTTP PUT、 FTP 上传(也能通过 PHP 的 FTP 扩展完成)、HTTP 基于表单的上传、代理、cookies、用户名+密码的认证。</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ul>
+<li><strong>初始化</strong></li>
+</ul>
+<p>curl_init()</p>
+<ul>
+<li><strong>设置属性</strong></li>
+</ul>
+<p>curl_setopt().有一长串CURL 参数可供设置，它们能指定URL请求的各个细节。</p>
+<p><strong>三个重要的选项</strong></p>
+<blockquote>
+<p><strong>CURLOPT_URL</strong> ：指定请求的URL；<br><strong>CURLOPT_RETURNTRANSFER</strong>： 设置为1表示稍后执行的curl_exec函数的返回是URL的返回字符串，而不是把返回字符串定向到标准输出并返回TRUE；<br><strong>CURLLOPT_HEADER</strong>：设置为0表示不返回HTTP头部信息</p>
+</blockquote>
+<blockquote>
+<p>详细查看<br>php官网 <a href="https://www.php.net/manual/zh/function.curl-setopt.php" target="_blank" rel="noopener">https://www.php.net/manual/zh/function.curl-setopt.php</a></p>
+</blockquote>
+<ul>
+<li><strong>执行并获取结果</strong></li>
+</ul>
+<p>curl_exec()</p>
+<ul>
+<li>释放句柄</li>
+</ul>
+<p>curl_close()</p>
+<ul>
+<li><p><strong>curl_errno</strong><br>返回最后一次错误码,php已经定义了诸多错误枚举编码</p>
+</li>
+<li><p><strong>curl_errror</strong><br>返回一个保护当前会话最近一次错误的字符串</p>
+</li>
+<li><p><strong>curl_getinfo</strong><br>使用curl_getinfo()函数获取CURL请求输出的相关信息</p>
+</li>
+</ul>
+<blockquote>
+<p>url:网络地址。<br>content_type:内容编码。<br>http_code:HTTP状态码。<br>header_size:header的大小。<br>request_size:请求的大小。<br>filetime:文件创建的时间。<br>ssl_verify_result:SSL验证结果。<br>redirect_count:跳转计数。<br>total_time:总耗时。<br>namelookup_time:DNS查询耗时。<br>connect_time:等待连接耗时。<br>pretransfer_time:传输前准备耗时。<br>size_uplpad:上传数据的大小。<br>size_download:下载数据的大小。<br>speed_download:下载速度。<br>speed_upload:上传速度。<br>download_content_length:下载内容的长度。<br>upload_content_length:上传内容的长度。<br>starttransfer_time:开始传输的时间表。<br>redirect_time:重定向耗时。</p>
+</blockquote>
+<p><strong>例如</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$info = curl_getinfo($sh);</span><br><span class="line">echo &apos; 获取 &apos;.$info[&apos;url&apos;].&apos;耗时&apos;.$info[&apos;total_time&apos;].&apos;秒&apos;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="封装的请求"><a href="#封装的请求" class="headerlink" title="封装的请求"></a>封装的请求</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"><span class="bullet"> * </span>Created by 沙蒿.</span><br><span class="line"><span class="bullet"> * </span>@desc    curl请求封装</span><br><span class="line"><span class="bullet"> * </span>@param string $url   请求地址：https</span><br><span class="line"><span class="bullet"> * </span>@param string $type  请求方式：get/post</span><br><span class="line"><span class="bullet"> * </span>@param string $res   返回格式：json</span><br><span class="line"><span class="bullet"> * </span>@param array $arr   请求参数</span><br><span class="line"><span class="bullet"> * </span>@return mixed|string</span><br><span class="line"> */</span><br><span class="line">public function httpsCurl($url = '', $type = 'get', $res = 'json', $arr = [])</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">    $curl = curl_init();</span></span><br><span class="line"><span class="code">    if ($type == 'post') &#123;</span></span><br><span class="line"><span class="code">        curl_setopt($curl, CURLOPT_URL, $url);</span></span><br><span class="line"><span class="code">        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);</span></span><br><span class="line"><span class="code">        $postArr = urldecode(json_encode($arr));</span></span><br><span class="line"><span class="code">        curl_setopt($curl, CURLOPT_POST, 1);</span></span><br><span class="line"><span class="code">        curl_setopt($curl, CURLOPT_POSTFIELDS, $postArr);</span></span><br><span class="line"><span class="code">    &#125; else &#123;</span></span><br><span class="line"><span class="code">        $getArr = '';</span></span><br><span class="line"><span class="code">        foreach ($arr as $key =&gt; $value) &#123;</span></span><br><span class="line"><span class="code">            $getArr .= "$key=".urlencode($value)."&amp;";</span></span><br><span class="line"><span class="code">        &#125;</span></span><br><span class="line"><span class="code">        $url = substr($url.'?'.$getArr, 0, -1);</span></span><br><span class="line"><span class="code">        curl_setopt($curl, CURLOPT_URL, $url);</span></span><br><span class="line"><span class="code">        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);</span></span><br><span class="line"><span class="code">    &#125;</span></span><br><span class="line"><span class="code">    $output = curl_exec($curl);</span></span><br><span class="line"><span class="code">    curl_close($curl);</span></span><br><span class="line"><span class="code">    if ($res == 'json') &#123;</span></span><br><span class="line"><span class="code">        if (curl_errno($curl)) &#123;</span></span><br><span class="line"><span class="code">            return curl_error($curl);</span></span><br><span class="line"><span class="code">        &#125; else &#123;</span></span><br><span class="line"><span class="code">            return json_decode($output, true);</span></span><br><span class="line"><span class="code">        &#125;</span></span><br><span class="line"><span class="code">    &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/28/%E6%8B%92%E7%BB%9D%E4%BA%BA%E5%B7%A5%E6%96%B0%E5%A2%9E%E5%8D%95%E6%9D%A1%E6%95%B0%E6%8D%AE%EF%BC%8CPHP%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shahao.jpg">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖记忆">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/28/%E6%8B%92%E7%BB%9D%E4%BA%BA%E5%B7%A5%E6%96%B0%E5%A2%9E%E5%8D%95%E6%9D%A1%E6%95%B0%E6%8D%AE%EF%BC%8CPHP%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE/" class="post-title-link" itemprop="url">拒绝人工新增单条数据，PHP实现读取文件导入数据</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-28 16:30:08" itemprop="dateCreated datePublished" datetime="2019-03-28T16:30:08+08:00">2019-03-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-18 16:31:25" itemprop="dateModified" datetime="2019-11-18T16:31:25+08:00">2019-11-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer" />
+
+
+<p>今天分享些php导入文件读取数据插入数据到数据库的代码，涉及的场景如下：</p>
+<ul>
+<li>数据库表系统数据（如：省市区）</li>
+<li>前端页面从文件导入数据，插入数据库（如：黑名单导入）</li>
+</ul>
+<p>第一个是一个php的脚本代码，实现思路是读取txt文件内容，生成插入sql的语句，然后执行sql，完成。</p>
+<h3 id="要导入的数据"><a href="#要导入的数据" class="headerlink" title="要导入的数据"></a>要导入的数据</h3><p><img src="https://upload-images.jianshu.io/upload_images/7429691-d58e7f7934fc8c2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>代码简单介绍一下，本脚本是在自行封装的带有swoole扩展的php框架，request是已经封装好的函数用于接收的参数（类似$_GET[]）；fopen读取对应路径的文件（路径可修改）（txt文件一行一个城市名称），循环读取每一行并按照格式赋值到一数组中；执行foreach循环，生成sql语句；应用mysql连接池，执行sql，插入数据（可用原生mysql执行函数）；log日志打印结果；respose返回数据查看，完！</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="php"><span class="meta">&lt;?php</span></span></span></span><br><span class="line"><span class="xml">public function importData()</span></span><br><span class="line"><span class="xml">&#123;</span></span><br><span class="line"><span class="xml">        $request = $this-&gt;</span>request()-&gt;getRawParams();</span><br><span class="line"><span class="code">        $table = $request['table'];</span></span><br><span class="line"><span class="code">        $fileName = $request['file_name'];</span></span><br><span class="line"><span class="code">        $fileNum = $request['file_num'];</span></span><br><span class="line"><span class="code">        $remark = $request['remark'];</span></span><br><span class="line"><span class="code">        $return_sql = [];</span></span><br><span class="line"><span class="code">        $return_success = [];</span></span><br><span class="line"><span class="code">        for ($i = 0; $i &lt; $fileNum; $i++) &#123;</span></span><br><span class="line"><span class="code">            $filename = ROOT_PATH . '/bootstrap/'.$fileName.'/'.$i.'.txt';</span></span><br><span class="line"><span class="code">            $fps=fopen($filename,'r');</span></span><br><span class="line"><span class="code">            $temp = [];</span></span><br><span class="line"><span class="code">            while(!feof($fps))&#123;</span></span><br><span class="line"><span class="code">                $ceshi=fgets($fps);</span></span><br><span class="line"><span class="code">                $temp[] = [</span></span><br><span class="line"><span class="code">                    'keyq'   =&gt;  'area',</span></span><br><span class="line"><span class="code">                    'key_name'  =&gt;  '城市等级,</span></span><br><span class="line"><span class="code">                    'codeq'  =&gt;  $i,</span></span><br><span class="line"><span class="code">                    'code_name' =&gt;  str_replace("\r\n","",$ceshi),</span></span><br><span class="line"><span class="code">                    'remark'    =&gt;  is_array($remark)?$remark[$i]:$remark,</span></span><br><span class="line"><span class="code">                ];</span></span><br><span class="line"><span class="code">            &#125;</span></span><br><span class="line"><span class="code">            $filter = '';</span></span><br><span class="line"><span class="code">            $key_list = '';</span></span><br><span class="line"><span class="code">            foreach ($temp as $value) &#123;</span></span><br><span class="line"><span class="code">                $key_list = implode(",", array_keys($value)) . "";</span></span><br><span class="line"><span class="code">                $value_list = "'" . implode("','", array_values($value)) . "'";</span></span><br><span class="line"><span class="code">                $filter .= "(" . $value_list . "),";</span></span><br><span class="line"><span class="code">            &#125;</span></span><br><span class="line"><span class="code">            $sql = "insert" . " into " . $table . "(".$key_list.") values ".$filter;</span></span><br><span class="line"><span class="code">            $sql = substr($sql,0,strlen($sql)-1).';';</span></span><br><span class="line"><span class="code">            $conn = MysqlPool::getInstance()-&gt;getObj(60);</span></span><br><span class="line"><span class="code">            $result = $conn-&gt;insertQuery($sql);</span></span><br><span class="line"><span class="code">            MysqlPool::getInstance()-&gt;recycleObj($conn);</span></span><br><span class="line"><span class="code">            Log::getInstance()-&gt;info($result);</span></span><br><span class="line"><span class="code">            $return_sql[] = $sql;</span></span><br><span class="line"><span class="code">            $return_success[$i] = $result??0;</span></span><br><span class="line"></span><br><span class="line"><span class="code">        &#125;</span></span><br><span class="line"><span class="code">        $this-&gt;response()-&gt;setResult( Result::success($return_sql));</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第二个是更深一层的封装读取文件，并插入到数据库</p>
+<h3 id="要导入数据"><a href="#要导入数据" class="headerlink" title="要导入数据"></a>要导入数据</h3><p><img src="https://upload-images.jianshu.io/upload_images/7429691-071f5b3b1349704c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="黑名单导入"><a href="#黑名单导入" class="headerlink" title="黑名单导入"></a>黑名单导入</h3><p>函数参数介绍：</p>
+<ul>
+<li>$filePath 文件的tmp_name</li>
+<li>$startRow 开始读取的行数，默认0行</li>
+<li>$checkTitle 是否检查标题，默认false</li>
+<li>$titkeRaw 文件标题在第几行，默认0行</li>
+<li>$titleConfig 标题格式(数组)，例如：array(‘黑名单’=&gt;’word’);</li>
+<li>$keys 内容格式（数组）例如：array(‘word’);</li>
+</ul>
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">public function readCsv($filePath, $startRow = 0, $checkTitle = false, $titleRow = 0, $titleConfig = [], $keys = [])</span><br><span class="line"><span class="code">    &#123;</span></span><br><span class="line"><span class="code">        $row = (is_numeric($startRow) &amp;&amp; $startRow &gt;= 0) ? $startRow : 0;</span></span><br><span class="line"><span class="code">        $titleIndexArr = array();</span></span><br><span class="line"><span class="code">        $resultArr = array();</span></span><br><span class="line"><span class="code">        $wordsArray = [];</span></span><br><span class="line"><span class="code">        $file = fopen($filePath, 'r');</span></span><br><span class="line"><span class="code">        //读取文件内容</span></span><br><span class="line"><span class="code">        while ($data = fgetcsv($file)) &#123;</span></span><br><span class="line"><span class="code">            $rowCount = count($data);</span></span><br><span class="line"><span class="code">            if ($rowCount &gt; 0) &#123;</span></span><br><span class="line"><span class="code">                for ($r = 0; $r &lt; $rowCount; $r++) &#123;</span></span><br><span class="line"><span class="code">                    $data[$r] = mb_convert_encoding($data[$r], 'UTF-8', 'GBK,GB2312,UTF-8');</span></span><br><span class="line"><span class="code">                &#125;</span></span><br><span class="line"><span class="code">                $wordsArray[] = $data;</span></span><br><span class="line"><span class="code">            &#125;</span></span><br><span class="line"><span class="code">        &#125;</span></span><br><span class="line"><span class="code">        fclose($file);</span></span><br><span class="line"><span class="code">        $rowCount = count($wordsArray);</span></span><br><span class="line"><span class="code">        for (; $row &lt; $rowCount; $row++) &#123;</span></span><br><span class="line"><span class="code">            $tempArr = $wordsArray[$row];</span></span><br><span class="line"><span class="code">            if (isset($tempArr) &amp;&amp; !empty($tempArr)) &#123;</span></span><br><span class="line"><span class="code">                $dataArr = array();</span></span><br><span class="line"><span class="code">                ///验证标题行</span></span><br><span class="line"><span class="code">                if ($checkTitle &amp;&amp; $row == $titleRow) &#123;</span></span><br><span class="line"><span class="code">                    foreach ($tempArr as $key =&gt; $value) &#123;</span></span><br><span class="line"><span class="code">                        $dataArr[$key] = trim(str_replace("'", '', str_replace("\"", '', $value)));</span></span><br><span class="line"><span class="code">                    &#125;</span></span><br><span class="line"><span class="code">                    $titleIndexArr = $this-&gt;checkTitle($dataArr, $titleConfig, $keys);</span></span><br><span class="line"><span class="code">                    if (empty($titleIndexArr)) &#123;</span></span><br><span class="line"><span class="code">                        return array('code' =&gt; 1, 'msg' =&gt; '导入文件格式内容有误，请检查导入文档是否正确');</span></span><br><span class="line"><span class="code">                    &#125;</span></span><br><span class="line"><span class="code">                &#125; else &#123;</span></span><br><span class="line"><span class="code">                    if ($checkTitle &amp;&amp; !empty($titleIndexArr)) &#123;</span></span><br><span class="line"><span class="code">                        foreach ($tempArr as $key =&gt; $value) &#123;</span></span><br><span class="line"><span class="code">                            if (!isset($titleIndexArr[$key]) || empty($titleIndexArr[$key])) &#123;</span></span><br><span class="line"><span class="code">                                continue;</span></span><br><span class="line"><span class="code">                            &#125;</span></span><br><span class="line"><span class="code">                            $keyStr = $titleIndexArr[$key];</span></span><br><span class="line"><span class="code">                            $dataArr[$keyStr] = trim(str_replace("'", '', str_replace("\"", '', ltrim($value, '=\"'))));</span></span><br><span class="line"><span class="code">                        &#125;</span></span><br><span class="line"><span class="code">                    &#125; else &#123;</span></span><br><span class="line"><span class="code">                        foreach ($tempArr as $key =&gt; $value) &#123;</span></span><br><span class="line"><span class="code">                            $dataArr[] = trim(str_replace("'", '', str_replace("\"", '', ltrim($value, '=\"'))));</span></span><br><span class="line"><span class="code">                        &#125;</span></span><br><span class="line"><span class="code">                    &#125;</span></span><br><span class="line"><span class="code">                    $resultArr[$row] = $dataArr;</span></span><br><span class="line"><span class="code">                &#125;</span></span><br><span class="line"><span class="code">            &#125;</span></span><br><span class="line"><span class="code">        &#125;</span></span><br><span class="line"><span class="code">        return array('code' =&gt; 0, 'msg' =&gt; 'success', 'datas' =&gt; $resultArr);</span></span><br><span class="line"><span class="code">    &#125;</span></span><br><span class="line">/**</span><br><span class="line"><span class="bullet">     * </span>验证标题行并返回各属性对应的index</span><br><span class="line"><span class="bullet">     * </span>@param $titleArr</span><br><span class="line"><span class="bullet">     * </span>表头配置 格式：array(key=&gt;value);  key：表头名，value：要替换成的code 例：array('订单编号'=&gt;'order_sn')</span><br><span class="line"><span class="bullet">     * </span>@param $titleConfig</span><br><span class="line"><span class="bullet">     * </span>表头必须要有的key数组， 例： array('order<span class="emphasis">_sn', 'order_</span>status')</span><br><span class="line"><span class="bullet">     * </span>@param $keys</span><br><span class="line"><span class="bullet">     * </span>@return array</span><br><span class="line"><span class="code">     */</span></span><br><span class="line"><span class="code">    protected function checkTitle(array $titleArr, array $titleConfig, array $keys = array())</span></span><br><span class="line"><span class="code">    &#123;</span></span><br><span class="line"><span class="code">        ///根据标题行，排列数据</span></span><br><span class="line"><span class="code">        if (empty($titleArr) || empty($titleConfig)) &#123;</span></span><br><span class="line"><span class="code">            return array();</span></span><br><span class="line"><span class="code">        &#125;</span></span><br><span class="line"><span class="code">        $resultArr = array();</span></span><br><span class="line"><span class="code">        foreach ($titleArr as $key =&gt; $value) &#123;</span></span><br><span class="line"><span class="code">            $resultArr[$key] = isset($titleConfig[$value]) ? $titleConfig[$value] : '';</span></span><br><span class="line"><span class="code">        &#125;</span></span><br><span class="line"><span class="code">        if (!empty($keys)) &#123;</span></span><br><span class="line"><span class="code">            foreach ($keys as $mk =&gt; $mv) &#123;</span></span><br><span class="line"><span class="code">                $flag = array_search($mv, $resultArr);</span></span><br><span class="line"><span class="code">                if ($flag === false) &#123;</span></span><br><span class="line"><span class="code">                    return array();</span></span><br><span class="line"><span class="code">                &#125;</span></span><br><span class="line"><span class="code">            &#125;</span></span><br><span class="line"><span class="code">        &#125;</span></span><br><span class="line"><span class="code">        return $resultArr;</span></span><br><span class="line"><span class="code">    &#125;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
   </div>
 
   
@@ -556,14 +867,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -602,12 +913,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">33k</span>
+    <span title="站点总字数">40k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">30 分钟</span>
+    <span title="站点阅读时长">36 分钟</span>
 </div>
 
         
