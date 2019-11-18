@@ -210,7 +210,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-18 12:47:37" itemprop="dateModified" datetime="2019-11-18T12:47:37+08:00">2019-11-18</time>
+                <time title="修改时间：2019-11-18 12:57:04" itemprop="dateModified" datetime="2019-11-18T12:57:04+08:00">2019-11-18</time>
               </span>
 
           
@@ -228,58 +228,84 @@
 
 <p><img src="https://upload-images.jianshu.io/upload_images/7429691-253978f27f3ebf96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <h3 id="整体流程"><a href="#整体流程" class="headerlink" title="整体流程"></a>整体流程</h3><ul>
-<li>在第三方平台应用上点击授权<br><img src="https://upload-images.jianshu.io/upload_images/7429691-1f822a5a2c7d5609.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
-<li>进入授权页面<br><img src="https://upload-images.jianshu.io/upload_images/7429691-44af97e1cc29aa64.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
-<li>弹出微信授权页面，下方会显示第三方应用的基本信息<br><img src="https://upload-images.jianshu.io/upload_images/7429691-0762d88b8864caeb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
-<li><strong>帐号管理员</strong>扫码，选择要授权的账号，进行授权（可自定义权限）<br><img src="https://upload-images.jianshu.io/upload_images/7429691-5fe7791c5d8e8a1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></li>
+<li>在第三方平台应用上点击授权</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-1f822a5a2c7d5609.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<ul>
+<li>进入授权页面</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-44af97e1cc29aa64.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<ul>
+<li>弹出微信授权页面，下方会显示第三方应用的基本信息</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-0762d88b8864caeb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<ul>
+<li><strong>帐号管理员</strong>扫码，选择要授权的账号，进行授权（可自定义权限）</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-5fe7791c5d8e8a1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<ul>
 <li>是否授权成功，回调页面显示</li>
 </ul>
 <h3 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h3><h5 id="第三方平台方获取预授权码（pre-auth-code）"><a href="#第三方平台方获取预授权码（pre-auth-code）" class="headerlink" title="第三方平台方获取预授权码（pre_auth_code）"></a>第三方平台方获取预授权码（pre_auth_code）</h5><p>接入在第三方平台应用上点击授权的时候会获取授权的预授权码（pre_auth_code），有效期为10分钟。</p>
 <ul>
-<li>调用接口地址<blockquote>
+<li>调用接口地址</li>
+</ul>
+<blockquote>
 <p>POST <a href="https://api.weixin.qq.com/cgi-bin/component/api_create_preauthcode?component_access_token=COMPONENT_ACCESS_TOKEN" target="_blank" rel="noopener">https://api.weixin.qq.com/cgi-bin/component/api_create_preauthcode?component_access_token=COMPONENT_ACCESS_TOKEN</a></p>
 </blockquote>
-</li>
-</ul>
 <p>在调用此接口前，需要先获取第三方平台的令牌（也叫接口调用凭证component_access_token）</p>
 <ul>
-<li><p>参数</p>
+<li>参数</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;component_appid&quot;: &quot;appid_value&quot; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h4 id="后端返回参数，前端拼装请求微信url"><a href="#后端返回参数，前端拼装请求微信url" class="headerlink" title="后端返回参数，前端拼装请求微信url"></a>后端返回参数，前端拼装请求微信url</h4><p>加入授权页面的时候，前端将后端返回的数据进行组织，点击组装后的url调整按钮，就可以弹出授权窗口。（<strong>微信做了限制，只能在第三方平台在设置的回调url地址才可以访问，其他本地地址无效</strong>）<br><img src="https://upload-images.jianshu.io/upload_images/7429691-f6cf588847e9aa89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-</li>
-<li><p>后端返回的参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&apos;component_appid&apos; =&gt; &apos;XXX&apos;,  //第三方平台app_id</span><br><span class="line">&apos;pre_auth_code&apos;   =&gt; &apos;pre_auth_code&apos;  //  预授权码</span><br><span class="line">&apos;redirect_uri&apos;    =&gt; &apos;https://mp.weixin.qq.com/cgi-bin/componentloginpage&apos;,  //拼装的URL地址</span><br><span class="line">&apos;auth_type&apos;       =&gt;  1,  //1 2 3  要授权的帐号类型</span><br><span class="line">&apos;biz_appid&apos;       =&gt;  &apos;xxx&apos;  //指定授权唯一的小程序或公众号</span><br></pre></td></tr></table></figure></li>
-<li><p>拼装示例</p>
+<ul>
+<li>后端返回的参数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&apos;component_appid&apos; =&gt; &apos;XXX&apos;,  //第三方平台app_id</span><br><span class="line">&apos;pre_auth_code&apos;   =&gt; &apos;pre_auth_code&apos;  //  预授权码</span><br><span class="line">&apos;redirect_uri&apos;    =&gt; &apos;https://mp.weixin.qq.com/cgi-bin/componentloginpage&apos;,  //拼装的URL地址</span><br><span class="line">&apos;auth_type&apos;       =&gt;  1,  //1 2 3  要授权的帐号类型</span><br><span class="line">&apos;biz_appid&apos;       =&gt;  &apos;xxx&apos;  //指定授权唯一的小程序或公众号</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>拼装示例</li>
+</ul>
 <blockquote>
 <p><a href="https://mp.weixin.qq.com/cgi-bin/componentloginpage?component_appid=xxxx&amp;pre_auth_code=xxxxx&amp;redirect_uri=xxxx&amp;auth_type=xxx" target="_blank" rel="noopener">https://mp.weixin.qq.com/cgi-bin/componentloginpage?component_appid=xxxx&amp;pre_auth_code=xxxxx&amp;redirect_uri=xxxx&amp;auth_type=xxx</a></p>
 </blockquote>
-</li>
-</ul>
 <h4 id="用户授权，同意授权"><a href="#用户授权，同意授权" class="headerlink" title="用户授权，同意授权"></a>用户授权，同意授权</h4><p>用户进入第三方平台授权页后，需要确认并同意将自己的公众号或小程序授权给第三方平台方，完成授权流程。此时在微信上，公众号已经授权给第三方平台了，在公众号平台上可以看到授权平台。然后第三方平台需要拿到公众号的基本信息、授权信息和执行权限，需要回调地址进行处理、保存授权信息（<strong>access_token和refresh_token</strong>）。</p>
 <h4 id="回调地址处理授权信息"><a href="#回调地址处理授权信息" class="headerlink" title="回调地址处理授权信息"></a>回调地址处理授权信息</h4><p>这个回调地址是在第三方平台上设置的，拿到授权码（auth_code）后，使用授权码换取公众号或小程序的接口调用凭据和授权信息。</p>
 <ul>
-<li>调用接口为：<blockquote>
+<li>调用接口为：</li>
+</ul>
+<blockquote>
 <p>POST <a href="https://api.weixin.qq.com/cgi-bin/component/api_query_auth?component_access_token=COMPONENT_ACCESS_TOKEN" target="_blank" rel="noopener">https://api.weixin.qq.com/cgi-bin/component/api_query_auth?component_access_token=COMPONENT_ACCESS_TOKEN</a></p>
 </blockquote>
-</li>
-<li>参数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;component_appid&quot;:&quot;appid_value&quot; ,  //第三方平台 appid</span><br><span class="line">  &quot;authorization_code&quot;: &quot;auth_code_value&quot;  //授权码</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-返回是仅仅是授权信息（authorization_info）。authorizer_appid，authorizer_access_token，expires_in，authorizer_refresh_token以及权限id集这些数据。稍未获得公众号一些基本帐号信息（公众号名称、头像等等），这时候需要去获取授权方的帐号基本信息。</li>
-<li>调用接口为：<blockquote>
+<ul>
+<li>参数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;component_appid&quot;:&quot;appid_value&quot; ,  //第三方平台 appid</span><br><span class="line">  &quot;authorization_code&quot;: &quot;auth_code_value&quot;  //授权码</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>返回是仅仅是授权信息（authorization_info）。authorizer_appid，authorizer_access_token，expires_in，authorizer_refresh_token以及权限id集这些数据。稍未获得公众号一些基本帐号信息（公众号名称、头像等等），这时候需要去获取授权方的帐号基本信息。</p>
+<ul>
+<li>调用接口为：</li>
+</ul>
+<blockquote>
 <p>POST <a href="https://api.weixin.qq.com/cgi-bin/component/api_get_authorizer_info?component_access_token==COMPONENT_ACCESS_TOKEN" target="_blank" rel="noopener">https://api.weixin.qq.com/cgi-bin/component/api_get_authorizer_info?component_access_token==COMPONENT_ACCESS_TOKEN</a></p>
 </blockquote>
-</li>
-<li>参数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;component_appid&quot;:&quot;appid_value&quot; ,  //第三方平台 appid</span><br><span class="line">  &quot;authorizer_appid&quot;: &quot;auth_code_value&quot;  //授权方 appid</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-拿到信息后你就可以保存到数据库里了，整个微信公众号授权的流程就结束了，后续根据各自业务对授权信息和帐号信息进行其他业务处理就ok。</li>
+<ul>
+<li>参数</li>
 </ul>
-<h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3><blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;component_appid&quot;:&quot;appid_value&quot; ,  //第三方平台 appid</span><br><span class="line">  &quot;authorizer_appid&quot;: &quot;auth_code_value&quot;  //授权方 appid</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>拿到信息后你就可以保存到数据库里了，整个微信公众号授权的流程就结束了，后续根据各自业务对授权信息和帐号信息进行其他业务处理就ok。</p>
+<h3 id="实例代码"><a href="#实例代码" class="headerlink" title="实例代码"></a>实例代码</h3><blockquote>
 <p><strong>$this-&gt;request()-&gt;getParams()</strong> 是封装好的获取参数的方法，可自行替代<br><strong>getComAccessToken()</strong> 是封装好的获取第三方接口调用凭证的方法，可自行替代<br><strong>httpsCurl()</strong> 是封装好的请求微信的方法，可自行替代<br><strong>WX_APP_ID</strong> 是全局参数第三方平台的app_id</p>
 </blockquote>
 <p>PS:这里的代码仅仅只是把整个业务流程写在一起，方便阅读，实际场景中代码当然不会这样子写</p>
-<ul>
-<li>获取预授权码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">     * Created by 沙蒿.</span><br><span class="line">     * @desc 获取预授权码pre_auth_code，有效期10分钟</span><br><span class="line">     */</span><br><span class="line">    public function getWxPreAuthCode()</span><br><span class="line">    &#123;</span><br><span class="line">        $authType = $this-&gt;request()-&gt;getParams(&apos;auth_type&apos;) ?? 1;</span><br><span class="line">        //1公众号授权，2小程序授权</span><br><span class="line">        if (empty($authType) || !in_array($authType, [1, 2])) &#123;</span><br><span class="line">            return $this-&gt;error(100201);</span><br><span class="line">        &#125;</span><br><span class="line">        //获取第三方平台接口调用凭证</span><br><span class="line">        $comAccToken = $this-&gt;getComAccessToken();</span><br><span class="line">        //请求微信服务器获取预授权码url地址</span><br><span class="line">        $url         = &apos;https://api.weixin.qq.com/cgi-bin/component/api_create_preauthcode?component_access_token=&apos; . $comAccToken;</span><br><span class="line">        // 获取授权请求二维码url地址</span><br><span class="line">        $reqUrl      = &apos;https://mp.weixin.qq.com/cgi-bin/componentloginpage&apos;;</span><br><span class="line">        $preAuthCode = CommonService::getInstance()-&gt;httpsCurl($url, &apos;post&apos;, &apos;json&apos;, [</span><br><span class="line">            &apos;component_appid&apos; =&gt; WX_APP_ID</span><br><span class="line">        ]);</span><br><span class="line">        //组装格式，返回</span><br><span class="line">        $result = [</span><br><span class="line">            &apos;component_appid&apos; =&gt; WX_APP_ID,</span><br><span class="line">            &apos;pre_auth_code&apos;   =&gt; $preAuthCode[&apos;pre_auth_code&apos;],</span><br><span class="line">            &apos;redirect_uri&apos;    =&gt; $reqUrl,</span><br><span class="line">            &apos;auth_type&apos;       =&gt; $authType,</span><br><span class="line">        ];</span><br><span class="line">        if (!empty($bizAppId)) &#123;</span><br><span class="line">            $result[&apos;biz_appid&apos;] = $bizAppId;</span><br><span class="line">        &#125;</span><br><span class="line">        return $result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-<li>回调地址处理授权信息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">     * Created by 沙蒿.</span><br><span class="line">     * @desc 微信授权</span><br><span class="line">     * 授权后回调URI，得到授权码（authorization_code）和过期时间10分钟,使用授权码换取公众号或小程序的接口调用凭据和授权信息</span><br><span class="line">     */</span><br><span class="line">    public function wxOAuth()</span><br><span class="line">    &#123;</span><br><span class="line">        //接收授权码auth_code</span><br><span class="line">        $code = $this-&gt;request()-&gt;getParams(&apos;auth_code&apos;);</span><br><span class="line">        //校验参数</span><br><span class="line">        if (empty($code)) &#123;</span><br><span class="line">            return $this-&gt;error(100202);</span><br><span class="line">        &#125;</span><br><span class="line">        //获取第三方平台的接口调用凭证</span><br><span class="line">        $comAccToken = $this-&gt;getComAccessToken();</span><br><span class="line">        //使用授权码换取公众号或小程序的接口调用凭据和授权信息</span><br><span class="line">        $queryAuthUrl = &apos;https://api.weixin.qq.com/cgi-bin/component/api_query_auth?component_access_token=&apos; . $comAccToken;</span><br><span class="line">        $authInfo     = CommonService::getInstance()-&gt;httpsCurl($queryAuthUrl, &apos;post&apos;, &apos;json&apos;, [</span><br><span class="line">            &apos;component_appid&apos;    =&gt; WX_APP_ID,</span><br><span class="line">            &apos;authorization_code&apos; =&gt; $code</span><br><span class="line">        ]);</span><br><span class="line">        //获取授权信息</span><br><span class="line">        $authInfo        = $authInfo[&apos;authorization_info&apos;];</span><br><span class="line">        $authorizerAppId = $authInfo[&apos;authorizer_appid&apos;]; //授权方appid</span><br><span class="line">        //获取授权方的帐号基本信息</span><br><span class="line">        $authorizerInfoUrl = &apos;https://api.weixin.qq.com/cgi-bin/component/api_get_authorizer_info?component_access_token=&apos; . $comAccToken;</span><br><span class="line">        $appInfo           = CommonService::getInstance()-&gt;httpsCurl($authorizerInfoUrl, &apos;post&apos;, &apos;json&apos;, [</span><br><span class="line">            &apos;component_appid&apos;  =&gt; WX_APP_ID,</span><br><span class="line">            &apos;authorizer_appid&apos; =&gt; $authorizerAppId</span><br><span class="line">        ]);</span><br><span class="line">        //保存授权信息和帐号信息</span><br><span class="line">        $this-&gt;saveWxAuth($authInfo, $appInfo);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
+<p>获取预授权码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">     * Created by 沙蒿.</span><br><span class="line">     * @desc 获取预授权码pre_auth_code，有效期10分钟</span><br><span class="line">     */</span><br><span class="line">    public function getWxPreAuthCode()</span><br><span class="line">    &#123;</span><br><span class="line">        $authType = $this-&gt;request()-&gt;getParams(&apos;auth_type&apos;) ?? 1;</span><br><span class="line">        //1公众号授权，2小程序授权</span><br><span class="line">        if (empty($authType) || !in_array($authType, [1, 2])) &#123;</span><br><span class="line">            return $this-&gt;error(100201);</span><br><span class="line">        &#125;</span><br><span class="line">        //获取第三方平台接口调用凭证</span><br><span class="line">        $comAccToken = $this-&gt;getComAccessToken();</span><br><span class="line">        //请求微信服务器获取预授权码url地址</span><br><span class="line">        $url         = &apos;https://api.weixin.qq.com/cgi-bin/component/api_create_preauthcode?component_access_token=&apos; . $comAccToken;</span><br><span class="line">        // 获取授权请求二维码url地址</span><br><span class="line">        $reqUrl      = &apos;https://mp.weixin.qq.com/cgi-bin/componentloginpage&apos;;</span><br><span class="line">        $preAuthCode = CommonService::getInstance()-&gt;httpsCurl($url, &apos;post&apos;, &apos;json&apos;, [</span><br><span class="line">            &apos;component_appid&apos; =&gt; WX_APP_ID</span><br><span class="line">        ]);</span><br><span class="line">        //组装格式，返回</span><br><span class="line">        $result = [</span><br><span class="line">            &apos;component_appid&apos; =&gt; WX_APP_ID,</span><br><span class="line">            &apos;pre_auth_code&apos;   =&gt; $preAuthCode[&apos;pre_auth_code&apos;],</span><br><span class="line">            &apos;redirect_uri&apos;    =&gt; $reqUrl,</span><br><span class="line">            &apos;auth_type&apos;       =&gt; $authType,</span><br><span class="line">        ];</span><br><span class="line">        if (!empty($bizAppId)) &#123;</span><br><span class="line">            $result[&apos;biz_appid&apos;] = $bizAppId;</span><br><span class="line">        &#125;</span><br><span class="line">        return $result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
+<p>回调地址处理授权信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">     * Created by 沙蒿.</span><br><span class="line">     * @desc 微信授权</span><br><span class="line">     * 授权后回调URI，得到授权码（authorization_code）和过期时间10分钟,使用授权码换取公众号或小程序的接口调用凭据和授权信息</span><br><span class="line">     */</span><br><span class="line">    public function wxOAuth()</span><br><span class="line">    &#123;</span><br><span class="line">        //接收授权码auth_code</span><br><span class="line">        $code = $this-&gt;request()-&gt;getParams(&apos;auth_code&apos;);</span><br><span class="line">        //校验参数</span><br><span class="line">        if (empty($code)) &#123;</span><br><span class="line">            return $this-&gt;error(100202);</span><br><span class="line">        &#125;</span><br><span class="line">        //获取第三方平台的接口调用凭证</span><br><span class="line">        $comAccToken = $this-&gt;getComAccessToken();</span><br><span class="line">        //使用授权码换取公众号或小程序的接口调用凭据和授权信息</span><br><span class="line">        $queryAuthUrl = &apos;https://api.weixin.qq.com/cgi-bin/component/api_query_auth?component_access_token=&apos; . $comAccToken;</span><br><span class="line">        $authInfo     = CommonService::getInstance()-&gt;httpsCurl($queryAuthUrl, &apos;post&apos;, &apos;json&apos;, [</span><br><span class="line">            &apos;component_appid&apos;    =&gt; WX_APP_ID,</span><br><span class="line">            &apos;authorization_code&apos; =&gt; $code</span><br><span class="line">        ]);</span><br><span class="line">        //获取授权信息</span><br><span class="line">        $authInfo        = $authInfo[&apos;authorization_info&apos;];</span><br><span class="line">        $authorizerAppId = $authInfo[&apos;authorizer_appid&apos;]; //授权方appid</span><br><span class="line">        //获取授权方的帐号基本信息</span><br><span class="line">        $authorizerInfoUrl = &apos;https://api.weixin.qq.com/cgi-bin/component/api_get_authorizer_info?component_access_token=&apos; . $comAccToken;</span><br><span class="line">        $appInfo           = CommonService::getInstance()-&gt;httpsCurl($authorizerInfoUrl, &apos;post&apos;, &apos;json&apos;, [</span><br><span class="line">            &apos;component_appid&apos;  =&gt; WX_APP_ID,</span><br><span class="line">            &apos;authorizer_appid&apos; =&gt; $authorizerAppId</span><br><span class="line">        ]);</span><br><span class="line">        //保存授权信息和帐号信息</span><br><span class="line">        $this-&gt;saveWxAuth($authInfo, $appInfo);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -329,7 +355,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-18 12:47:26" itemprop="dateModified" datetime="2019-11-18T12:47:26+08:00">2019-11-18</time>
+                <time title="修改时间：2019-11-18 12:51:10" itemprop="dateModified" datetime="2019-11-18T12:51:10+08:00">2019-11-18</time>
               </span>
 
           
@@ -344,8 +370,8 @@
 
       
           <meta charset="utf-8" name="referrer" content="no-referrer" />
-![image.png](https://upload-images.jianshu.io/upload_images/7429691-70d1c79d596ae7a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-70d1c79d596ae7a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第三方平台接入"></p>
 <h3 id="整体流程"><a href="#整体流程" class="headerlink" title="整体流程"></a>整体流程</h3><p><a href="[https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html](https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html)">微信官方文档</a><br><img src="https://upload-images.jianshu.io/upload_images/7429691-06c4cc6a442dc1f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="微信小程序登录流程时序图"></p>
 <h3 id="详细说明"><a href="#详细说明" class="headerlink" title="详细说明"></a>详细说明</h3><p>现在用户初次进入小程序中先需要用户进行授权操作，其实就是“登录”，然后拿到“用户信息”的操作。上面wx.login()只是拿到了登录code，并没有获取用户信息。一般小程序登录接口会给code和用户加密敏感信息相关字段。</p>
 <ul>
@@ -361,41 +387,38 @@
 </tr>
 </thead>
 <tbody><tr>
-<td></td>
 <td>appId</td>
 <td>string</td>
+<td>小程序的app_id</td>
 </tr>
 <tr>
-<td></td>
 <td>code</td>
 <td>string</td>
+<td>登录code</td>
 </tr>
 <tr>
-<td></td>
 <td>rawData</td>
 <td>string</td>
+<td>不包括敏感信息的原始数据字符串，用于计算签名</td>
 </tr>
 <tr>
-<td></td>
 <td>signature</td>
 <td>string</td>
+<td>使用 sha1( rawData + sessionkey ) 得到字符串，用于校验用户信息，详见 <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/signature.html" target="_blank" rel="noopener">用户数据的签名验证和加解密</a></td>
 </tr>
 <tr>
-<td></td>
 <td>encryptedData</td>
 <td>string</td>
+<td>包括敏感数据在内的完整用户信息的加密数据，详见 <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/signature.html#%E5%8A%A0%E5%AF%86%E6%95%B0%E6%8D%AE%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">用户数据的签名验证和加解密</a></td>
 </tr>
 <tr>
-<td></td>
 <td>iv</td>
 <td>string</td>
-</tr>
-<tr>
-<td>接收到参数后，从时序图可以知道。要拿code调用微信接口获取session_key和openid这些加密信息，然后对其进行解密，解密就用官方的<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/signature.html" target="_blank" rel="noopener">解密sdk</a>就好，最好保存小程序粉丝信息，返回自定义登录token给前端，下次前端请求接口的时候需要在请求头把自定义的tokne给过来验证。</td>
-<td></td>
-<td></td>
+<td>加密算法的初始向量，详见 <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/signature.html#%E5%8A%A0%E5%AF%86%E6%95%B0%E6%8D%AE%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">用户数据的签名验证和加解密</a></td>
 </tr>
 </tbody></table>
+<hr>
+<p>接收到参数后，从时序图可以知道。要拿code调用微信接口获取session_key和openid这些加密信息，然后对其进行解密，解密就用官方的<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/signature.html" target="_blank" rel="noopener">解密sdk</a>就好，最好保存小程序粉丝信息，返回自定义登录token给前端，下次前端请求接口的时候需要在请求头把自定义的tokne给过来验证。</p>
 <ul>
 <li><a href="https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/Mini_Programs/WeChat_login.html" target="_blank" rel="noopener">小程序登录</a>调用地址</li>
 </ul>
