@@ -653,6 +653,101 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/21/PHP7%E6%96%B0%E7%89%B9%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shahao.jpg">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖记忆">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/21/PHP7%E6%96%B0%E7%89%B9%E6%80%A7/" class="post-title-link" itemprop="url">PHP7新特性</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-21 16:19:12" itemprop="dateCreated datePublished" datetime="2019-05-21T16:19:12+08:00">2019-05-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-18 16:19:59" itemprop="dateModified" datetime="2019-11-18T16:19:59+08:00">2019-11-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>998</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><strong>可为空（Nullable）类型</strong></li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">testReturn</span><span class="params">()</span> : ? <span class="title">string</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">'elePHPant'</span>; <span class="comment">//  elePHPant</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">(?string $name)</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">      var_dump($name);  <span class="comment">//  null</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>就如testeturn()函数一样，要么返回给定类型，要么返回null，其他则报错。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Uncaught Error: Too few arguments to <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span>, 0 <span class="title">passed</span> <span class="title">in</span>...</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>void函数</strong></li>
+</ul>
+<p>一个新的返回值类型void被引入。 返回值声明为 void 类型的方法要么干脆省去 return 语句，要么使用一个空的 return 语句。 对于 void 函数来说，NULL 不是一个合法的返回值。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span><span class="params">(&amp;$left, &amp;$right)</span> : <span class="title">void</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ($left === $right) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    $tmp = $left;</span><br><span class="line">    $left = $right;</span><br><span class="line">    $right = $tmp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$a = <span class="number">1</span>;</span><br><span class="line">$b = <span class="number">2</span>;</span><br><span class="line">var_dump(swap($a, $b), $a, $b);  <span class="comment">//null int(2) int(1)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>list()支持键名</strong></li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$data = [</span><br><span class="line">    [<span class="string">"id"</span> =&gt; <span class="number">1</span>, <span class="string">"name"</span> =&gt; <span class="string">'Tom'</span>],</span><br><span class="line">    [<span class="string">"id"</span> =&gt; <span class="number">2</span>, <span class="string">"name"</span> =&gt; <span class="string">'Fred'</span>],</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// list() style</span></span><br><span class="line"><span class="keyword">list</span>(<span class="string">"id"</span> =&gt; $id1, <span class="string">"name"</span> =&gt; $name1) = $data[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// [] style</span></span><br><span class="line">[<span class="string">"id"</span> =&gt; $id1, <span class="string">"name"</span> =&gt; $name1] = $data[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// list() style</span></span><br><span class="line"><span class="keyword">foreach</span> ($data <span class="keyword">as</span> <span class="keyword">list</span>(<span class="string">"id"</span> =&gt; $id, <span class="string">"name"</span> =&gt; $name)) &#123;</span><br><span class="line">    <span class="comment">// logic here with $id and $name</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// [] style</span></span><br><span class="line"><span class="keyword">foreach</span> ($data <span class="keyword">as</span> [<span class="string">"id"</span> =&gt; $id, <span class="string">"name"</span> =&gt; $name]) &#123;</span><br><span class="line">    <span class="comment">// logic here with $id and $name</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/21/%E5%BE%AE%E4%BF%A1%E6%B6%88%E6%81%AF%E5%8A%A0%E8%A7%A3%E5%AF%86Mcrypt%E5%9C%A8php7-2%E4%B8%AD%E5%BA%9F%E5%BC%83%E4%B8%8Eopen-ssl%E6%9B%BF%E4%BB%A3%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -737,6 +832,313 @@
   
   
 
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/20/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%B7%A5%E4%BD%9C5%E5%B9%B4%EF%BC%8C-%E7%BB%99%E5%B0%8F%E8%90%8C%E6%96%B0%E7%9A%84%E5%BB%BA%E8%AE%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shahao.jpg">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖记忆">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/20/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%B7%A5%E4%BD%9C5%E5%B9%B4%EF%BC%8C-%E7%BB%99%E5%B0%8F%E8%90%8C%E6%96%B0%E7%9A%84%E5%BB%BA%E8%AE%AE/" class="post-title-link" itemprop="url">程序员工作5年， 给小萌新的建议</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-20 16:20:17" itemprop="dateCreated datePublished" datetime="2019-05-20T16:20:17+08:00">2019-05-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-18 16:21:01" itemprop="dateModified" datetime="2019-11-18T16:21:01+08:00">2019-11-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>969</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>周末，我有一个同事（实习生）拍毕业照了，应部门大佬的邀请一块到佛山科技技术学院走走玩玩，然而我还是太年轻了，程序员之间的聊天打开方式还是离不开技术。做为一个php实习生，在谈话中，我被大佬问倒过好几个问题，有算法的，有语言底层实现的。在这个“上级”对“下级”的这场搏击中，我还是太菜了。大佬还是大佬，在交谈中，我总结大佬所传授的为以下几点：</p>
+<ul>
+<li><strong>“你们（实习生）要想走得远，有四个基础点，你必须要理解并用于实践中：操作系统、计算机网络、数据结构与算法、掌握一门编程语言”</strong></li>
+</ul>
+<p>在谈话中，大佬并没有详细的指出四点的详细内容，重要性你我都知。在大学学习中，这些都是我们的基础和核心课程，也是我们当代大学会教的东西。新的技术学校教不了，老的学了也过时，只有这些基础核心课程，才是我们在学习必须理解并自己应用实践的。也许，看到这篇文字的你还是一个大学生，觉得这些课程枯燥乏味还没法做出一个应用，学了就只是为了应付考试及格，那你就真的大错特错了；也许，你是一个在职的程序员，觉得在实际业务逻辑开发中这些东西也没那么重要，那当你遇到内存泄漏溢出你是要咋办呢？在我的理解中，它们就像是高楼大厦下的地基，基础打好了，楼也就稳了，科技在不断进步，以后不管是遇到什么样的大风大浪大地震，总有解决的办法。</p>
+<ul>
+<li><strong>“php语言这条路很广，但天花板很低”</strong></li>
+</ul>
+<p>有那么一句调侃的话是这样说的“php是世界上最好的语言”，起初我还以为php这门语言真的很“好”（简单易学快上手），后来我才发现这其实是phper的一种自嘲。大佬说：“php语言很弱，它的容错机制决定一个好的程序员和一个坏的程序员开发出来代码效果的差不多的（java也是），这也是为什么java和php在市场上的需求和就业高与其他开发语言（node.js等）”，虽然php7出了很多新的特性，php版本更新还算频繁，加上现在比较热门的高性能的php swoole扩展，也有几个用swoole扩展封装的框架（easyswoole等），总的来说，这门语言是在不断的成长和变好的，开发网站业务是最适合效率最高最满足现在企业需求的。尽管如此，它还是会有很多缺陷与不足，具体的这个还是留个坑给自己以后再填吧。</p>
+<p>在最后出一道题考考大家，可以把答案在下方留言哦</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//问题</span></span><br><span class="line">x = <span class="number">1</span>;</span><br><span class="line">z = x++;</span><br><span class="line">y = ++x;</span><br><span class="line"><span class="comment">//答案</span></span><br><span class="line">x = ?;</span><br><span class="line">y = ?;</span><br><span class="line">z = ?;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/19/php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shahao.jpg">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖记忆">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/19/php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" class="post-title-link" itemprop="url">php面试基础知识--数组函数（二）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-19 16:21:19" itemprop="dateCreated datePublished" datetime="2019-05-19T16:21:19+08:00">2019-05-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-18 16:22:58" itemprop="dateModified" datetime="2019-11-18T16:22:58+08:00">2019-11-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><p><strong>array_keys() : array</strong></p>
+<p>返回数组中的数字或者字符串的部分或全部键名；第二个参数为输入<strong>键值</strong>则只返回该值的<strong>键名</strong>，例：</p>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $array = [</span><br><span class="line">        <span class="string">'a'</span> =&gt;  <span class="string">'1'</span>,</span><br><span class="line">        <span class="string">'b'</span> =&gt;  <span class="string">'2'</span>,</span><br><span class="line">        <span class="string">'c'</span> =&gt;  <span class="string">'3'</span></span><br><span class="line">    ];</span><br><span class="line">    var_dump(array_keys($array));  <span class="comment">//array('a', 'b', 'c');</span></span><br><span class="line">    var_dump(array_keys($array, <span class="string">'a'</span>));  <span class="comment">//null</span></span><br><span class="line">    var_dump(array_keys($array, <span class="string">'1'</span>));  <span class="comment">//array('a');</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>array_values() : array</strong></li>
+</ul>
+<p>返回数组中所有的值并给其建立数字索引，这个简单些没遇到什么坑。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $array = [</span><br><span class="line">        <span class="string">'a'</span> =&gt;  <span class="string">'1'</span>,</span><br><span class="line">        <span class="string">'b'</span> =&gt;  <span class="string">'2'</span>,</span><br><span class="line">        <span class="string">'c'</span> =&gt;  <span class="string">'3'</span></span><br><span class="line">    ];</span><br><span class="line">    var_dump(array_values($array));  <span class="comment">//array('1', '2', '3');</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>array_diff ( array $array1 , array $array2 [, array $… ] ) : array</strong></li>
+</ul>
+<p><strong>差集：</strong>对比 array1 和其他一个或者多个数组，返回在 array1 中但是不在其他 array 里的值。</p>
+<p><strong>注意：</strong>返回键名保留不变，且函数只检查了多维数组中的一维</p>
+<ul>
+<li><strong>array_diff_assoc() : array</strong></li>
+</ul>
+<p>与array_diff ()不同的地方在于，<strong>这个家伙键名也用于比较</strong>。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $array1 = <span class="keyword">array</span>(<span class="string">"a"</span> =&gt; <span class="string">"green"</span>, <span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"red"</span>);</span><br><span class="line">  $array2 = <span class="keyword">array</span>(<span class="string">"a"</span> =&gt; <span class="string">"green"</span>, <span class="string">"yellow"</span>, <span class="string">"red"</span>);</span><br><span class="line">  $result1 = array_diff($array1, $array2);</span><br><span class="line">  $result2 = array_diff_assoc($array1, $array2);</span><br><span class="line">  print_r($result1);</span><br><span class="line">  print_r($result2);</span><br><span class="line">  <span class="comment">//返回结果</span></span><br><span class="line">  <span class="keyword">Array</span></span><br><span class="line">  (</span><br><span class="line">      [<span class="number">1</span>] =&gt; blue</span><br><span class="line">  )</span><br><span class="line">  <span class="keyword">Array</span></span><br><span class="line">  (</span><br><span class="line">      [<span class="number">0</span>] =&gt; red</span><br><span class="line">      [<span class="number">1</span>] =&gt; blue</span><br><span class="line">      [<span class="number">2</span>] =&gt; red</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>array_intersect ( array $array1 , array $array2 [, array $… ] ) : array</strong></li>
+</ul>
+<p><strong>交集：</strong>返回一个数组，该数组包含了所有在 array1 中也同时出现在所有其它参数数组中的值。<br><strong>注意：</strong>键名保留不变。</p>
+<ul>
+<li><strong>array_intersect_assoc() : array</strong></li>
+</ul>
+<p>与array_intersect ()不同的地方在于，<strong>这个家伙键名也用于比较</strong>。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $array1 = <span class="keyword">array</span>(<span class="string">"a"</span> =&gt; <span class="string">"green"</span>, <span class="string">"b"</span> =&gt; <span class="string">"brown"</span>, <span class="string">"c"</span> =&gt; <span class="string">"blue"</span>, <span class="string">"red"</span>);</span><br><span class="line">    $array2 = <span class="keyword">array</span>(<span class="string">"a"</span> =&gt; <span class="string">"green"</span>, <span class="string">"b"</span> =&gt; <span class="string">"yellow"</span>, <span class="string">"blue"</span>, <span class="string">"red"</span>);</span><br><span class="line">    $result_array1 = array_intersect($array1, $array2);</span><br><span class="line">    $result_array2 = array_intersect_assoc($array1, $array2);</span><br><span class="line">    print_r($result_array1);</span><br><span class="line">    print_r($result_array2);</span><br><span class="line">    <span class="comment">//返回结果</span></span><br><span class="line">    <span class="keyword">Array</span></span><br><span class="line">    (</span><br><span class="line">        [a] =&gt; green</span><br><span class="line">        [c] =&gt; blue</span><br><span class="line">        [<span class="number">0</span>] =&gt; red</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">Array</span></span><br><span class="line">    (</span><br><span class="line">        [a] =&gt; green</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/18/php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shahao.jpg">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖记忆">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/18/php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0%EF%BC%88%E4%B8%80%EF%BC%89/" class="post-title-link" itemprop="url">php面试基础知识--数组函数（一）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-18 16:23:25" itemprop="dateCreated datePublished" datetime="2019-05-18T16:23:25+08:00">2019-05-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-18 16:24:08" itemprop="dateModified" datetime="2019-11-18T16:24:08+08:00">2019-11-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><strong>array_merge() : array</strong></li>
+</ul>
+<p>将一个或多个数组的单元合并起来，一个数组中的值附加在前一个数组的后面。返回作为结果的数组。</p>
+<p>如果输入的数组中有相同的字符串键名，则该键名后面的值将覆盖前一个值。然而，如果数组包含数字键名，后面的值将不会覆盖原来的值，而是附加到后面。</p>
+<p>如果只给了一个数组并且该数组是数字索引的，则键名会以连续方式重新索引。</p>
+<p><strong>注意：</strong>其中一个数组为null，返回的值也为null（曾经被自己坑过）</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $array1 = <span class="keyword">array</span>(<span class="string">"color"</span> =&gt; <span class="string">"red"</span>, <span class="number">2</span>, <span class="number">4</span>);</span><br><span class="line">  $array2 = <span class="keyword">array</span>(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"color"</span> =&gt; <span class="string">"green"</span>, <span class="string">"shape"</span> =&gt; <span class="string">"trapezoid"</span>, <span class="number">4</span>);</span><br><span class="line">  $array3 = <span class="keyword">null</span>;</span><br><span class="line">  $result = array_merge($array1, $array2);</span><br><span class="line">  print_r($result);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>array_push() : int</strong></li>
+</ul>
+<p>array_push() 将 array 当成一个栈，并将传入的变量压入 array 的末尾。array 的长度将根据入栈变量的数目增加。和如下效果相同：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $array[] = $var;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong><br>1、这个函数建议大家少用吧，还不如直接用 $array[] = ，因为这样没有调用函数的额外负担；<br>2、另外，如果第一个参数不是数组，array_push() 将发出一条警告（自己也被坑过）<br>3、记得函数返回的是元素的个数（int），而不是数组</p>
+<ul>
+<li><strong>array_pop() : mixed</strong></li>
+</ul>
+<p>弹出并返回 array 数组的最后一个单元，并将数组 array 的长度减一</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $array = [</span><br><span class="line">        <span class="string">'a'</span> =&gt;  <span class="string">'1'</span>,</span><br><span class="line">        <span class="string">'b'</span> =&gt;  <span class="string">'2'</span>,</span><br><span class="line">        <span class="string">'c'</span> =&gt;  <span class="string">'3'</span></span><br><span class="line">    ];</span><br><span class="line">    $count = array_push($array, <span class="keyword">array</span>(<span class="string">'123'</span>));  </span><br><span class="line">    <span class="keyword">echo</span> $count;  <span class="comment">// 返回值为4</span></span><br><span class="line">    var_dump($array);  <span class="comment">//array('a' =&gt;  '1','b' =&gt;  '2','c' =&gt;  '3', 0 =&gt; array('123'))</span></span><br><span class="line">    $pop_array = array_pop($array);  <span class="comment">//array(1) &#123;[0]=&gt;string(3) "123"&#125;</span></span><br><span class="line">    var_dump($pop_array);</span><br><span class="line">    var_dump($array);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>array_search() :mixed</strong></p>
+<p>在数组中搜索给定的值，如果成功则返回首个相应的键名。俗称：“大海捞针”。<br>底层的代码其实就是循环遍历，实现的时间复杂度O(n²)，这个时间复杂度大家是懂的（恐怖）。以下是部分代码：（我也不知道为什么要粘贴上去，可能显得牛逼吧）</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> inline void php_search_array(INTERNAL_FUNCTION_PARAMETERS, int behavior) <span class="comment">/* &#123;&#123;&#123; */</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (strict) &#123;</span><br><span class="line">        ZEND_HASH_FOREACH_KEY_VAL(Z_ARRVAL_P(<span class="keyword">array</span>), num_idx, str_idx, entry) &#123;</span><br><span class="line">            ……</span><br><span class="line">        &#125; ZEND_HASH_FOREACH_END();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (Z_TYPE_P(value) == IS_LONG) &#123;</span><br><span class="line">            ZEND_HASH_FOREACH_KEY_VAL(Z_ARRVAL_P(<span class="keyword">array</span>), num_idx, str_idx, entry) &#123;</span><br><span class="line">                ……</span><br><span class="line">            &#125; ZEND_HASH_FOREACH_END();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (Z_TYPE_P(value) == IS_STRING) &#123;</span><br><span class="line">            ZEND_HASH_FOREACH_KEY_VAL(Z_ARRVAL_P(<span class="keyword">array</span>), num_idx, str_idx, entry) &#123;</span><br><span class="line">                ……</span><br><span class="line">            &#125; ZEND_HASH_FOREACH_END();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            ZEND_HASH_FOREACH_KEY_VAL(Z_ARRVAL_P(<span class="keyword">array</span>), num_idx, str_idx, entry) &#123;</span><br><span class="line">                ……</span><br><span class="line">            &#125; ZEND_HASH_FOREACH_END();</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    RETURN_FALSE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里是简单的示例</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $array = <span class="keyword">array</span>(<span class="number">0</span> =&gt; <span class="string">'blue'</span>, <span class="number">1</span> =&gt; <span class="string">'red'</span>, <span class="number">2</span> =&gt; <span class="string">'green'</span>, <span class="number">3</span> =&gt; <span class="string">'red'</span>);</span><br><span class="line"></span><br><span class="line">  $key = array_search(<span class="string">'green'</span>, $array); <span class="comment">// $key = 2;</span></span><br><span class="line">  $key = array_search(<span class="string">'red'</span>, $array);   <span class="comment">// $key = 1;</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>注意：</strong>很多新人滥用了这个函数，其实就想大海捞针一样，循环遍历。该函数在某些场景下效率是很低的。这里有一篇文章有详细的介绍与数据证明，建议大家看看:<a href="[https://blog.csdn.net/weixin_42900065/article/details/81639163](https://blog.csdn.net/weixin_42900065/article/details/81639163)">慎用php的array_search函数–作者：安木1991)
+</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
   </div>
 
   
@@ -787,14 +1189,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -833,12 +1235,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">23k</span>
+    <span title="站点总字数">28k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">21 分钟</span>
+    <span title="站点阅读时长">26 分钟</span>
 </div>
 
         
