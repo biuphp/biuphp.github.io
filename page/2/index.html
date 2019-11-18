@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="指尖记忆" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+<meta name="keywords" content="php程序员">
+<meta property="og:type" content="website">
+<meta property="og:title" content="指尖记忆">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;page&#x2F;2&#x2F;index.html">
+<meta property="og:site_name" content="指尖记忆">
+<meta property="og:description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/page/2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>指尖记忆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">指尖记忆</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/08/Leetcode%E5%8A%9B%E6%89%A3%E7%AE%97%E6%B3%95%E9%A2%98%E7%9B%AE%E2%80%94%E2%80%94%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shahao.jpg">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖记忆">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/08/Leetcode%E5%8A%9B%E6%89%A3%E7%AE%97%E6%B3%95%E9%A2%98%E7%9B%AE%E2%80%94%E2%80%94%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C/" class="post-title-link" itemprop="url">Leetcode力扣算法题目——四数之和</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-08 15:38:11" itemprop="dateCreated datePublished" datetime="2019-08-08T15:38:11+08:00">2019-08-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-18 15:39:09" itemprop="dateModified" datetime="2019-11-18T15:39:09+08:00">2019-11-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <meta name="referrer" content="no-referrer" />
+
+
+
+<blockquote>
+<p>给定一个包含 n 个整数的数组 nums 和一个目标值 target，判断 nums 中是否存在四个元素 a，b，c 和 d ，使得 a + b + c + d 的值与 target 相等？找出所有满足条件且不重复的四元组。</p>
+</blockquote>
+<p><strong>注意：答案中不可以包含重复的四元组。</strong></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">示例：</span><br><span class="line"></span><br><span class="line">给定数组 nums = [1, 0, -1, 0, -2, 2]，和 target = 0。</span><br><span class="line"></span><br><span class="line">满足要求的四元组集合为：</span><br><span class="line">[</span><br><span class="line">  [-1,  0, 0, 1],</span><br><span class="line">  [-2, -1, 1, 2],</span><br><span class="line">  [-2,  0, 0, 2]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>我这边使用的是php语言排列组合的递归方法，得出所有四个数的集合，在对每一个数组进行求和与目标数相比。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> Integer[] $nums</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> Integer $target</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> Integer[][]</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fourSum</span><span class="params">($nums, $target)</span> </span>&#123;</span><br><span class="line">        $result = [];</span><br><span class="line">        $com_array = <span class="keyword">self</span>::combination($nums, <span class="number">4</span>);</span><br><span class="line">        <span class="keyword">foreach</span>($com_array <span class="keyword">as</span> $arr) &#123;</span><br><span class="line">            <span class="keyword">if</span> (array_sum($arr) === $target &amp;&amp; is_array($arr)) &#123;</span><br><span class="line">                sort($arr);</span><br><span class="line">                $result[] = $arr;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> array_unique($result, SORT_REGULAR);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">combination</span><span class="params">($st_array, $m)</span> </span>&#123;</span><br><span class="line">        $re_array = <span class="keyword">array</span>();</span><br><span class="line"></span><br><span class="line">        $n = count($st_array);</span><br><span class="line">        <span class="keyword">if</span> ($m &lt;= <span class="number">0</span> || $m &gt; $n) &#123;</span><br><span class="line">            <span class="keyword">return</span> $re_array;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> ($i=<span class="number">0</span>; $i&lt;$n; $i++) &#123;</span><br><span class="line">            $t = <span class="keyword">array</span>($st_array[$i]);</span><br><span class="line">            <span class="keyword">if</span> ($m == <span class="number">1</span>) &#123;</span><br><span class="line">                $re_array[] = $t;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                $item_array = array_slice($st_array, $i+<span class="number">1</span>);</span><br><span class="line">                $c = <span class="keyword">self</span>::combination($item_array, $m<span class="number">-1</span>);</span><br><span class="line">                <span class="keyword">foreach</span> ($c <span class="keyword">as</span> $v) &#123;</span><br><span class="line">                    $re_array[] = array_merge($t, $v);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> $re_array;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="出现问题-超出内存限制"><a href="#出现问题-超出内存限制" class="headerlink" title="出现问题-超出内存限制"></a>出现问题-超出内存限制</h3><p><img src="https://upload-images.jianshu.io/upload_images/7429691-016ed774443d8860.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>设置了 ini_set(‘memory_limit’,’256M’); 512M，1024M均不行，力扣官网测试用例在不断的增加数组的长度，导致内存原因执行失败。</p>
+<p><strong>Line 36: PHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to allocate 67108872 bytes) in solution.php</strong></p>
+<hr>
+<p>百度到了一大神写的方法，感觉很强，分享一下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> Integer[] $nums</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> Integer $target</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> Integer[][]</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fourSum</span><span class="params">($nums, $target)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        sort($nums);</span><br><span class="line">        $len = count($nums);</span><br><span class="line">        $res = [];</span><br><span class="line">        <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; $len - <span class="number">3</span>; $i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> ($j = $i + <span class="number">1</span>; $j &lt; $len - <span class="number">2</span>; $j++) &#123;</span><br><span class="line">                $l = $j + <span class="number">1</span>;</span><br><span class="line">                $r = $len - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span> ($l &lt; $r) &#123;</span><br><span class="line">                    $sum = $nums[$i] + $nums[$j] + $nums[$l] + $nums[$r];</span><br><span class="line">                    <span class="keyword">if</span> ($sum === $target &amp;&amp; $r &gt; $l) &#123;</span><br><span class="line">                        $tmp   = [$nums[$i], $nums[$j], $nums[$l], $nums[$r]];</span><br><span class="line">                        $res[] = $tmp;</span><br><span class="line">                        <span class="keyword">while</span> ($l &lt; $r &amp;&amp; $nums[$r] === $nums[$r - <span class="number">1</span>]) &#123;</span><br><span class="line">                            $r--;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">while</span> ($l &lt; $r &amp;&amp; $nums[$l] === $nums[$l + <span class="number">1</span>]) &#123;</span><br><span class="line">                            $l++;</span><br><span class="line">                        &#125;</span><br><span class="line">                        $r--;</span><br><span class="line">                        $l++;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="keyword">if</span> ($sum &gt; $target) &#123;</span><br><span class="line">                            $r--;</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            $l++;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> array_unique($res, SORT_REGULAR);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="代码执行结果"><a href="#代码执行结果" class="headerlink" title="代码执行结果"></a>代码执行结果</h3><p><img src="https://upload-images.jianshu.io/upload_images/7429691-ce3595d1a7d9e4b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="小小总结"><a href="#小小总结" class="headerlink" title="小小总结"></a>小小总结</h3><p>菜鸟的我一看到这道题一下子想到了用排列组合的方法，但缺乏考虑的是内存的限制<br><img src="https://upload-images.jianshu.io/upload_images/7429691-e3ac86a30f641189.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>根据组合的公式，假设数组有一百个数，求四数之和，那就是要计算100 * 99 * 98 * 97 / 12 = 7842450次得到满足条件的所有数组，后续还有操作未执行….细思极恐啊。难怪内存超出限制执行异常。</p>
+<p>优化后的方法看起来简单又高效，最后占用内存15M不到，简直是大大提升。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/01/%E5%A4%A7%E5%AD%A6%E6%AF%95%E4%B8%9A%E5%90%8E%E7%9A%84%E7%8E%B0%E7%8A%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shahao.jpg">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖记忆">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/01/%E5%A4%A7%E5%AD%A6%E6%AF%95%E4%B8%9A%E5%90%8E%E7%9A%84%E7%8E%B0%E7%8A%B6/" class="post-title-link" itemprop="url">大学毕业后的现状</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-01 15:37:21" itemprop="dateCreated datePublished" datetime="2019-08-01T15:37:21+08:00">2019-08-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-18 15:40:49" itemprop="dateModified" datetime="2019-11-18T15:40:49+08:00">2019-11-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>537</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>6月是一个转折点，不仅仅是学生到社畜的一种变化，更是心态的成长。<br>6月是一个离别，大学同学吃完最后一顿散伙饭后各奔东西，却不曾想那就是最后一面了。<br>6月份大学毕业后很多事情都在毕业那一刻就改变了，不管你是准备与否，你都得作为一个社会人去接受它，去适应它。就像我们在校园里总有写不完的作业抄不完的笔记。<br>不知道你们有没有被催婚过，不知道你们有没有感慨生活圈子很狭窄，不知道你们有没有想念校园甚至梦到考场上那到解不出来的题目。<br>生活开始远离校园，学生卡不能用了，学生票享受不到了，教育补贴更别想了，唯一能感受到校园生活的那就是朋友圈中师弟师妹在校园的甜蜜秀恩爱。有点惨，二十几个七夕过去了，咱还是那个单身汉子。<br>然而，你还得加班，加班到凌晨5点隔天还得顶着大太阳赶地铁上班。每一次努力每一次付出，除了那少得可怜的薪水外，领导还会额外奖励你几个大拇指——“坚持就是胜利”“找到归属感，努力创建自己的价值”“年轻人好棒的”，其实我倒觉得多给点加班费或许我会更高兴一些。<br>因为工作，很搞笑的事情就是我现在和家人住在一块，然而我一星期才见到我妹妹一次，白天我很早上班晚上很晚下班，平时压根碰不到面。<br>写到这里不知道自己写了啥玩意，明儿还得上班，先这样吧，做一个小小记录，生活还得继续，负能量快快走开。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/07/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%EF%BC%8C%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E5%8D%8F%E4%BD%9C%E5%BC%80%E5%8F%91%E5%92%8C%E8%81%94%E8%B0%83%E6%95%88%E7%8E%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shahao.jpg">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖记忆">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/07/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%EF%BC%8C%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E5%8D%8F%E4%BD%9C%E5%BC%80%E5%8F%91%E5%92%8C%E8%81%94%E8%B0%83%E6%95%88%E7%8E%87/" class="post-title-link" itemprop="url">三层架构，如何提高协作开发和联调效率</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-07 15:39:38" itemprop="dateCreated datePublished" datetime="2019-07-07T15:39:38+08:00">2019-07-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-18 15:40:34" itemprop="dateModified" datetime="2019-11-18T15:40:34+08:00">2019-11-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>  今天我研究的课题《三层架构，如何提高协作开发和联调效率》，作为一名刚走出校园应届生，这一课题对我来说是即陌生又熟悉，对于三层架构的诞生、理论和优缺点，往深了讲，是我在校园和往期实习工作中尚未接触到的深水区，然而在当前重构项目中我却又是其中的一名实践者——业务层开发人员。半年来的实践与开发，在架构师的带领下，摸着石头过河，在今天这个课题下，写下我对三层架构的思考与提高联调的解决方案。本人才疏学浅，深知在后端开发领域知识面不够深不够广，对于课题写下自己的一点想法。</p>
+<h3 id="一、什么是三层架构？"><a href="#一、什么是三层架构？" class="headerlink" title="一、什么是三层架构？"></a>一、什么是三层架构？</h3><p>三层架构(3-tier architecture) 通常意义上的三层架构就是将整个业务应用划分为：<strong>界面层</strong>（User Interface layer）、<strong>业务逻辑层</strong>（Business Logic Layer）、<strong>数据访问层</strong>（Data access layer）。区分层次的目的即为了“高内聚低耦合”的思想。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7429691-61db35f6433809a2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="三层架构.jpg"></p>
+<p>通俗来讲就好像小朋友玩的积木一样，有一天，小朋友<strong>（客户）</strong>哭着要一个汽车玩具<strong>（界面层）</strong>，无奈家境一般，为了满足孩子的愿望，父亲就想了个办法，买了很多积木玩具块回来，妈妈按照汽车组装步骤图<strong>（业务层逻辑层）</strong>组装一个个积木块<strong>（数据访问层）</strong>最后变成了一个汽车玩具，因为小朋友<strong>（客户）</strong>的需求是千变万化的，五彩斑斓的黑五光十色的白都有这么一个可能性，哪天哭着闹着要个飞机玩具那也是合情合理的，但回归底层，还不都是一个个小小的积木<strong>（数据库）</strong>，世界上最不会变的那就是变化了，在客户第一的前提下，三层架构的提出是很重要也是不可或缺的。<br><img src="https://upload-images.jianshu.io/upload_images/7429691-4f3e14304e6a29fb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="三层架构-积木类比"></p>
+<h3 id="二、三层架构的优缺点"><a href="#二、三层架构的优缺点" class="headerlink" title="二、三层架构的优缺点"></a>二、三层架构的优缺点</h3><p>很明显，重构后对于整个项目一切都是可观的，优点显而易见，缺点也不可忽略，<strong>重构后的优点:</strong></p>
+<p>1、<strong>结构清晰、耦合度低；</strong>结构更加的明确，可以降低层与层之间的依赖；开发人员可以只关注整个结构中的其中某一层；</p>
+<p>2、<strong>可维护性高，可扩展性高；</strong>可以很容易的用新的实现来替换原有层次的实现；有利于标准化；在后期维护的时候，极大地降低了维护成本和维护时间</p>
+<p>3、<strong>利于开发任务同步进行；</strong>容易适应需求变化，利于各层逻辑的复用。</p>
+<p><strong>重构后可能面临的问题点:</strong></p>
+<p>1、<strong>降低了系统的性能；</strong>这是不言而喻的。如果不采用分层式结构，很多业务可以直接造访数据库，以此获取相应的数据，如今却必须通过中间层来完成。</p>
+<p>2、<strong>有时会导致级联的修改；</strong>这种修改尤其体现在自上而下的方向。如果在界面层中需要增加一个功能，为保证其设计符合分层式结构，可能需要在相应的业务逻辑层和数据访问层中都增加相应的代码。</p>
+<p>3、<strong>增加了开发成本；</strong>这点是毋容置疑的事情，在人员上，本来需要两队人马完成的事情，现在需要三队人马；在时间上，三级联调，两个节点联调接口，需要的时间相比之前提高了。</p>
+<p>然而公司重构项目从去年春节启动后到现在已有半年时间，在参与重构项目的开发过程中无疑是“不知庐山真面目，只缘身在此山”，持续不断的投入到业务开发和工作中，临近项目期末，现跳出围城进行知识上的扩展与升华，给出个人在参与项目过程中的一点思考与改进。</p>
+<p>只有充分思考我们在实施项目的过程中的客观存在的问题，我们才能理性并合理的提出解决方案，我觉得有以下<strong>难点问题</strong>：</p>
+<p>1、在需求不明确的情况下，产品和开发人员并行工作，产品输出远小于开发进度，从源头开始输入量小，下流前期输出量不多，拖到后期就导致功能开发紧张 。例如：到7月1号截止，优惠券活动审核的列表原型未出。</p>
+<p>2、排查问题，怎样查能快速定位，找到原因，避免消耗人力过多。例如：前端说登陆不了，报系统错误，如何准确定位，解决问题。</p>
+<p>3、前端、业务层、微服务三层架构中各层应用组件和技术相对前沿，在技术方面遇到的技术难点需要时间验证。例如：业务层在重构期间，经常出现模块节点挂的情况，经多次修改基础代码，各个模块均需要同步修改后的代码，消耗了一定时间。</p>
+<p>4、顶层设计，错误码，子系统间衔接调用要先设计好。我们现在有但还不完美。</p>
+<p>5、三层开发人员统一的开发进度规划，不能统一时间开发，当成流水线来安排。</p>
+<h3 id="二、提高协作开发和联调效率"><a href="#二、提高协作开发和联调效率" class="headerlink" title="二、提高协作开发和联调效率"></a>二、提高协作开发和联调效率</h3><p><strong>产品同学：</strong></p>
+<p>1、需求必须明确，反复确认需求细节，真正理解需求和内在价值。</p>
+<p>2、确认需求后需要确认关联人员的开发时间点，按照紧急程度，精确到天或小时。</p>
+<p><strong>开发同学：</strong></p>
+<p>1、<strong>自测：</strong>业务层和微服务自测一波再给接口，不要那么随性地就将开发中的接口丢给前端。</p>
+<p>2、<strong>沟通：</strong>在自测过后的接口来进行联调本来就存在出错的可能性，例如：数据错乱、请求头为空等情况，联调出错是一种非常正常的情况，在联调过程中，大家一定要戒骄戒躁，相互理解，及时沟通，积极反馈。由测试同学做主推动，逐层反馈，落实责任人，给出期望完成时间，问题责任人完成后反馈。</p>
+<p>3、<strong>log日志：</strong>主要以业务层的报错与警告来解决问题，目前业务层规范了log日志输出，在测试同学接口报错的情况下，定位到某一个微服务的报错和报错原因。但不可避免的需要人力的排查问题所在。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="沙蒿"
+      src="/images/shahao.jpg">
+  <p class="site-author-name" itemprop="name">沙蒿</p>
+  <div class="site-description" itemprop="description">大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">沙蒿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">18k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">16 分钟</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
