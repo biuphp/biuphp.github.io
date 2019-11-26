@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-11-24T16:14:18.690Z</updated>
+  <updated>2019-11-26T12:24:34.614Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,17 +17,65 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>微信授权事件接收流程</title>
+    <link href="http://yoursite.com/2019/11/26/%E5%BE%AE%E4%BF%A1%E6%8E%88%E6%9D%83%E4%BA%8B%E4%BB%B6%E6%8E%A5%E6%94%B6%E6%B5%81%E7%A8%8B/"/>
+    <id>http://yoursite.com/2019/11/26/%E5%BE%AE%E4%BF%A1%E6%8E%88%E6%9D%83%E4%BA%8B%E4%BB%B6%E6%8E%A5%E6%94%B6%E6%B5%81%E7%A8%8B/</id>
+    <published>2019-11-26T12:24:08.000Z</published>
+    <updated>2019-11-26T12:24:34.614Z</updated>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><p><img src="https://upload-images.jianshu.io/upload_images/7429691-f81197b148e61f5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="微信授权事件接收.png"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;&lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/7429691-f81197b148e61f5d.png?imageMo
+      
+    
+    </summary>
+    
+    
+    
+      <category term="微信第三方平台" scheme="http://yoursite.com/tags/%E5%BE%AE%E4%BF%A1%E7%AC%AC%E4%B8%89%E6%96%B9%E5%B9%B3%E5%8F%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微信消息与事件接收流程</title>
+    <link href="http://yoursite.com/2019/11/26/%E5%BE%AE%E4%BF%A1%E6%B6%88%E6%81%AF%E4%B8%8E%E4%BA%8B%E4%BB%B6%E6%8E%A5%E6%94%B6%E6%B5%81%E7%A8%8B/"/>
+    <id>http://yoursite.com/2019/11/26/%E5%BE%AE%E4%BF%A1%E6%B6%88%E6%81%AF%E4%B8%8E%E4%BA%8B%E4%BB%B6%E6%8E%A5%E6%94%B6%E6%B5%81%E7%A8%8B/</id>
+    <published>2019-11-26T12:22:37.000Z</published>
+    <updated>2019-11-26T12:23:29.689Z</updated>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><p><img src="https://upload-images.jianshu.io/upload_images/7429691-aa8388f94b7ed077.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="消息与事件接收.png"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;&lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/7429691-aa8388f94b7ed077.png?imageMo
+      
+    
+    </summary>
+    
+    
+    
+      <category term="微信第三方平台" scheme="http://yoursite.com/tags/%E5%BE%AE%E4%BF%A1%E7%AC%AC%E4%B8%89%E6%96%B9%E5%B9%B3%E5%8F%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>归来仍是少年</title>
     <link href="http://yoursite.com/2019/11/25/%E5%BD%92%E6%9D%A5%E4%BB%8D%E6%98%AF%E5%B0%91%E5%B9%B4/"/>
     <id>http://yoursite.com/2019/11/25/%E5%BD%92%E6%9D%A5%E4%BB%8D%E6%98%AF%E5%B0%91%E5%B9%B4/</id>
     <published>2019-11-24T16:09:37.000Z</published>
-    <updated>2019-11-24T16:14:18.690Z</updated>
+    <updated>2019-11-26T12:23:42.002Z</updated>
     
-    <content type="html"><![CDATA[<p>由于公司的调休制度修改，导致了我十几天的调休假没法转换成工资，在跟领导沟通完后，我休息了两天，加上周末共四天假期，一场没有计划的旅途就这样开始了，可能是为了逃避城市压抑的生活，可能是想念大学的那一缕阳光，我回到了母校，回到了梦开始的地方。<br><img src="https://upload-images.jianshu.io/upload_images/7429691-03b85b39706e2353.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="校门.jpg"><br>经过近两个小时的车程，我到达了学校北门。下车的那一刻，心情是复杂的，压抑的心在这一刻稍变舒坦，路过校门、篮球场、操场，我不停的问自己，我为什么要来到这里，我已经毕业了，这里没有昔日的战友，你已不属于这里，家在广州的你还有一大堆事情需要你帮忙，你却逃离回来，这是何苦呢？想想不禁热泪盈眶。<br><img src="https://upload-images.jianshu.io/upload_images/7429691-40751bdabccd270f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="操场.jpg"></p><a id="more"></a><p>打开微信，发了个消息给老师，还好老师刚好有空，我们一起坐下来聊聊技术、聊聊工作、聊聊生活，虽然之前一直吐槽他，但却是我的良师益友，至少得到了老师的理解和关怀。</p><p>晚上借助在舍友家中，吃了顿丰盛的夜宵。果然，一分价钱一分货，隔天肚子有点闹腾，但还是吃得很开心。<br><img src="https://upload-images.jianshu.io/upload_images/7429691-4f667f2ef781a8c9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="夜宵.jpg"></p><p>次天傍晚，本无计划的我，受到老友的邀请，去了躺莞城的工模，见了大一喜欢的那个女生。也就是因为这个我才会愿意一路颠簸两个多小时公交。我们聊了很多，话题从工作到小孩教育，从过去到现在，一起在校园里回忆那些年我们一起走过、做过、开心过的事情。她是我大学喜欢过的一个女生，表白被拒绝过，可能是因为我不够优秀（帅），当面她只是简单的说了一句“我还不想谈恋爱”。大学四年，我谈过一次恋爱，而现在对她的感觉少了些年轻时的冲动，更多是理解和帮助。当然我还是喜欢她。（我不是渣男）<br><img src="https://upload-images.jianshu.io/upload_images/7429691-2306420c8aa8fb5e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我她合照.jpg"></p><p>第三日，是约定好攀登东莞最高峰银瓶嘴的日子。过程是痛苦、是艰难的，每一个台阶每一滴汗，都是酸咸苦辣的，然而当我登上顶的那一刻，结果就没有那么重要了.</p><p><img src="https://upload-images.jianshu.io/upload_images/7429691-7f05bdcc1ef8bb7a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="车票.jpg"></p><p><img src="https://upload-images.jianshu.io/upload_images/7429691-3eb3475b095c99c3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="合照.jpg"><br>一个五块钱的老冰棍却能带给我百元的快乐。从上往下看，生与死就在那一脚，外面的生活还是蛮精彩，工作的不愉快已经没有那么重要了，那就努力赚钱多出来走走吧。</p><p><img src="https://upload-images.jianshu.io/upload_images/7429691-efbe8ce0775afdc0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="山脚.jpg"></p><p>“不畏浮云遮望眼，只缘生在最高层”，加油吧少年。</p>]]></content>
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"><p>由于公司的调休制度修改，导致了我十几天的调休假没法转换成工资，在跟领导沟通完后，我休息了两天，加上周末共四天假期，一场没有计划的旅途就这样开始了，可能是为了逃避城市压抑的生活，可能是想念大学的那一缕阳光，我回到了母校，回到了梦开始的地方。<br><img src="https://upload-images.jianshu.io/upload_images/7429691-03b85b39706e2353.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="校门.jpg"><br>经过近两个小时的车程，我到达了学校北门。下车的那一刻，心情是复杂的，压抑的心在这一刻稍变舒坦，路过校门、篮球场、操场，我不停的问自己，我为什么要来到这里，我已经毕业了，这里没有昔日的战友，你已不属于这里，家在广州的你还有一大堆事情需要你帮忙，你却逃离回来，这是何苦呢？想想不禁热泪盈眶。<br><img src="https://upload-images.jianshu.io/upload_images/7429691-40751bdabccd270f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="操场.jpg"></p><a id="more"></a><p>打开微信，发了个消息给老师，还好老师刚好有空，我们一起坐下来聊聊技术、聊聊工作、聊聊生活，虽然之前一直吐槽他，但却是我的良师益友，至少得到了老师的理解和关怀。</p><p>晚上借助在舍友家中，吃了顿丰盛的夜宵。果然，一分价钱一分货，隔天肚子有点闹腾，但还是吃得很开心。<br><img src="https://upload-images.jianshu.io/upload_images/7429691-4f667f2ef781a8c9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="夜宵.jpg"></p><p>次天傍晚，本无计划的我，受到老友的邀请，去了躺莞城的工模，见了大一喜欢的那个女生。也就是因为这个我才会愿意一路颠簸两个多小时公交。我们聊了很多，话题从工作到小孩教育，从过去到现在，一起在校园里回忆那些年我们一起走过、做过、开心过的事情。她是我大学喜欢过的一个女生，表白被拒绝过，可能是因为我不够优秀（帅），当面她只是简单的说了一句“我还不想谈恋爱”。大学四年，我谈过一次恋爱，而现在对她的感觉少了些年轻时的冲动，更多是理解和帮助。当然我还是喜欢她。（我不是渣男）<br><img src="https://upload-images.jianshu.io/upload_images/7429691-2306420c8aa8fb5e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我她合照.jpg"></p><p>第三日，是约定好攀登东莞最高峰银瓶嘴的日子。过程是痛苦、是艰难的，每一个台阶每一滴汗，都是酸咸苦辣的，然而当我登上顶的那一刻，结果就没有那么重要了.</p><p><img src="https://upload-images.jianshu.io/upload_images/7429691-7f05bdcc1ef8bb7a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="车票.jpg"></p><p><img src="https://upload-images.jianshu.io/upload_images/7429691-3eb3475b095c99c3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="合照.jpg"><br>一个五块钱的老冰棍却能带给我百元的快乐。从上往下看，生与死就在那一脚，外面的生活还是蛮精彩，工作的不愉快已经没有那么重要了，那就努力赚钱多出来走走吧。</p><p><img src="https://upload-images.jianshu.io/upload_images/7429691-efbe8ce0775afdc0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="山脚.jpg"></p><p>“不畏浮云遮望眼，只缘生在最高层”，加油吧少年。</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;由于公司的调休制度修改，导致了我十几天的调休假没法转换成工资，在跟领导沟通完后，我休息了两天，加上周末共四天假期，一场没有计划的旅途就这样开始了，可能是为了逃避城市压抑的生活，可能是想念大学的那一缕阳光，我回到了母校，回到了梦开始的地方。&lt;br&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/7429691-03b85b39706e2353.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;校门.jpg&quot;&gt;&lt;br&gt;经过近两个小时的车程，我到达了学校北门。下车的那一刻，心情是复杂的，压抑的心在这一刻稍变舒坦，路过校门、篮球场、操场，我不停的问自己，我为什么要来到这里，我已经毕业了，这里没有昔日的战友，你已不属于这里，家在广州的你还有一大堆事情需要你帮忙，你却逃离回来，这是何苦呢？想想不禁热泪盈眶。&lt;br&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/7429691-40751bdabccd270f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;操场.jpg&quot;&gt;&lt;/p&gt;
+      &lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;&lt;p&gt;由于公司的调休制度修改，导致了我十几天的调休假没法转换成工资，在跟领导沟通完后，我休息了两天，加上周末共四天假期，一场没有计划的旅途就这样开始了，可能是为了逃避城市压抑的生活，可能是想念大学的那一缕阳光，我回到了母校，回到了梦开始的地方。&lt;br&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/7429691-03b85b39706e2353.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;校门.jpg&quot;&gt;&lt;br&gt;经过近两个小时的车程，我到达了学校北门。下车的那一刻，心情是复杂的，压抑的心在这一刻稍变舒坦，路过校门、篮球场、操场，我不停的问自己，我为什么要来到这里，我已经毕业了，这里没有昔日的战友，你已不属于这里，家在广州的你还有一大堆事情需要你帮忙，你却逃离回来，这是何苦呢？想想不禁热泪盈眶。&lt;br&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/7429691-40751bdabccd270f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;操场.jpg&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -466,52 +514,6 @@
     
     
       <category term="微信" scheme="http://yoursite.com/tags/%E5%BE%AE%E4%BF%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>程序员工作5年， 给小萌新的建议</title>
-    <link href="http://yoursite.com/2019/05/20/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%B7%A5%E4%BD%9C5%E5%B9%B4%EF%BC%8C-%E7%BB%99%E5%B0%8F%E8%90%8C%E6%96%B0%E7%9A%84%E5%BB%BA%E8%AE%AE/"/>
-    <id>http://yoursite.com/2019/05/20/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%B7%A5%E4%BD%9C5%E5%B9%B4%EF%BC%8C-%E7%BB%99%E5%B0%8F%E8%90%8C%E6%96%B0%E7%9A%84%E5%BB%BA%E8%AE%AE/</id>
-    <published>2019-05-20T08:20:17.000Z</published>
-    <updated>2019-11-18T08:21:01.197Z</updated>
-    
-    <content type="html"><![CDATA[<p>周末，我有一个同事（实习生）拍毕业照了，应部门大佬的邀请一块到佛山科技技术学院走走玩玩，然而我还是太年轻了，程序员之间的聊天打开方式还是离不开技术。做为一个php实习生，在谈话中，我被大佬问倒过好几个问题，有算法的，有语言底层实现的。在这个“上级”对“下级”的这场搏击中，我还是太菜了。大佬还是大佬，在交谈中，我总结大佬所传授的为以下几点：</p><a id="more"></a><ul><li><strong>“你们（实习生）要想走得远，有四个基础点，你必须要理解并用于实践中：操作系统、计算机网络、数据结构与算法、掌握一门编程语言”</strong></li></ul><p>在谈话中，大佬并没有详细的指出四点的详细内容，重要性你我都知。在大学学习中，这些都是我们的基础和核心课程，也是我们当代大学会教的东西。新的技术学校教不了，老的学了也过时，只有这些基础核心课程，才是我们在学习必须理解并自己应用实践的。也许，看到这篇文字的你还是一个大学生，觉得这些课程枯燥乏味还没法做出一个应用，学了就只是为了应付考试及格，那你就真的大错特错了；也许，你是一个在职的程序员，觉得在实际业务逻辑开发中这些东西也没那么重要，那当你遇到内存泄漏溢出你是要咋办呢？在我的理解中，它们就像是高楼大厦下的地基，基础打好了，楼也就稳了，科技在不断进步，以后不管是遇到什么样的大风大浪大地震，总有解决的办法。</p><ul><li><strong>“php语言这条路很广，但天花板很低”</strong></li></ul><p>有那么一句调侃的话是这样说的“php是世界上最好的语言”，起初我还以为php这门语言真的很“好”（简单易学快上手），后来我才发现这其实是phper的一种自嘲。大佬说：“php语言很弱，它的容错机制决定一个好的程序员和一个坏的程序员开发出来代码效果的差不多的（java也是），这也是为什么java和php在市场上的需求和就业高与其他开发语言（node.js等）”，虽然php7出了很多新的特性，php版本更新还算频繁，加上现在比较热门的高性能的php swoole扩展，也有几个用swoole扩展封装的框架（easyswoole等），总的来说，这门语言是在不断的成长和变好的，开发网站业务是最适合效率最高最满足现在企业需求的。尽管如此，它还是会有很多缺陷与不足，具体的这个还是留个坑给自己以后再填吧。</p><p>在最后出一道题考考大家，可以把答案在下方留言哦</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//问题</span></span><br><span class="line">x = <span class="number">1</span>;</span><br><span class="line">z = x++;</span><br><span class="line">y = ++x;</span><br><span class="line"><span class="comment">//答案</span></span><br><span class="line">x = ?;</span><br><span class="line">y = ?;</span><br><span class="line">z = ?;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;周末，我有一个同事（实习生）拍毕业照了，应部门大佬的邀请一块到佛山科技技术学院走走玩玩，然而我还是太年轻了，程序员之间的聊天打开方式还是离不开技术。做为一个php实习生，在谈话中，我被大佬问倒过好几个问题，有算法的，有语言底层实现的。在这个“上级”对“下级”的这场搏击中，我还是太菜了。大佬还是大佬，在交谈中，我总结大佬所传授的为以下几点：&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="程序员" scheme="http://yoursite.com/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php面试基础知识--数组函数（二）</title>
-    <link href="http://yoursite.com/2019/05/19/php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>http://yoursite.com/2019/05/19/php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%95%B0%E7%BB%84%E5%87%BD%E6%95%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
-    <published>2019-05-19T08:21:19.000Z</published>
-    <updated>2019-11-18T08:22:58.943Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><p><strong>array_keys() : array</strong></p><p>返回数组中的数字或者字符串的部分或全部键名；第二个参数为输入<strong>键值</strong>则只返回该值的<strong>键名</strong>，例：</p></li></ul><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $array = [</span><br><span class="line">        <span class="string">'a'</span> =&gt;  <span class="string">'1'</span>,</span><br><span class="line">        <span class="string">'b'</span> =&gt;  <span class="string">'2'</span>,</span><br><span class="line">        <span class="string">'c'</span> =&gt;  <span class="string">'3'</span></span><br><span class="line">    ];</span><br><span class="line">    var_dump(array_keys($array));  <span class="comment">//array('a', 'b', 'c');</span></span><br><span class="line">    var_dump(array_keys($array, <span class="string">'a'</span>));  <span class="comment">//null</span></span><br><span class="line">    var_dump(array_keys($array, <span class="string">'1'</span>));  <span class="comment">//array('a');</span></span><br></pre></td></tr></table></figure><a id="more"></a><ul><li><strong>array_values() : array</strong></li></ul><p>返回数组中所有的值并给其建立数字索引，这个简单些没遇到什么坑。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $array = [</span><br><span class="line">        <span class="string">'a'</span> =&gt;  <span class="string">'1'</span>,</span><br><span class="line">        <span class="string">'b'</span> =&gt;  <span class="string">'2'</span>,</span><br><span class="line">        <span class="string">'c'</span> =&gt;  <span class="string">'3'</span></span><br><span class="line">    ];</span><br><span class="line">    var_dump(array_values($array));  <span class="comment">//array('1', '2', '3');</span></span><br></pre></td></tr></table></figure><ul><li><strong>array_diff ( array $array1 , array $array2 [, array $… ] ) : array</strong></li></ul><p><strong>差集：</strong>对比 array1 和其他一个或者多个数组，返回在 array1 中但是不在其他 array 里的值。</p><p><strong>注意：</strong>返回键名保留不变，且函数只检查了多维数组中的一维</p><ul><li><strong>array_diff_assoc() : array</strong></li></ul><p>与array_diff ()不同的地方在于，<strong>这个家伙键名也用于比较</strong>。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $array1 = <span class="keyword">array</span>(<span class="string">"a"</span> =&gt; <span class="string">"green"</span>, <span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"red"</span>);</span><br><span class="line">  $array2 = <span class="keyword">array</span>(<span class="string">"a"</span> =&gt; <span class="string">"green"</span>, <span class="string">"yellow"</span>, <span class="string">"red"</span>);</span><br><span class="line">  $result1 = array_diff($array1, $array2);</span><br><span class="line">  $result2 = array_diff_assoc($array1, $array2);</span><br><span class="line">  print_r($result1);</span><br><span class="line">  print_r($result2);</span><br><span class="line">  <span class="comment">//返回结果</span></span><br><span class="line">  <span class="keyword">Array</span></span><br><span class="line">  (</span><br><span class="line">      [<span class="number">1</span>] =&gt; blue</span><br><span class="line">  )</span><br><span class="line">  <span class="keyword">Array</span></span><br><span class="line">  (</span><br><span class="line">      [<span class="number">0</span>] =&gt; red</span><br><span class="line">      [<span class="number">1</span>] =&gt; blue</span><br><span class="line">      [<span class="number">2</span>] =&gt; red</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><ul><li><strong>array_intersect ( array $array1 , array $array2 [, array $… ] ) : array</strong></li></ul><p><strong>交集：</strong>返回一个数组，该数组包含了所有在 array1 中也同时出现在所有其它参数数组中的值。<br><strong>注意：</strong>键名保留不变。</p><ul><li><strong>array_intersect_assoc() : array</strong></li></ul><p>与array_intersect ()不同的地方在于，<strong>这个家伙键名也用于比较</strong>。</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $array1 = <span class="keyword">array</span>(<span class="string">"a"</span> =&gt; <span class="string">"green"</span>, <span class="string">"b"</span> =&gt; <span class="string">"brown"</span>, <span class="string">"c"</span> =&gt; <span class="string">"blue"</span>, <span class="string">"red"</span>);</span><br><span class="line">    $array2 = <span class="keyword">array</span>(<span class="string">"a"</span> =&gt; <span class="string">"green"</span>, <span class="string">"b"</span> =&gt; <span class="string">"yellow"</span>, <span class="string">"blue"</span>, <span class="string">"red"</span>);</span><br><span class="line">    $result_array1 = array_intersect($array1, $array2);</span><br><span class="line">    $result_array2 = array_intersect_assoc($array1, $array2);</span><br><span class="line">    print_r($result_array1);</span><br><span class="line">    print_r($result_array2);</span><br><span class="line">    <span class="comment">//返回结果</span></span><br><span class="line">    <span class="keyword">Array</span></span><br><span class="line">    (</span><br><span class="line">        [a] =&gt; green</span><br><span class="line">        [c] =&gt; blue</span><br><span class="line">        [<span class="number">0</span>] =&gt; red</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">Array</span></span><br><span class="line">    (</span><br><span class="line">        [a] =&gt; green</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;array_keys() : array&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;返回数组中的数字或者字符串的部分或全部键名；第二个参数为输入&lt;strong&gt;键值&lt;/strong&gt;则只返回该值的&lt;strong&gt;键名&lt;/strong&gt;，例：&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;lt;?php&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    $array = [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;string&quot;&gt;&#39;a&#39;&lt;/span&gt; =&amp;gt;  &lt;span class=&quot;string&quot;&gt;&#39;1&#39;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;string&quot;&gt;&#39;b&#39;&lt;/span&gt; =&amp;gt;  &lt;span class=&quot;string&quot;&gt;&#39;2&#39;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;string&quot;&gt;&#39;c&#39;&lt;/span&gt; =&amp;gt;  &lt;span class=&quot;string&quot;&gt;&#39;3&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var_dump(array_keys($array));  &lt;span class=&quot;comment&quot;&gt;//array(&#39;a&#39;, &#39;b&#39;, &#39;c&#39;);&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var_dump(array_keys($array, &lt;span class=&quot;string&quot;&gt;&#39;a&#39;&lt;/span&gt;));  &lt;span class=&quot;comment&quot;&gt;//null&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var_dump(array_keys($array, &lt;span class=&quot;string&quot;&gt;&#39;1&#39;&lt;/span&gt;));  &lt;span class=&quot;comment&quot;&gt;//array(&#39;a&#39;);&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="php面试基础知识" scheme="http://yoursite.com/tags/php%E9%9D%A2%E8%AF%95%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     
   </entry>
   
