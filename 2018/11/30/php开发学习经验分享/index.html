@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="指尖脚尖记忆间" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="近来学校的实训课程结束了，很多同班同学赶上了校园招聘的晚班车，所以呢大家近来讨论的话题慢慢的也从游戏转移到了实习，是啊，实习，从校园学习里到正式融入社会工作的一个过渡阶段，有些同学实力很强，也很幸运的拿到了不错的offer，基础一般的同学很明显意识到自己与他人的差距，也开始全身心的投入到找工作与学习的队伍中。  时间如水，日月如梭，不知不觉我已告别了一段落的实习。从今年3月份至10月底，我在一">
+<meta name="keywords" content="程序员">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php开发学习经验分享">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2018&#x2F;11&#x2F;30&#x2F;php%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB&#x2F;index.html">
+<meta property="og:site_name" content="指尖脚尖记忆间">
+<meta property="og:description" content="近来学校的实训课程结束了，很多同班同学赶上了校园招聘的晚班车，所以呢大家近来讨论的话题慢慢的也从游戏转移到了实习，是啊，实习，从校园学习里到正式融入社会工作的一个过渡阶段，有些同学实力很强，也很幸运的拿到了不错的offer，基础一般的同学很明显意识到自己与他人的差距，也开始全身心的投入到找工作与学习的队伍中。  时间如水，日月如梭，不知不觉我已告别了一段落的实习。从今年3月份至10月底，我在一">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-26T12:45:10.193Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2018/11/30/php%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>php开发学习经验分享 | 指尖脚尖记忆间</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">指尖脚尖记忆间</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/30/php%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/shahao.jpg">
+      <meta itemprop="name" content="沙蒿">
+      <meta itemprop="description" content="大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="指尖脚尖记忆间">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          php开发学习经验分享
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-30 20:43:32" itemprop="dateCreated datePublished" datetime="2018-11-30T20:43:32+08:00">2018-11-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-26 20:45:10" itemprop="dateModified" datetime="2019-11-26T20:45:10+08:00">2019-11-26</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>  近来学校的实训课程结束了，很多同班同学赶上了校园招聘的晚班车，所以呢大家近来讨论的话题慢慢的也从游戏转移到了实习，是啊，实习，从校园学习里到正式融入社会工作的一个过渡阶段，有些同学实力很强，也很幸运的拿到了不错的offer，基础一般的同学很明显意识到自己与他人的差距，也开始全身心的投入到找工作与学习的队伍中。<br>  时间如水，日月如梭，不知不觉我已告别了一段落的实习。从今年3月份至10月底，我在一家公司实习也有半年，了解过、完成过几个项目，不说假话，虽然是写外包项目，但我学到的东西蛮多的。马上要进入下一阶段的实习生活（因为我还没毕业，只能属于实习期），我就在这里简单跟大家分享下实习的经历吧。</p><a id="more"></a>
+<h3 id="不能依赖框架"><a href="#不能依赖框架" class="headerlink" title="不能依赖框架"></a>不能依赖框架</h3><p>  作为一个php实习生，为了高效快速的完成公司交待的项目，你很容易的选择一个框架进行开发，这正是外包公司要求你的——效率。一个项目下来，借用框架其实我们很少会写一些原生的sql语句、理解框架内置函数的原理了，对于一个成长的php开发工程师来说，这是不好了，也是容易误导自己的。如果说熟练掌握一门框架是在浅水区，那深刻理解框架底层和原理就是在深水区了。如果你一直停留在浅水区，这无疑就是井底之蛙，你学到的就仅仅是在使用和熟练使用之间。</p>
+<h3 id="数据库设计规范"><a href="#数据库设计规范" class="headerlink" title="数据库设计规范"></a>数据库设计规范</h3><p>  数据库的设计对一个项目来说尤为重要，可能项目刚开始的时候， 你设计的数据库没什么问题，但越到了后面，处理事物越来越复杂，各个表之间关联关系越紧密，逻辑越复杂，一旦因为项目变动导致数据库的要重新改动时候，麻烦就来了。牵一发动全身，你原来没考虑到的情况，现在发生了；你原来考虑到的却没有实现的情况，现在发生了；需求变了，你还要改动数据库……这样不了了之，这个数据库设计就变得惨不忍睹。给出的建议是：充分理解项目需求的，根据业务、场景设计出合理、规范的数据库。</p>
+<h3 id="MVC理解与使用"><a href="#MVC理解与使用" class="headerlink" title="MVC理解与使用"></a>MVC理解与使用</h3><p>  M（模型）、V（视图）、C（控制器），控制层通过模型层调用数据，将数据传到模板引擎，并告诉模板引擎指定的模板文件，然后将数据和页面结合和返回。这是我对mvc的简单理解，刚开始的时候，我并不知道为什么要这样做，觉得只要能完成接口返回相对应数据，在控制层（C层）里进行数据where查询也没有什么问题，直到业务的重复性和复杂性的增加，我越来越觉得自己的代码非常不美观、重复性的代码太多，可读性差。</p>
+<h3 id="linux服务器学习"><a href="#linux服务器学习" class="headerlink" title="linux服务器学习"></a>linux服务器学习</h3><p>  有关于开发环境、生产环境服务器部署的这些东西是必学的，linux操作系统命令行的学习作为基础知识是必学的也是很重要的。学习的方式也很简单，“多用，多敲，多练习”，最好的就是自己购置一台服务器来，可以在阿里云或者腾讯买，在部署开发环境的过程中，对linux命令的使用也会更加熟练。我个人是买了一台服务器的，加上自己的电脑也是深度系统（不知道可以百度下）。对于一些项目开发环境可能会加载一些前端和后端的依赖包，学会使用yum和apt-get下载也是很重要的。</p>
+<h3 id="git的使用"><a href="#git的使用" class="headerlink" title="git的使用"></a>git的使用</h3><p>  git这个版本控制工具得好好学，不然会坑队友的，坑自己的。我个人开发过程中喜欢使用phpstorm上的git插件扩展开对项目的代码进行管理，图形化处理还是比git命令行操作来得简便一些。</p>
+<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><p>  最后的最后，还是要提一下这个。虽然在项目开始到结束，你一直很忙很累，我还是建议周末有时间的时候，复习一些基础知识，看看计算机网络、操作系统、算法等等，给自己多一点积累的时间，或许成长得更快。</p>
+<p>好了，大概就这么多吧，纯属个人意见，分享出来，有什么不妥的地方，欢迎指正哈。</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>不求赞赏，点个喜欢就好.</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/" rel="tag"># 程序员</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2018/12/01/php%E5%AE%9E%E7%8E%B0%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="prev" title="php实现冒泡排序算法">
+                  php实现冒泡排序算法 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#不能依赖框架"><span class="nav-number">1.</span> <span class="nav-text">不能依赖框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库设计规范"><span class="nav-number">2.</span> <span class="nav-text">数据库设计规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC理解与使用"><span class="nav-number">3.</span> <span class="nav-text">MVC理解与使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux服务器学习"><span class="nav-number">4.</span> <span class="nav-text">linux服务器学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git的使用"><span class="nav-number">5.</span> <span class="nav-text">git的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础知识"><span class="nav-number">6.</span> <span class="nav-text">基础知识</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="沙蒿"
+      src="/images/shahao.jpg">
+  <p class="site-author-name" itemprop="name">沙蒿</p>
+  <div class="site-description" itemprop="description">大家好，我是一个很不喜欢写文的程序员，在这里我可以随便的写，因为根本没有人会看到。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+
+
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">沙蒿</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">66k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:01</span>
+</div>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
